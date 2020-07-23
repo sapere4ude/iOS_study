@@ -183,3 +183,24 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
 
     ```
 <br>
+
+*  Capturing Values
+
+   ```
+    // Closure 내부에서 외부의 값에 접근하면 값에 대한 참조를 획득한다. 내부에서 값을 바꾼다면 외부의 값도 함께 바뀐다.
+
+    var num = 0
+
+    let c = {
+        num += 1 // 외부에서 선언된 값을 클로저 내부로 가져와 변경할 수 있다
+        print("check point #1 : \(num)")    // 윗라인에서 선언한 num 변수의 값을 캡쳐하여 가져옴, check point #1 : 1
+    }
+
+    c()
+
+
+    print("check point #2 : \(num)") // check point #2 : 1
+    
+   ```
+<br>
+
