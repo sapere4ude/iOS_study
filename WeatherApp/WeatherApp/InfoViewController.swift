@@ -27,9 +27,8 @@ class InfoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        self.label.text = String(converteKelvinToCelsius(input:
-//            data["main"]["temp_min"].floatValue))
-        self.label.text = "ㅋ.ㅋ"
+        self.label.text = String(converteKelvinToCelsius(input:
+            data["main"]["temp_min"].floatValue))
     }
     
     func converteKelvinToCelsius(input: Float) -> Float {
