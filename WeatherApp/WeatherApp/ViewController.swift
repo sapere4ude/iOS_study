@@ -76,7 +76,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         print("")
         
         // 로딩뷰 띄우기
-        ApiManager.query(url: url, function: .get, header: nil, param: nil, requestType: .json, responseType: .json, timeout: 60, compleHandler: {(responseData) in
+        
+        ApiManager.query(url: url,
+                         function: .get,
+                         header: nil,
+                         param: nil,
+                         requestType: .json,
+                         responseType: .json,
+                         timeout: 60,
+                         completeHandler: { (responseData) in
             let myJson: JSON = try! JSON(data: responseData)
             DispatchQueue.main.async{
                 let vc = InfoViewController(nibName: "InfoViewController", bundle: nil)
