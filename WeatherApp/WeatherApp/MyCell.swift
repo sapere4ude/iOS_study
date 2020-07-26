@@ -6,4 +6,26 @@
 //  Copyright © 2020 sapere4ude. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class MyCell: UITableViewCell {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var data: Dictionary<String,Any>? = nil {
+        didSet{
+            self.titleLabel.text = data?["name"] as? String
+            
+        }
+        
+    }
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    
+    
+    
+}

@@ -15,6 +15,12 @@
 		FAA3489124CBE0280076851C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA3489024CBE0280076851C /* Assets.xcassets */; };
 		FAA3489424CBE0280076851C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA3489224CBE0280076851C /* LaunchScreen.storyboard */; };
 		FAA3489C24CC07930076851C /* CommonDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3489B24CC07930076851C /* CommonDefine.swift */; };
+		FAA3489E24CD134F0076851C /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA3489D24CD134F0076851C /* MyCell.swift */; };
+		FAA348A024CD13CC0076851C /* MyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA3489F24CD13CC0076851C /* MyCell.xib */; };
+		FAA348A224CD2B960076851C /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA348A124CD2B960076851C /* ApiManager.swift */; };
+		FAA348A424CD665C0076851C /* cityList.json in Resources */ = {isa = PBXBuildFile; fileRef = FAA348A324CD665C0076851C /* cityList.json */; };
+		FAA348A624CD682A0076851C /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA348A524CD682A0076851C /* InfoViewController.swift */; };
+		FAA348A824CD84940076851C /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA348A724CD84940076851C /* InfoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		FAA3489324CBE0280076851C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAA3489524CBE0280076851C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAA3489B24CC07930076851C /* CommonDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDefine.swift; sourceTree = "<group>"; };
+		FAA3489D24CD134F0076851C /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
+		FAA3489F24CD13CC0076851C /* MyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCell.xib; sourceTree = "<group>"; };
+		FAA348A124CD2B960076851C /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		FAA348A324CD665C0076851C /* cityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = cityList.json; path = "../../../../../../../Documents/sat_class/NoOpenSourceSampleApp-master/ExampleApp/ExampleApp/cityList.json"; sourceTree = "<group>"; };
+		FAA348A524CD682A0076851C /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		FAA348A724CD84940076851C /* InfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +94,7 @@
 		FAA3488624CBE0250076851C /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				FAA348A324CD665C0076851C /* cityList.json */,
 				FAA3488724CBE0250076851C /* AppDelegate.swift */,
 				FAA3488924CBE0250076851C /* SceneDelegate.swift */,
 				FAA3488B24CBE0260076851C /* ViewController.swift */,
@@ -90,6 +103,11 @@
 				FAA3489B24CC07930076851C /* CommonDefine.swift */,
 				FAA3489224CBE0280076851C /* LaunchScreen.storyboard */,
 				FAA3489524CBE0280076851C /* Info.plist */,
+				FAA3489D24CD134F0076851C /* MyCell.swift */,
+				FAA3489F24CD13CC0076851C /* MyCell.xib */,
+				FAA348A124CD2B960076851C /* ApiManager.swift */,
+				FAA348A524CD682A0076851C /* InfoViewController.swift */,
+				FAA348A724CD84940076851C /* InfoViewController.xib */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -155,7 +173,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA3489424CBE0280076851C /* LaunchScreen.storyboard in Resources */,
+				FAA348A424CD665C0076851C /* cityList.json in Resources */,
+				FAA348A024CD13CC0076851C /* MyCell.xib in Resources */,
 				FAA3489124CBE0280076851C /* Assets.xcassets in Resources */,
+				FAA348A824CD84940076851C /* InfoViewController.xib in Resources */,
 				FAA3488F24CBE0260076851C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,8 +231,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA3488C24CBE0260076851C /* ViewController.swift in Sources */,
+				FAA3489E24CD134F0076851C /* MyCell.swift in Sources */,
 				FAA3489C24CC07930076851C /* CommonDefine.swift in Sources */,
+				FAA348A624CD682A0076851C /* InfoViewController.swift in Sources */,
 				FAA3488824CBE0250076851C /* AppDelegate.swift in Sources */,
+				FAA348A224CD2B960076851C /* ApiManager.swift in Sources */,
 				FAA3488A24CBE0250076851C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
