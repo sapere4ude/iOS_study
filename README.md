@@ -2,7 +2,6 @@
 
 swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정리해두는 공간입니다
 
-
 # Closures
 
  * self-contained code blocks 이라고 부른다
@@ -186,7 +185,7 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
 
 *  Capturing Values
 
-   ```
+```
     // Closure 내부에서 외부의 값에 접근하면 값에 대한 참조를 획득한다. 내부에서 값을 바꾼다면 외부의 값도 함께 바뀐다.
 
     var num = 0
@@ -200,10 +199,80 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
 
 
     print("check point #2 : \(num)") // check point #2 : 1
-    
-   ```
+```
 <br>
 
-* API 사용방법 정리
-* 오픈소스 관련 찾아보기
+# Tuples
 
+* Tuple Expression
+```
+// 표현방법
+(expr1, expr2, ...)
+
+// 형식
+let i = (12, 34)    // 튜플형식, compound type
+let data = ("<html>", 200, "OK", 12.34) // 가상의 데이터, 튜플에 4가지 맴버가 저장되어 있다
+// 맴버를 삭제하는건 불가능. 값은 변경하는건 가능
+```
+
+* Explicit Member Expression
+```
+// 표현 방법
+tuple.n << n은 0번 인덱스부터 시작한다
+
+// 형식
+data.0
+data.1
+data.2
+data.3
+
+var mutableTuple = data         // mutable : 값을 바꿀수 있다 라는 의미 (가변성)
+mutableTuple.1 = 404
+mutableTuple.1
+```
+
+* Named Tuples
+
+```
+// 표현 방법
+(name1: expr1, name2: expr2, ...)
+tuple.memberName
+
+// 형식
+let data = ("<html>", 200, "ok", 12.34)
+
+let named = (body: "<html>", statusCode: 200, statusMessage: "OK", dataSize: 12.34)
+
+named.statusCode    // 200
+named.1             // 200
+```
+
+* Tuple Decomposition
+
+```
+// Decomposition : 분해라는 뜻을 갖는다
+// 튜플에 저장된 맴버를 개별 상수나 개별 변수에 따로 저장하는 방법
+
+let data = ("<html>", 200, "OK", 12.34)
+
+// 방법1. 개별 변수들을 상수에 저장하는 방법
+//let body = data.0
+//let code = data.1
+//let message = data.2
+//let size = data.3
+
+// 방법2. Decomposition 
+let (name1, name2, ...) = tupleExpr
+var (name1, name2, ...) = tupleExpr
+
+let (body, code, message, size) = data  // data 의 갯수에 맞게 맞춰줘야한다
+
+// 만약 size 값을 뽑아내고 싶지 않다면 와일드카드 연산자를 사용하면 된다.
+//let (body, code, message, _) = data
+```
+
+* Tuple Matching
+
+```
+
+```
