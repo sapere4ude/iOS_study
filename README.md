@@ -274,5 +274,24 @@ let (body, code, message, size) = data  // data 의 갯수에 맞게 맞춰줘�
 * Tuple Matching
 
 ```
+let resolution = (3840.0, 2160.0)
 
+if resolution.0 == 3840 && resolution.1 == 2160 {
+    print("4K")
+}
+
+// switch 문법은 tuple을 지원한다. if문보다 훨씬 간결하게 코드를 작성할 수 있는 장점이 있다.
+
+switch resolution {
+case let(w, h) where w / h == 16.0 / 9.0:
+    print("16:9")
+case (_, 1080): // 너비는 생각하지 않으니깐 와일드카드 문자로 두고 높이만 작성해줌
+    print("1080p")
+case (3840...4096, 2160):   // case 블록에서 tuple을 매칭시키는 중, interval 매칭도 가능하다
+        print("4K")
+default:
+    break
+}
 ```
+
+# String and Character
