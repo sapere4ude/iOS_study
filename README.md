@@ -294,4 +294,76 @@ default:
 }
 ```
 
-# String and Character
+# String and Characters
+
+* String and Characters
+
+```
+// 문지열로 처리
+let s = "String"
+
+// 문자로 처리되기 위해선?
+let c: Character = "C"
+
+// 빈 문자를 저장하려면? >> 문자열 사이에 공백을 넣어줘야 한다
+let emptyChar: Character = " "
+
+// 빈 문자열이 저장된 것 X, 공백이 포함된 문자열이 저장된 것이다
+let emptyString = " "
+emptyString.count   // 1이 나오는 것을 확인 >> 빈 문자열이 아님을 알 수 있다
+
+// 빈 문자열이 되기 위해선 공백이 없어야 한다
+let realEmptyString = ""
+realEmptyString.count
+
+// 문자열 생성자로 빈문자열을 생성할 수도 있다
+let emptyString2 = String()
+```
+
+* String Types
+
+```
+// String 의 종류
+// String >> Swift String , NSString >> Foundation String
+
+var nsstr: NSString = "str"
+// swift 문자열을 foundation 문자열에 저장할 때는 type casting 한 뒤에 저장해야 한다
+let swiftStr: String = nsstr as String
+// foundation 문자열을 swift 문자열로 저장할 때도 마찬가지로 type casting 과정이 필요하다
+nsstr = swiftStr as NSString
+
+// cf. Toll-Free Bridged : type casting 으로 호환이 가능한 자료형을 의미한다
+```
+
+* Mutablitiy
+
+```
+// 문자열의 가변성은 let, var 키워드로 결정된다.
+
+// 바꿀 수 없는 문자열
+let immutableStr = "str"
+// immutableStr = "new str"     // error
+
+// 바꿀 수 있는 문자열
+var mutableStr = "str"
+mutableStr = "new str"          // 문자열을 변수로 설정하면 언제든 바꿀 수 있다.
+```
+
+* Unicode
+
+```
+let str = "Swift String"    // Unicode에 독립적인 문자열
+
+str.utf8
+str.utf16
+
+var thumbUp = "👍🏻"
+
+thumbUp = "\u{1F44D}"   // 유니코드 스칼라 방식
+
+//👍🏻
+//올린 엄지
+//유니코드: U+1F44D U+1F3FB, UTF-8: F0 9F 91 8D F0 9F 8F BB
+```
+
+* 
