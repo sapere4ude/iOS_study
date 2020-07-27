@@ -1,6 +1,14 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## GoogleMaps
+
+Copyright 2020 Google
+
+## GooglePlaces
+
+Copyright 2020 Google
+
 ## SwiftyJSON
 
 The MIT License (MIT)
