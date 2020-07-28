@@ -555,6 +555,74 @@ str[lower ... upper]
 * String Editing #1
 
 ```
+// 1. 문자열 뒤에 추가
+var str = "Hello"
+str.append(", ")                    // append 메소드는 대상을 직접 변경한다
+
+let s = str.appending("Swift")      // -ed , -ing 가 붙은 메소드는 원본을 변경하지 않는다. 그렇기 때문에 값이 상수인지 변수인지 신경쓰지 않아도 괜찮다
+str
+s
+
+// Appending Format 메소드
+"File size is ".appendingFormat("%.1f", 12.3456)
+
+// 2. 문자열 중간에 추가
+var new_str = "Hello Swift"
+// 문자열 index는 정수로 표현할 수 없다. 반드시 string index를 사용해야 한다.
+new_str.insert(",", at: new_str.index(new_str.startIndex, offsetBy: 5))
+
+if let sIndex = new_str.firstIndex(of: "S"){
+    new_str.insert(contentsOf: "Awesome ", at: sIndex)
+}
+print(new_str)
+
+```
+
+* String Editing #2
+
+```
+// 문자 삭제 & 범위 삭제
+var str = "Hello, Awesome Swift!!!"
+
+let lastCharIndex = str.index(before: str.endIndex)
+let lastCh = str[lastCharIndex]
+
+var removed = str.remove(at: lastCharIndex)     // 삭제된 문자를 변수에 저장
+print(str)      // remove로 인해 ! 하나가 삭제된 것을 확인할 수 있다
+
+removed = str.removeFirst() // 삭제된 첫번째 문자열을 반환, "H"
+removed // "H"
+str     // "ello, Awesome Swift!!"
+
+str.removeFirst(2)  //  "lo, Awesome Swift!!"
+str                 //  "lo, Awesome Swift!!"
+
+str.removeLast()    //  "!"
+str                 //  "lo, Awesome Swift!"
+    
+str.removeLast(2)   //  "lo, Awesome Swif"
+str                 //  "lo, Awesome Swif"
+
+
+
+if let range = str.range(of: "Awesome"){
+    str.removeSubrange(range)   //  "lo,  Swif"
+    str                         //  "lo,  Swif"
+}
+
+str.removeAll()     //  "" , 빈문자열로 만들어주고 메모리 공간마저 삭제한다.
+
+str.removeAll(keepingCapacity: true)    // 메모리 공간의 삭제를 막아주는 역할
+
+str = "Hello, Awesome Swift!!!"
+
+var substr = str.dropLast()     //  원본 문자열에서 마지막 문자열을 제외한 나머지를 공유하는 것
+substr = str.dropLast(3)        //  str 문자열에서 마지막 3개의 문자를 제거하고 나머지를 공유하는 것
+
+substr = str.drop(while: {(ch) -> Bool in
+    return ch != ","
+})
+substr  // ", Awesome Swift!!!"
 
 ```
 
