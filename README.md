@@ -377,6 +377,7 @@ Apple began work on the first iPhone in 2005 and the first iPhone was released o
 ```
 
 * String Interpolation
+
 ```
 // String Interpolation : 문자열 삽입으로 이해하면 된다
 // 문자열을 동적으로 구성하는 두 가지 방법을 공부
@@ -395,6 +396,7 @@ str = "\(size)KB"   // 문자열을 쉽게 유추 가능해짐, 직관적!
 ```
 
 * Format Specifier
+
 ```
 // 소수점 첫번째 자리까지만 출력하는 코드
 str = String(format: "%.1fKB", size)    // .1 : 소수점 첫번째자리 까지 출력, f 는 실수를 출력하는 포맷 지정자로 사용된다
@@ -434,5 +436,119 @@ print("\'Hello\' He is...")
 ```
 
 * String Indices
+
 ```
+let str = "Swift"
+
+let firstCh = str[str.startIndex] // 특정 문자에 접근할때는 SubScript 문법을 사용한다. fistCh 상수에는 S 가 저장된다.
+
+print(firstCh)
+
+//let lastCh = str[str.endIndex] // endIndex: 마지막 인덱스의 다음 순서 (past the end)
+//print(lastCh)
+
+let lastCharIndex = str.index(before: str.endIndex)
+let lastCh = str[lastCharIndex] // SubScript로 마지막 인덱스 이전을 설정해준다
+print(lastCh)
+
+
+let secondCharIndex = str.index(after: str.startIndex)
+let secondCh = str[secondCharIndex]
+print(secondCh)
+
+// cf. SubScript란? >> 컬렉션, 리스트, 시퀀스 타입의 개별 요소에 접근할 수 있는 지름길을 제공하는 것
+
+var thirdCharIndex = str.index(str.startIndex, offsetBy: 2) // startIndex에서 2개 이후의 것이 입력됨
+
+var thirdCh = str[thirdCharIndex]
+print(thirdCh)
 ```
+
+* String Basics
+
+```
+//
+//  Copyright (c) 2018 KxCoding <kky0317@gmail.com>
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+import UIKit
+
+/*:
+ # String Basics
+ */
+var str = "Hello, Swift String"
+var emptyStr = ""   // 반드시 공백없이 작성해야 빈문자열이 만들어진다
+
+let a = String(true)    // 문자열로 사용된 true
+
+let b = String(12)      // 숫자 12가 아닌 문자열 12
+
+let c = String(12.34)
+
+let d = String(str)
+
+
+let hex = String(123, radix: 16)    // 123이라는 문자가 16진수로 버뀐 것을 확인할 수 있다
+let octal = String(123, radix: 8)
+let binary = String(123, radix: 2)
+
+// 특정 문자를 원하는 갯수만큼 만들어 초기화 하는 방법
+let repeatStr = String(repeating: "👍🏻", count: 7)
+let unicode = "\u{1f44f}"
+
+let e = "\(a) \(b)"     // String Interpolation으로 연결시켜준 것
+let f = a + " " + b
+str += "!!"             // 복합할당 연산자
+
+
+// 문자열 길이 확인
+str.count
+str.isEmpty  // 문자열 비어있는지 확인할 때 사용
+
+// 문자열 비교
+str == "Apple"
+"apple" != "Apple"
+"apple" < "Apple"
+
+// 대소문자 변환
+str.lowercased()    // 모든 문자를 소문자로 바꿔주는 키워드, 끝에 -ed 로 끝나는 것들은 원본은 그대로 두고 새로운 값을 전달해주는 역할을 한다
+str.uppercased()
+str                 // 원본은 그대로인것을 확인할 수 있다
+
+"apple ipad pro".capitalized     // 문자열의 첫번째르 대문자로 변경
+
+
+// Character Sequence (문자 집합)
+for char in "Hello" {
+    print(char)
+}
+
+let num = "1234567890"
+num.randomElement()
+num.shuffled()      // 랜덤으로 섞어서 문자 배열로 리턴해준다
+
+```
+
+* Substring
+
+```
+
+```
+
