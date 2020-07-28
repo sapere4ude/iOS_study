@@ -366,4 +366,73 @@ thumbUp = "\u{1F44D}"   // 유니코드 스칼라 방식
 //유니코드: U+1F44D U+1F3FB, UTF-8: F0 9F 91 8D F0 9F 8F BB
 ```
 
-* 
+* Multiline String Literals
+
+```
+let Apple = "Apple began work on the first iPhone in 2005 and the first iPhone was released on June 29, 2007. The iPhone created such a sensation that a survey indicated six out of ten Americans were aware of its release."
+
+let multiline = """
+Apple began work on the first iPhone in 2005 and the first iPhone was released on June 29, 2007. The iPhone created such a sensation that a survey indicated six out of ten Americans were aware of its release.
+""" // 첫문단의 시작 열과 맞춰서 작성해줘야 에러가 나지 않는다.
+```
+
+* String Interpolation
+```
+// String Interpolation : 문자열 삽입으로 이해하면 된다
+// 문자열을 동적으로 구성하는 두 가지 방법을 공부
+
+var str = "12.34KB"
+
+let size = 12.34
+
+//str = size + "KB"   // 두 값의 자료형을 일치시켜야 가능하다
+
+str = String(size) + "KB"   // Double형을 String으로 변환 << 많이 사용하진 않음
+
+str = "\(size)KB"   // 문자열을 쉽게 유추 가능해짐, 직관적!
+
+// 단점 : 원하는 포맷을 직접 지정할 수 없다
+```
+
+* Format Specifier
+```
+// 소수점 첫번째 자리까지만 출력하는 코드
+str = String(format: "%.1fKB", size)    // .1 : 소수점 첫번째자리 까지 출력, f 는 실수를 출력하는 포맷 지정자로 사용된다
+
+// 기본적인 포맷 지정자
+
+String(format: "Hello, %@", "Swift")
+
+String(format: "%d", 12)
+
+String(format: "%10.3f", 12.34) // 전체 출력범위를 10자리로 두고 소수점 3자리까지 출력
+
+String(format: "[%d]", 123)
+String(format: "[%10d]", 123)   // 오른쪽 정렬
+String(format: "[%-10d]", 123)  // 왼쪽 정렬
+
+// 다국어 포맷 문자열
+let firstName = "Yoo"
+let lastName = "jaejun"
+
+let korFormat = "나의 이름은 %2$@ %1$@ 입니다."
+let engFormat = "My name is %@ %@."
+
+String(format: korFormat, firstName, lastName)
+String(format: engFormat, firstName, lastName)
+
+
+// Escape Sequence (백슬래쉬 저장)
+str = "\\"
+print(str)
+
+print("A\tB")   // tab 추가
+print("C\nD")
+
+print("\"Hello\" He is...")
+print("\'Hello\' He is...")
+```
+
+* String Indices
+```
+```
