@@ -549,6 +549,39 @@ num.shuffled()      // 랜덤으로 섞어서 문자 배열로 리턴해준다
 * Substring
 
 ```
+// 1. Substring : 하나의 문자열에서 특정 범위에 있는 문자열을 부르는 말. 원본 문자열의 메모리를 공유한다!
+// 사용하는 이유는? >> 문자열을 처리할때 메모리를 절약하기 위해서
+// Swift엔 대부분 Copy on Write 방식이 적용되어 있다
+
+let str = "Hello, Swift"
+
+let l = str.lowercased()    // lowercased() >> 문자열을 받아와 전부 소문자로 바꾸어주고 새로운 문자열로 저장해주는 것
+
+var first = str.prefix(1)   // 첫번째 문자 h가 추출되어 first에 저장된다
+
+first.insert("!", at: first.endIndex)   // insert 메소드는 원본 문자열을 변경할 수 있게 한다
+
+let newStr = String(str.prefix(1))
+
+
+// 2. 문자열의 특정 범위 추출
+
+//let s = str[str.startIndex ..< str.index(str.startIndex, offsetBy: 2)]
+let s = str[ ..<str.index(str.startIndex, offsetBy: 2)]     // << one sided ranges 사용
+str[str.index(str.startIndex, offsetBy: 2)...]              // << one sided ranges 사용
+
+let lower = str.index(str.startIndex, offsetBy: 2)
+print(str[lower])
+let upper = str.index(str.startIndex, offsetBy: 5)
+print(str[upper])
+str[lower ... upper]
 
 ```
+
+* String Editing #1
+
+```
+
+```
+
 
