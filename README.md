@@ -2,7 +2,6 @@
 
 swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정리해두는 공간입니다
 
-
 # Closures
 
  * self-contained code blocks 이라고 부른다
@@ -186,7 +185,7 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
 
 *  Capturing Values
 
-   ```
+```
     // Closure 내부에서 외부의 값에 접근하면 값에 대한 참조를 획득한다. 내부에서 값을 바꾼다면 외부의 값도 함께 바뀐다.
 
     var num = 0
@@ -200,10 +199,579 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
 
 
     print("check point #2 : \(num)") // check point #2 : 1
-    
-   ```
+```
 <br>
 
-* API 사용방법 정리
-* 오픈소스 관련 찾아보기
+# Tuples
 
+* Tuple Expression
+```
+// 표현방법
+(expr1, expr2, ...)
+
+// 형식
+let i = (12, 34)    // 튜플형식, compound type
+let data = ("<html>", 200, "OK", 12.34) // 가상의 데이터, 튜플에 4가지 맴버가 저장되어 있다
+// 맴버를 삭제하는건 불가능. 값은 변경하는건 가능
+```
+<br>
+
+* Explicit Member Expression
+```
+// 표현 방법
+tuple.n << n은 0번 인덱스부터 시작한다
+
+// 형식
+data.0
+data.1
+data.2
+data.3
+
+var mutableTuple = data         // mutable : 값을 바꿀수 있다 라는 의미 (가변성)
+mutableTuple.1 = 404
+mutableTuple.1
+```
+<br>
+
+* Named Tuples
+
+```
+// 표현 방법
+(name1: expr1, name2: expr2, ...)
+tuple.memberName
+
+// 형식
+let data = ("<html>", 200, "ok", 12.34)
+
+let named = (body: "<html>", statusCode: 200, statusMessage: "OK", dataSize: 12.34)
+
+named.statusCode    // 200
+named.1             // 200
+```
+<br>
+
+* Tuple Decomposition
+
+```
+// Decomposition : 분해라는 뜻을 갖는다
+// 튜플에 저장된 맴버를 개별 상수나 개별 변수에 따로 저장하는 방법
+
+let data = ("<html>", 200, "OK", 12.34)
+
+// 방법1. 개별 변수들을 상수에 저장하는 방법
+//let body = data.0
+//let code = data.1
+//let message = data.2
+//let size = data.3
+
+// 방법2. Decomposition 
+let (name1, name2, ...) = tupleExpr
+var (name1, name2, ...) = tupleExpr
+
+let (body, code, message, size) = data  // data 의 갯수에 맞게 맞춰줘야한다
+
+// 만약 size 값을 뽑아내고 싶지 않다면 와일드카드 연산자를 사용하면 된다.
+//let (body, code, message, _) = data
+```
+<br>
+
+* Tuple Matching
+
+```
+let resolution = (3840.0, 2160.0)
+
+if resolution.0 == 3840 && resolution.1 == 2160 {
+    print("4K")
+}
+
+// switch 문법은 tuple을 지원한다. if문보다 훨씬 간결하게 코드를 작성할 수 있는 장점이 있다.
+
+switch resolution {
+case let(w, h) where w / h == 16.0 / 9.0:
+    print("16:9")
+case (_, 1080): // 너비는 생각하지 않으니깐 와일드카드 문자로 두고 높이만 작성해줌
+    print("1080p")
+case (3840...4096, 2160):   // case 블록에서 tuple을 매칭시키는 중, interval 매칭도 가능하다
+        print("4K")
+default:
+    break
+}
+```
+<br>
+
+# String and Characters
+
+* String and Characters
+
+```
+// 문지열로 처리
+let s = "String"
+
+// 문자로 처리되기 위해선?
+let c: Character = "C"
+
+// 빈 문자를 저장하려면? >> 문자열 사이에 공백을 넣어줘야 한다
+let emptyChar: Character = " "
+
+// 빈 문자열이 저장된 것 X, 공백이 포함된 문자열이 저장된 것이다
+let emptyString = " "
+emptyString.count   // 1이 나오는 것을 확인 >> 빈 문자열이 아님을 알 수 있다
+
+// 빈 문자열이 되기 위해선 공백이 없어야 한다
+let realEmptyString = ""
+realEmptyString.count
+
+// 문자열 생성자로 빈문자열을 생성할 수도 있다
+let emptyString2 = String()
+```
+<br>
+
+* String Types
+
+```
+// String 의 종류
+// String >> Swift String , NSString >> Foundation String
+
+var nsstr: NSString = "str"
+// swift 문자열을 foundation 문자열에 저장할 때는 type casting 한 뒤에 저장해야 한다
+let swiftStr: String = nsstr as String
+// foundation 문자열을 swift 문자열로 저장할 때도 마찬가지로 type casting 과정이 필요하다
+nsstr = swiftStr as NSString
+
+// cf. Toll-Free Bridged : type casting 으로 호환이 가능한 자료형을 의미한다
+```
+<br>
+
+* Mutablitiy
+
+```
+// 문자열의 가변성은 let, var 키워드로 결정된다.
+
+// 바꿀 수 없는 문자열
+let immutableStr = "str"
+// immutableStr = "new str"     // error
+
+// 바꿀 수 있는 문자열
+var mutableStr = "str"
+mutableStr = "new str"          // 문자열을 변수로 설정하면 언제든 바꿀 수 있다.
+```
+<br>
+
+* Unicode
+
+```
+let str = "Swift String"    // Unicode에 독립적인 문자열
+
+str.utf8
+str.utf16
+
+var thumbUp = "👍🏻"
+
+thumbUp = "\u{1F44D}"   // 유니코드 스칼라 방식
+
+//👍🏻
+//올린 엄지
+//유니코드: U+1F44D U+1F3FB, UTF-8: F0 9F 91 8D F0 9F 8F BB
+```
+<br>
+
+* Multiline String Literals
+
+```
+let Apple = "Apple began work on the first iPhone in 2005 and the first iPhone was released on June 29, 2007. The iPhone created such a sensation that a survey indicated six out of ten Americans were aware of its release."
+
+let multiline = """
+Apple began work on the first iPhone in 2005 and the first iPhone was released on June 29, 2007. The iPhone created such a sensation that a survey indicated six out of ten Americans were aware of its release.
+""" // 첫문단의 시작 열과 맞춰서 작성해줘야 에러가 나지 않는다.
+```
+<br>
+
+* String Interpolation
+
+```
+// String Interpolation : 문자열 삽입으로 이해하면 된다
+// 문자열을 동적으로 구성하는 두 가지 방법을 공부
+
+var str = "12.34KB"
+
+let size = 12.34
+
+//str = size + "KB"   // 두 값의 자료형을 일치시켜야 가능하다
+
+str = String(size) + "KB"   // Double형을 String으로 변환 << 많이 사용하진 않음
+
+str = "\(size)KB"   // 문자열을 쉽게 유추 가능해짐, 직관적!
+
+// 단점 : 원하는 포맷을 직접 지정할 수 없다
+```
+<br>
+
+* Format Specifier
+
+```
+// 소수점 첫번째 자리까지만 출력하는 코드
+str = String(format: "%.1fKB", size)    // .1 : 소수점 첫번째자리 까지 출력, f 는 실수를 출력하는 포맷 지정자로 사용된다
+
+// 기본적인 포맷 지정자
+
+String(format: "Hello, %@", "Swift")
+
+String(format: "%d", 12)
+
+String(format: "%10.3f", 12.34) // 전체 출력범위를 10자리로 두고 소수점 3자리까지 출력
+
+String(format: "[%d]", 123)
+String(format: "[%10d]", 123)   // 오른쪽 정렬
+String(format: "[%-10d]", 123)  // 왼쪽 정렬
+
+// 다국어 포맷 문자열
+let firstName = "Yoo"
+let lastName = "jaejun"
+
+let korFormat = "나의 이름은 %2$@ %1$@ 입니다."
+let engFormat = "My name is %@ %@."
+
+String(format: korFormat, firstName, lastName)
+String(format: engFormat, firstName, lastName)
+
+
+// Escape Sequence (백슬래쉬 저장)
+str = "\\"
+print(str)
+
+print("A\tB")   // tab 추가
+print("C\nD")
+
+print("\"Hello\" He is...")
+print("\'Hello\' He is...")
+```
+<br>
+
+* String Indices
+
+```
+let str = "Swift"
+
+let firstCh = str[str.startIndex] // 특정 문자에 접근할때는 SubScript 문법을 사용한다. fistCh 상수에는 S 가 저장된다.
+
+print(firstCh)
+
+//let lastCh = str[str.endIndex] // endIndex: 마지막 인덱스의 다음 순서 (past the end)
+//print(lastCh)
+
+let lastCharIndex = str.index(before: str.endIndex)
+let lastCh = str[lastCharIndex] // SubScript로 마지막 인덱스 이전을 설정해준다
+print(lastCh)
+
+
+let secondCharIndex = str.index(after: str.startIndex)
+let secondCh = str[secondCharIndex]
+print(secondCh)
+
+// cf. SubScript란? >> 컬렉션, 리스트, 시퀀스 타입의 개별 요소에 접근할 수 있는 지름길을 제공하는 것
+
+var thirdCharIndex = str.index(str.startIndex, offsetBy: 2) // startIndex에서 2개 이후의 것이 입력됨
+
+var thirdCh = str[thirdCharIndex]
+print(thirdCh)
+```
+<br>
+
+* String Basics
+
+```
+var str = "Hello, Swift String"
+var emptyStr = ""   // 반드시 공백없이 작성해야 빈문자열이 만들어진다
+
+let a = String(true)    // 문자열로 사용된 true
+
+let b = String(12)      // 숫자 12가 아닌 문자열 12
+
+let c = String(12.34)
+
+let d = String(str)
+
+
+let hex = String(123, radix: 16)    // 123이라는 문자가 16진수로 버뀐 것을 확인할 수 있다
+let octal = String(123, radix: 8)
+let binary = String(123, radix: 2)
+
+// 특정 문자를 원하는 갯수만큼 만들어 초기화 하는 방법
+let repeatStr = String(repeating: "👍🏻", count: 7)
+let unicode = "\u{1f44f}"
+
+let e = "\(a) \(b)"     // String Interpolation으로 연결시켜준 것
+let f = a + " " + b
+str += "!!"             // 복합할당 연산자
+
+
+// 문자열 길이 확인
+str.count
+str.isEmpty  // 문자열 비어있는지 확인할 때 사용
+
+// 문자열 비교
+str == "Apple"
+"apple" != "Apple"
+"apple" < "Apple"
+
+// 대소문자 변환
+str.lowercased()    // 모든 문자를 소문자로 바꿔주는 키워드, 끝에 -ed 로 끝나는 것들은 원본은 그대로 두고 새로운 값을 전달해주는 역할을 한다
+str.uppercased()
+str                 // 원본은 그대로인것을 확인할 수 있다
+
+"apple ipad pro".capitalized     // 문자열의 첫번째르 대문자로 변경
+
+
+// Character Sequence (문자 집합)
+for char in "Hello" {
+    print(char)
+}
+
+let num = "1234567890"
+num.randomElement()
+num.shuffled()      // 랜덤으로 섞어서 문자 배열로 리턴해준다
+
+```
+<br>
+
+* Substring
+
+```
+// 1. Substring : 하나의 문자열에서 특정 범위에 있는 문자열을 부르는 말. 원본 문자열의 메모리를 공유한다!
+// 사용하는 이유는? >> 문자열을 처리할때 메모리를 절약하기 위해서
+// Swift엔 대부분 Copy on Write 방식이 적용되어 있다
+
+let str = "Hello, Swift"
+
+let l = str.lowercased()    // lowercased() >> 문자열을 받아와 전부 소문자로 바꾸어주고 새로운 문자열로 저장해주는 것
+
+var first = str.prefix(1)   // 첫번째 문자 h가 추출되어 first에 저장된다
+
+first.insert("!", at: first.endIndex)   // insert 메소드는 원본 문자열을 변경할 수 있게 한다
+
+let newStr = String(str.prefix(1))
+
+
+// 2. 문자열의 특정 범위 추출
+
+//let s = str[str.startIndex ..< str.index(str.startIndex, offsetBy: 2)]
+let s = str[ ..<str.index(str.startIndex, offsetBy: 2)]     // << one sided ranges 사용
+str[str.index(str.startIndex, offsetBy: 2)...]              // << one sided ranges 사용
+
+let lower = str.index(str.startIndex, offsetBy: 2)
+print(str[lower])
+let upper = str.index(str.startIndex, offsetBy: 5)
+print(str[upper])
+str[lower ... upper]
+
+```
+<br>
+* String Editing #1
+
+```
+// 1. 문자열 뒤에 추가
+var str = "Hello"
+str.append(", ")                    // append 메소드는 대상을 직접 변경한다
+
+let s = str.appending("Swift")      // -ed , -ing 가 붙은 메소드는 원본을 변경하지 않는다. 그렇기 때문에 값이 상수인지 변수인지 신경쓰지 않아도 괜찮다
+str
+s
+
+// Appending Format 메소드
+"File size is ".appendingFormat("%.1f", 12.3456)
+
+// 2. 문자열 중간에 추가
+var new_str = "Hello Swift"
+// 문자열 index는 정수로 표현할 수 없다. 반드시 string index를 사용해야 한다.
+new_str.insert(",", at: new_str.index(new_str.startIndex, offsetBy: 5))
+
+if let sIndex = new_str.firstIndex(of: "S"){
+    new_str.insert(contentsOf: "Awesome ", at: sIndex)
+}
+print(new_str)
+
+```
+<br>
+* String Editing #2
+
+```
+// 문자 삭제 & 범위 삭제
+var str = "Hello, Awesome Swift!!!"
+
+let lastCharIndex = str.index(before: str.endIndex)
+let lastCh = str[lastCharIndex]
+
+var removed = str.remove(at: lastCharIndex)     // 삭제된 문자를 변수에 저장
+print(str)      // remove로 인해 ! 하나가 삭제된 것을 확인할 수 있다
+
+removed = str.removeFirst() // 삭제된 첫번째 문자열을 반환, "H"
+removed // "H"
+str     // "ello, Awesome Swift!!"
+
+str.removeFirst(2)  //  "lo, Awesome Swift!!"
+str                 //  "lo, Awesome Swift!!"
+
+str.removeLast()    //  "!"
+str                 //  "lo, Awesome Swift!"
+    
+str.removeLast(2)   //  "lo, Awesome Swif"
+str                 //  "lo, Awesome Swif"
+
+
+
+if let range = str.range(of: "Awesome"){
+    str.removeSubrange(range)   //  "lo,  Swif"
+    str                         //  "lo,  Swif"
+}
+
+str.removeAll()     //  "" , 빈문자열로 만들어주고 메모리 공간마저 삭제한다.
+
+str.removeAll(keepingCapacity: true)    // 메모리 공간의 삭제를 막아주는 역할
+
+str = "Hello, Awesome Swift!!!"
+
+var substr = str.dropLast()     //  원본 문자열에서 마지막 문자열을 제외한 나머지를 공유하는 것
+substr = str.dropLast(3)        //  str 문자열에서 마지막 3개의 문자를 제거하고 나머지를 공유하는 것
+
+substr = str.drop(while: {(ch) -> Bool in
+    return ch != ","
+})
+substr  // ", Awesome Swift!!!"
+
+```
+<br>
+
+* String Comparison
+
+```
+// 1. 비교 연산자 활용
+let largeA = "Apple"
+let smallA = "apple"
+let b = "Banana"
+
+largeA == smallA    // false
+largeA != smallA    // true
+
+largeA < smallA     // true
+largeA < b          // true
+smallA < b          // false
+
+
+// 2. compare(_:) 메소드 활용
+largeA.compare(smallA) == .orderedSame                  // 두 문자열이 같은지 비교
+largeA.caseInsensitiveCompare(smallA) == .orderedSame   // 대소문자 구분없이 두 문자열 비교
+
+largeA.compare(smallA, options: [.caseInsensitive]) == .orderedSame
+
+let str = "Hello, Swift Programming!"
+let prefix = "Hello"
+let suffix = "Programming"
+
+str.hasPrefix(prefix)   // true
+str.hasSuffix(suffix)   // false
+
+// 대소문자 상관없이 비교하고싶을땐 이렇게
+str.lowercased().hasPrefix(prefix.lowercased()) // true
+```
+<br>
+
+* String Searching
+
+```
+// 1. 단어 검색
+let str = "Hello, Swift"
+str.contains("Swift")
+str.lowercased().contains("swift")  // 대소문자 구분없이 비교하는 방법
+
+
+// 2. 범위 검색
+str.range(of: "Swift")
+str.range(of: "swift", options: [.caseInsensitive])
+
+
+// 3. 공통 접두어 검색
+let str2 = "Hello, Programming"
+let str3 = str2.lowercased()
+
+var common = str.commonPrefix(with: str2)   // "Hello, "
+common = str.commonPrefix(with: str3)       // "" << 공통된 문자열이 없어 빈문자열을 반환
+
+// commonPrefix를 호출한 대상이 누구냐에 따라 결과값으로 나오는 것이 달라진다
+str.commonPrefix(with: str3, options: [.caseInsensitive])   // "Hello, "
+str3.commonPrefix(with: str, options: [.caseInsensitive])   // "hello, "
+```
+<br>
+
+* String Options #1
+
+```
+// 1. Case Insensitive Option
+"A" == "a"  // false
+
+"A".caseInsensitiveCompare("a") == .orderedSame
+
+"A".compare("a", options: [.caseInsensitive]) == .orderedSame
+
+//NSString.CompareOptions.caseInsensitive
+
+// 2. Literal Option
+
+let a = "\u{D55C}"                  // "한"
+let b = "\u{1112}\u{1161}\u{11AB}"  // "한"
+
+a == b                              // true
+a.compare(b) == .orderedSame        // true
+
+a.compare(b, options: [.literal]) == .orderedSame
+
+// 3. Backwards Option : 문자열의 검색 방향을 바꾸는 역할
+// 문자열에서 첫 시작을 leading 끝을 trailing 으로 구분한다.
+// leading -> trailing 방향으로 진행된다.
+
+let korean = "행복하세요"
+let english = "Be happy"
+let arabic = "كن سعيدا"
+
+if let range = english.range(of: "p"){
+    english.distance(from: english.startIndex, to: range.lowerBound)
+}
+
+if let range = english.range(of: "p", options: [.backwards]){
+    english.distance(from: english.startIndex, to: range.lowerBound)
+}
+
+// 4. Anchored Option
+// 전체 문자열을 대상으로 검색하지 않는다. 검색 범위를 시작 부분이나 마지막 부분으로 제한한다
+
+let str = "Swift Programming"
+
+if let result = str.range(of: "Swift"){
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}
+
+if let result = str.range(of: "Swift", options: [.backwards]){
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}
+
+if let result = str.range(of: "Swift", options: [.anchored]){
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}
+
+if let result = str.range(of: "Swift", options: [.anchored, .backwards]){
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}
+
+// 이해 안됨
+if let _ = str.range(of: "swift", options: [.anchored, .caseInsensitive]){
+    print("Same prefix")
+}
+
+```
