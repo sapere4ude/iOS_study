@@ -639,5 +639,139 @@ substr = str.drop(while: {(ch) -> Bool in
 substr  // ", Awesome Swift!!!"
 
 ```
+<br>
+
+* String Comparison
+
+```
+// 1. 비교 연산자 활용
+let largeA = "Apple"
+let smallA = "apple"
+let b = "Banana"
+
+largeA == smallA    // false
+largeA != smallA    // true
+
+largeA < smallA     // true
+largeA < b          // true
+smallA < b          // false
 
 
+// 2. compare(_:) 메소드 활용
+largeA.compare(smallA) == .orderedSame                  // 두 문자열이 같은지 비교
+largeA.caseInsensitiveCompare(smallA) == .orderedSame   // 대소문자 구분없이 두 문자열 비교
+
+largeA.compare(smallA, options: [.caseInsensitive]) == .orderedSame
+
+let str = "Hello, Swift Programming!"
+let prefix = "Hello"
+let suffix = "Programming"
+
+str.hasPrefix(prefix)   // true
+str.hasSuffix(suffix)   // false
+
+// 대소문자 상관없이 비교하고싶을땐 이렇게
+str.lowercased().hasPrefix(prefix.lowercased()) // true
+```
+<br>
+
+* String Searching
+
+```
+// 1. 단어 검색
+let str = "Hello, Swift"
+str.contains("Swift")
+str.lowercased().contains("swift")  // 대소문자 구분없이 비교하는 방법
+
+
+// 2. 범위 검색
+str.range(of: "Swift")
+str.range(of: "swift", options: [.caseInsensitive])
+
+
+// 3. 공통 접두어 검색
+let str2 = "Hello, Programming"
+let str3 = str2.lowercased()
+
+var common = str.commonPrefix(with: str2)   // "Hello, "
+common = str.commonPrefix(with: str3)       // "" << 공통된 문자열이 없어 빈문자열을 반환
+
+// commonPrefix를 호출한 대상이 누구냐에 따라 결과값으로 나오는 것이 달라진다
+str.commonPrefix(with: str3, options: [.caseInsensitive])   // "Hello, "
+str3.commonPrefix(with: str, options: [.caseInsensitive])   // "hello, "
+```
+<br>
+
+* String Options #1
+
+```
+// 1. Case Insensitive Option
+"A" == "a"  // false
+
+"A".caseInsensitiveCompare("a") == .orderedSame
+
+"A".compare("a", options: [.caseInsensitive]) == .orderedSame
+
+//NSString.CompareOptions.caseInsensitive
+
+// 2. Literal Option
+
+let a = "\u{D55C}"                  // "한"
+let b = "\u{1112}\u{1161}\u{11AB}"  // "한"
+
+a == b                              // true
+a.compare(b) == .orderedSame        // true
+
+a.compare(b, options: [.literal]) == .orderedSame
+
+// 3. Backwards Option : 문자열의 검색 방향을 바꾸는 역할
+// 문자열에서 첫 시작을 leading 끝을 trailing 으로 구분한다.
+// leading -> trailing 방향으로 진행된다.
+
+let korean = "행복하세요"
+let english = "Be happy"
+let arabic = "كن سعيدا"
+
+if let range = english.range(of: "p"){
+    english.distance(from: english.startIndex, to: range.lowerBound)
+}
+
+if let range = english.range(of: "p", options: [.backwards]){
+    english.distance(from: english.startIndex, to: range.lowerBound)
+}
+
+// 4. Anchored Option
+// 전체 문자열을 대상으로 검색하지 않는다. 검색 범위를 시작 부분이나 마지막 부분으로 제한한다
+
+let str = "Swift Programming"
+
+if let result = str.range(of: "Swift"){
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}
+
+if let result = str.range(of: "Swift", options: [.backwards]){
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}
+
+if let result = str.range(of: "Swift", options: [.anchored]){
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}
+
+if let result = str.range(of: "Swift", options: [.anchored, .backwards]){
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}
+
+// 이해 안됨
+if let _ = str.range(of: "swift", options: [.anchored, .caseInsensitive]){
+    print("Same prefix")
+}
+
+```
