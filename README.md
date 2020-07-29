@@ -775,3 +775,62 @@ if let _ = str.range(of: "swift", options: [.anchored, .caseInsensitive]){
 }
 
 ```
+
+# Collection
+
+* Array #1
+
+```
+// 1. 배열 생성 방법
+let nums = [1,2,3]
+nums
+
+let srtArray: Array<String>
+let strArray2: [String]     // 더 선호되는 방법
+
+
+// 2. 배열 리터럴과 배열 자료형
+
+let emptyArray: [Int] = []      // 빈 배열 리터럴을 만들어주려면 자료형을 명시해줘야 한다
+let emptyArray2 = Array<Int>()  // 정식 문법으로 만든 것
+let emptyArray3 = [Int]()
+
+let zeroArray = [Int](repeating: 0, count: 10)  // 0이 10개를 채워진 Int 배열이 생성됨
+
+
+// 3. 배열 요소의 수 확인 & 접근
+nums.count
+
+nums.count == 0     // 배열이 비어있는지 확인하기
+
+nums.isEmpty        // 이렇게 비어있는지 확인하는게 더 좋은 방법
+
+
+// 4. 서브스크립트 문법
+let fruits = ["Apple", "Banana", "Melon"]
+fruits[0]
+
+fruits[2]
+
+fruits[0...1]
+
+// 속성을 사용하여 원하는 배열에 접근하는 방법이 더 안전하다
+fruits[fruits.startIndex]
+fruits[fruits.index(before: fruits.endIndex)]   // endIndex는 마지막 요소의 다음 요소를 의미한다. 그렇기 때문에 .index(before) 메소드를 사용하여 마지막 요소의 이전 요소를 찾아야 진짜 마지막 요소에 접근할 수 있게 되는 것
+
+fruits.first       //   "Apple"
+fruits.last        //   "Melon"
+
+emptyArray.first   //   nil >> 배열이 비어있다면 nil을 리턴한다
+emptyArray.last    //   nil >> 배열이 비어있다면 nil을 리턴한다
+
+emptyArray[0]      //   이와같이 서브스크립트 문법을 사용하였을 경우 배열이 비어있다면 에러가 나고 종료될 수 있어 좋은 방법은 아니다
+
+```
+<br>
+
+* Array #2
+
+```
+
+```
