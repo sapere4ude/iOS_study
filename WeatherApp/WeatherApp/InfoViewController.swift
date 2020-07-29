@@ -54,17 +54,17 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, GMSMapVie
     override func viewDidLoad() {
         super.viewDidLoad()
   
-        //let coor = locationManager.location?.coordinate
-        let latitude = 2323.1111
-        let longitude = 1323.4444
-        
-        mapView = GMSMapView()
-        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 13.8)
-        mapView.camera = camera
-        
-        mapView.settings.myLocationButton = true
-        mapView.isMyLocationEnabled = true
-        self.mapView.delegate = self
+//        //let coor = locationManager.location?.coordinate
+//        let latitude = 2323.1111
+//        let longitude = 1323.4444
+//
+//        mapView = GMSMapView()
+//        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 13.8)
+//        mapView.camera = camera
+//
+//        mapView.settings.myLocationButton = true
+//        mapView.isMyLocationEnabled = true
+//        self.mapView.delegate = self
         
         
         

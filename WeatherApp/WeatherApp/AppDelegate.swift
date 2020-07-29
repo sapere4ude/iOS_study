@@ -19,7 +19,6 @@ class AppDelegate: UIResponder,  UIApplicationDelegate {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyBP3F0HQ60HZVDFy72mlwPSHnDjWVjfU84")
         GMSPlacesClient.provideAPIKey("AIzaSyBP3F0HQ60HZVDFy72mlwPSHnDjWVjfU84")
-        
         return true
     }
 

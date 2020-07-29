@@ -98,28 +98,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             // 얼럿 띄우기
             print("err:\(err.localizedDescription)")
         }
-        
-    // 로딩뷰 띄우기
-    func displaySpinner(onView: UIView) -> UIView {
-            let spinnerView = UIView.init(frame: onView.bounds)
-            spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
-            
-            let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-            ai.startAnimating()
-            ai.center = spinnerView.center
-            
-            DispatchQueue.main.sync {
-                spinnerView.addSubview(ai)
-                onView.addSubview(spinnerView)
-            }
-            
-            return spinnerView
-        }
-        
-    func removeSpinner(spinner: UIView){
-            DispatchQueue.main.sync {
-                spinner.removeFromSuperview()
-            }
-        }
+
     }
 }
