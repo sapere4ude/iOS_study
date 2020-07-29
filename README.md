@@ -214,6 +214,7 @@ let i = (12, 34)    // 튜플형식, compound type
 let data = ("<html>", 200, "OK", 12.34) // 가상의 데이터, 튜플에 4가지 맴버가 저장되어 있다
 // 맴버를 삭제하는건 불가능. 값은 변경하는건 가능
 ```
+<br>
 
 * Explicit Member Expression
 ```
@@ -230,6 +231,7 @@ var mutableTuple = data         // mutable : 값을 바꿀수 있다 라는 의�
 mutableTuple.1 = 404
 mutableTuple.1
 ```
+<br>
 
 * Named Tuples
 
@@ -246,6 +248,7 @@ let named = (body: "<html>", statusCode: 200, statusMessage: "OK", dataSize: 12.
 named.statusCode    // 200
 named.1             // 200
 ```
+<br>
 
 * Tuple Decomposition
 
@@ -270,6 +273,7 @@ let (body, code, message, size) = data  // data 의 갯수에 맞게 맞춰줘�
 // 만약 size 값을 뽑아내고 싶지 않다면 와일드카드 연산자를 사용하면 된다.
 //let (body, code, message, _) = data
 ```
+<br>
 
 * Tuple Matching
 
@@ -293,6 +297,7 @@ default:
     break
 }
 ```
+<br>
 
 # String and Characters
 
@@ -319,6 +324,7 @@ realEmptyString.count
 // 문자열 생성자로 빈문자열을 생성할 수도 있다
 let emptyString2 = String()
 ```
+<br>
 
 * String Types
 
@@ -334,6 +340,7 @@ nsstr = swiftStr as NSString
 
 // cf. Toll-Free Bridged : type casting 으로 호환이 가능한 자료형을 의미한다
 ```
+<br>
 
 * Mutablitiy
 
@@ -348,6 +355,7 @@ let immutableStr = "str"
 var mutableStr = "str"
 mutableStr = "new str"          // 문자열을 변수로 설정하면 언제든 바꿀 수 있다.
 ```
+<br>
 
 * Unicode
 
@@ -365,6 +373,7 @@ thumbUp = "\u{1F44D}"   // 유니코드 스칼라 방식
 //올린 엄지
 //유니코드: U+1F44D U+1F3FB, UTF-8: F0 9F 91 8D F0 9F 8F BB
 ```
+<br>
 
 * Multiline String Literals
 
@@ -375,6 +384,7 @@ let multiline = """
 Apple began work on the first iPhone in 2005 and the first iPhone was released on June 29, 2007. The iPhone created such a sensation that a survey indicated six out of ten Americans were aware of its release.
 """ // 첫문단의 시작 열과 맞춰서 작성해줘야 에러가 나지 않는다.
 ```
+<br>
 
 * String Interpolation
 
@@ -394,6 +404,7 @@ str = "\(size)KB"   // 문자열을 쉽게 유추 가능해짐, 직관적!
 
 // 단점 : 원하는 포맷을 직접 지정할 수 없다
 ```
+<br>
 
 * Format Specifier
 
@@ -434,6 +445,7 @@ print("C\nD")
 print("\"Hello\" He is...")
 print("\'Hello\' He is...")
 ```
+<br>
 
 * String Indices
 
@@ -463,6 +475,7 @@ var thirdCharIndex = str.index(str.startIndex, offsetBy: 2) // startIndex에서 
 var thirdCh = str[thirdCharIndex]
 print(thirdCh)
 ```
+<br>
 
 * String Basics
 
@@ -519,6 +532,7 @@ num.randomElement()
 num.shuffled()      // 랜덤으로 섞어서 문자 배열로 리턴해준다
 
 ```
+<br>
 
 * Substring
 
@@ -551,7 +565,7 @@ print(str[upper])
 str[lower ... upper]
 
 ```
-
+<br>
 * String Editing #1
 
 ```
@@ -577,7 +591,7 @@ if let sIndex = new_str.firstIndex(of: "S"){
 print(new_str)
 
 ```
-
+<br>
 * String Editing #2
 
 ```
