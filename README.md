@@ -897,6 +897,80 @@ alphabet    // []
 * Array #3
 
 ```
+// 1. 배열 비교
+
+let a = ["A", "B", "C"]
+let b = ["a", "b", "c"]
+
+a == b
+a != b
+
+// 메소드를 통한 비교
+a.elementsEqual(b)
+a.elementsEqual(b) { (lhs, rhs) -> Bool in                  // 클로저 사용
+    return lhs.caseInsensitiveCompare(rhs) == .orderedSame  // 대소문자를 무시하고 비교
+}
+
+// 2. 요소 검색 & 인덱스 검색
+
+let nums = [1, 2, 3, 1, 4, 5, 2, 6, 7, 5, 0]
+// contains는 단순히 존재여부만 확인
+nums.contains(1)    // true
+nums.contains(8)    // false
+
+nums.contains { (n) -> Bool in  // true  <<  클로저를 통한 존재여부 확인
+    return n % 2 == 0
+}
+
+// 인덱스와 요소를 직접 검색
+nums.first { (n) -> Bool in
+    return n % 2 == 0               //  2 << 짝수인 첫번째 요소를 리턴
+}
+
+nums.firstIndex { (n) -> Bool in
+    return n % 2 == 0               //  1 << 짝수인 첫번째 인덱스를 리턴
+}
+
+nums.firstIndex(of: 1)  //  0
+nums.lastIndex(of: 1)   //  3
+
+// 3. 배열 정렬과 역순 정렬
+// sort -> 배열을 직접 정렬
+// sorted -> 정렬된 새로운 배열을 리턴, 원본을 건들지 않음
+
+// 불변 배열
+nums.sorted()   //  [0, 1, 1, 2, 2, 3, 4, 5, 5, 6, 7] , 새롭게 정렬
+nums            //  [1, 2, 3, 1, 4, 5, 2, 6, 7, 5, 0] , 원본 배열은 그대로
+
+nums.sorted { (a, b) -> Bool in
+    return a > b    //  [7, 6, 5, 5, 4, 3, 2, 2, 1, 1, 0] , 내림차순 정렬
+}
+
+nums.sorted().reversed()    // reversed 메소드는 새로운 배열을 생성하지 않는다. 배열의 메모리를 공유하면서                               // 역순으로 열거할 수 있는 형식을 리턴해준다
+
+[Int](nums.sorted().reversed())     //  [7, 6, 5, 5, 4, 3, 2, 2, 1, 1, 0]
+
+
+// 가변 배열
+var mutableNums = nums  //  [1, 2, 3, 1, 4, 5, 2, 6, 7, 5, 0]
+mutableNums.sort()      //  [0, 1, 1, 2, 2, 3, 4, 5, 5, 6, 7]
+mutableNums.sorted()    //  [0, 1, 1, 2, 2, 3, 4, 5, 5, 6, 7]
+mutableNums.reverse()   //  [7, 6, 5, 5, 4, 3, 2, 2, 1, 1, 0]
+
+
+// 4. 특정 위치의 요소 교체
+mutableNums.swapAt(0, 1)    //  [6, 7, 5, 5, 4, 3, 2, 2, 1, 1, 0]
+                            //  0, 1 의 자리에는 인덱스를 적어주는 것
+
+// 5. 랜덤 섞기
+mutableNums.shuffle()       //  [3, 7, 2, 6, 1, 5, 2, 0, 1, 4, 5]
+
 
 ```
 <br>
+
+* Dictionary #1
+
+```
+
+```
