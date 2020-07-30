@@ -1059,6 +1059,54 @@ words.removeAll()   //  [:], 전체 요소를 삭제할 때 사용
 * Dictionary #3
 
 ```
+// 1. 딕셔너리 비교
+// 저장된 key와 value가 같다면 ture를 반환해준다. 순서는 상관없다.
+// 대소문자 구분하므로 주의해야 한다
+let a = ["A": "Apple", "B": "Banana", "C": "City"]
+let b = ["A": "Apple", "C": "City", "B": "Banana"]
 
+a == b  // true
+a != b  // false
+
+// 딕셔너리는 항상 일정한 배열을 갖지 않는다. 그렇기 때문에 비교시에 에러가 날 수 있다.
+// 딕셔너리는 정렬된 컬렉션이 아니다
+//a.elementsEqual(b) { (lhs, rhs) -> Bool in
+//    print(lhs.key, rhs.key)
+//    return lhs.key.caseInsensitiveCompare(rhs.key) == .orderedSame
+//    && lhs.value.caseInsensitiveCompare(rhs.value) == .orderedSame
+//}
+
+let akeys = a.keys.sorted() // 오름차순 정리
+let bkeys = b.keys.sorted()
+
+akeys.elementsEqual(bkeys) { (lhs, rhs) -> Bool in
+    guard lhs.caseInsensitiveCompare(rhs) == .orderedSame else {
+        return false
+    }
+    
+    guard let lv = a[lhs], let rv = b[rhs], lv.caseInsensitiveCompare(rv) == .orderedSame else {
+        return false
+    }
+    return true
+}
+
+// 2. 딕셔너리 검색
+// 검색을 할땐 클로저가 필요하다. 여기서 하는 작업은 클로저를 만들어 별도의 상수에 저장한 뒤 호출하는 형식이다
+let words = ["A": "Apple", "B": "Banana", "C": "City"]
+let c: ((String, String)) -> Bool = {
+    $0.0 == "B" || $0.1.contains("i")   // key에 대문자 B가 포함되어 있거나 value에 소문자 i가 포함되어 있는 경우 true를 반환
+}
+
+words.contains(where: c)    //  true, 클로저에서 조건에 일치하는 것이 있기에 contains에서도 true를 리턴함
+
+let r = words.first(where: c)   //  (key "B", value "Banana") << 튜플 형식으로 리턴해준다.
+                                //  값이 저장되어 있지 않은 경우엔 nil을 리턴해준다. (옵셔널 튜플이기 때문)
+                                //  딕셔너리이기때문에 리턴되는 결과가 계속 바뀔 수 있는것을 생각
+                                //  저장되어 있는 것들의 순서가 일정하지 않기 때문
+
+r?.key
+r?.value
+
+words.filter(c) //  반환타입이 Bool인 매개변수 함수 의 결과가 true면 새로운 컨테이너에 값을 담아 반환
 ```
 
