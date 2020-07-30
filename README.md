@@ -972,5 +972,53 @@ mutableNums.shuffle()       //  [3, 7, 2, 6, 1, 5, 2, 0, 1, 4, 5]
 * Dictionary #1
 
 ```
+// 1. 딕셔너리의 특징
+// 정식 문법 : Dictionart<key,value>
+// 단축 문법 : [key:value]
+
+let dict1: Dictionary<String, Int>
+let dict2: [String: Int]
+
+// 2. 딕셔너리 리터럴
+let words = ["A": "Apple", "B": "Banana", "C": "City"]
+
+// 빈 딕셔너리 생성
+let emptyDict: [String: String] = [:]
+let emptyDict2 = [String: String]()
+let emptyDict3 = Dictionary<String, String>()
+
+// 3. 저장된 요소를 확인
+words.count     //  3
+words.isEmpty   //  false
+
+// 요소에 접근할땐 서브스크립트 문법을 사용한다
+words["A"]      //  "Apple" , Key를 전달
+words["Apple"]  //   nil    , Value를 전달
+
+let a = words["E"]                      //  a의 자료형은 옵셔널스트링
+let b = words["E", default: "Empty"]    //  b의 자료형은 스트링
+
+for k in words.keys{
+    print(k)
+}
+
+for v in words.values{
+    print(v)
+}
+
+for k in words.keys.sorted(){
+    print(k)
+}
+
+let keys = Array(words.keys)        //  ["C", "A", "B"]
+let values = Array(words.values)    //  ["City", "Apple", "Banana"]
 
 ```
+<br>
+
+* Dictionary #2
+
+```
+
+```
+
