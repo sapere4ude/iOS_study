@@ -1019,6 +1019,46 @@ let values = Array(words.values)    //  ["City", "Apple", "Banana"]
 * Dictionary #2
 
 ```
+// 1. 새로운 요소 추가
+// 키를 기준으로 추가한다. 서브스크립트 문법을 사용하는 방법이 가장 간단하다
+
+var words = [String: String]()
+
+words["A"] = "Apple"
+words["B"] = "Banana"
+
+words.count     //  2
+words           //  ["B": "Banana", "A": "Apple"]
+
+words["B"] = "Ball"     // 기존의 key가 존재하기 때문에 value만 교체된다
+words                   // ["A": "Apple", "B": "Ball"]
+
+// 메소드를 사용하여 요소 추가 (Insert + Update = Upsert)
+words.updateValue("City", forKey: "C")      //  nil, 기존에 C라는 키에 값이 없었기 때문
+words.updateValue("Circle", forKey: "C")    //  "City", 새롭게 변경된 값 이전의 값을 리턴해준다
+
+// 2. 요소 삭제
+// 서브스크립트 문법을 사용한 경우
+words               //  "A": "Apple", "C": "Circle", "B": "Ball"]
+words["B"] = nil    //  Key 와 연결된 value를 삭제해주는 방법
+
+words               //  ["A": "Apple", "C": "Circle"]
+
+words["Z"] = nil    //  존재하지 않는 키를 삭제하는 경우 아무런 에러없다
+
+// 메소드를 사용한 경우
+words.removeValue(forKey: "A")  //  "Apple", 삭제되는 key의 value 값을 리턴해준다
+words                           //  ["C": "Circle"]
+words.removeValue(forKey: "A")  //  nil, 삭제될 값이 없기때문에 nil을 반환해줌
+
+words.removeAll()   //  [:], 전체 요소를 삭제할 때 사용
+
+```
+<br>
+
+* Dictionary #3
+
+```
 
 ```
 
