@@ -1094,19 +1094,77 @@ akeys.elementsEqual(bkeys) { (lhs, rhs) -> Bool in
 // 검색을 할땐 클로저가 필요하다. 여기서 하는 작업은 클로저를 만들어 별도의 상수에 저장한 뒤 호출하는 형식이다
 let words = ["A": "Apple", "B": "Banana", "C": "City"]
 let c: ((String, String)) -> Bool = {
-    $0.0 == "B" || $0.1.contains("i")   // key에 대문자 B가 포함되어 있거나 value에 소문자 i가 포함되어 있는 경우 true를 반환
+    $0.0 == "B" || $0.1.contains("i")   // key에 대문자 B가 포함되어 있거나 value에 소문자 i가 포함되어                                   // 있는 경우 true를 반환
 }
 
 words.contains(where: c)    //  true, 클로저에서 조건에 일치하는 것이 있기에 contains에서도 true를 리턴함
 
-let r = words.first(where: c)   //  (key "B", value "Banana") << 튜플 형식으로 리턴해준다.
-                                //  값이 저장되어 있지 않은 경우엔 nil을 리턴해준다. (옵셔널 튜플이기 때문)
-                                //  딕셔너리이기때문에 리턴되는 결과가 계속 바뀔 수 있는것을 생각
-                                //  저장되어 있는 것들의 순서가 일정하지 않기 때문
+let r = words.first(where: c)       //  (key "B", value "Banana") << 튜플 형식으로 리턴해준다.
+                            //  값이 저장되어 있지 않은 경우엔 nil을 리턴해준다. (옵셔널 튜플이기 때문)
+                            //  딕셔너리이기때문에 리턴되는 결과가 계속 바뀔 수 있는것을 생각
+                            //  저장되어 있는 것들의 순서가 일정하지 않기 때문
 
 r?.key
 r?.value
 
 words.filter(c) //  반환타입이 Bool인 매개변수 함수 의 결과가 true면 새로운 컨테이너에 값을 담아 반환
 ```
+<br>
+
+# Enumeration
+
+* Enumeration Types
+
+```
+// 열거형 -> 연관된 상수들을 하나의 묶음으로 만든 것
+// 열거형은 독립적인 자료형. 사용하는 이유는? 1. 가독성 2. 안전성
+// 열거형을 사용하지 않으면
+// 값만으로도 어떤 역할을 하는지 알려주는 것이 좋은 코드이다
+
+let left = "left"
+let center = "center"
+let right = "right"
+
+var alignment = center
+
+// 열거형 선언 방법
+enum TypeName {
+    case caseName
+    case caseName, caseName
+}
+
+// 실제 사용법
+enum Alignment{
+    case left
+    case right
+    case center
+}
+
+Alignment.center    //  열거형 이름을 통해 정렬을 표현
+
+var textAlignment = Alignment.center
+textAlignment = .left   //  열거형은 이름을 생략할 수 있다. 단, 점은 생략하면 안된다.
+
+// 열거형 비교
+if textAlignment == .center {
+    
+}
+
+switch textAlignment {
+case .left:
+    print("left")
+case .right:
+    print("right")
+case .center:
+    print("center")
+}
+```
+<br>
+
+* Raw Values
+
+```
+
+```
+<br>
 
