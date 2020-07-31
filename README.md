@@ -1164,7 +1164,74 @@ case .center:
 * Raw Values
 
 ```
+// 1. Raw Value 문법
+기본형
+enum TypeName: RawValueType{    // RawValueType -> String, Character, Number Types
+case caseName = Value
+}
+
+enum Alignment: Int {
+    case left
+    case right = 100
+    case center
+}
+
+
+// 2. Raw Value Type에 따른 기본값
+Alignment.left.rawValue     //  0   <- 원시값이 저장되어 있지 않다면 자동으로 0부터 할당된다
+Alignment.right.rawValue    //  100
+Alignment.center.rawValue   //  101
+
+//Alignment.left.rawValue = 10 // Cannot assign to property: 'rawValue' is immutable
+
+Alignment(rawValue: 0)      //  left
+Alignment(rawValue: 200)    //  nil
+
+enum Weekday: String{       // 열거형은 이와 같이 한정된 값을 처리할 때 사용한다.
+    case sunday
+    case monday = "MON"
+    case tuesday
+    case wednesday
+    case friday
+    case saturday
+}
+
+Weekday.sunday.rawValue     //  "sunday"
+Weekday.monday.rawValue     //  "MON"
+
+enum ControlChar: Character {   // rawValue Type이 Character이기 때문에 자동생성 X. 그러므로 직접 지정해줘야 한다.
+    case tab = "\t"
+    case newLine = "\n"
+}
+```
+<br>
+
+# Structure and Class
+
+*  Structure and Classes
+
+```
 
 ```
 <br>
 
+*  Initializer Syntax
+
+```
+
+```
+<br>
+
+*  Value Types vs Reference Types
+
+```
+
+```
+<br>
+
+*  Nested Types
+
+```
+
+```
+<br>
