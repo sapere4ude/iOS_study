@@ -1325,6 +1325,24 @@ o2
 *  Nested Types
 
 ```
+// Nested Types : 포함된 형식, 내포된 형식
 
+// 1. 선언 문법
+// 구조 : String.CompareOptions (String,CompareOptions 은 Structure를 의미한다.)
+
+class One {
+    struct  Two {
+        enum Three {
+            case a
+            
+            class Four {
+                
+            }
+        }
+    }
+    var a = Two()   // One 클래스 내부에 있는 Two 구조체를 바로 인식할 수 있다.
+}
+
+let two: One.Two = One.Two() // 생성자를 만들때 포함관계에 있는 모든 구조를 작성해줘야 한다.
 ```
 <br>
