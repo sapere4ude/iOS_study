@@ -1211,6 +1211,32 @@ enum ControlChar: Character {   // rawValue Type이 Character이기 때문에 �
 *  Structure and Classes
 
 ```
+// 1. Structure
+struct Person {
+    var name: String    // <- property
+    var age: Int
+    
+    func speak() {      // <- method
+        print("Hello")
+    }
+}
+// 구조체를 호출하는 방법
+let p = Person(name: "Steve", age: 50)  // 생성자를 만들어주는 것
+p.name
+p.age
+p.speak()
+
+// 함수와 메소드를 구분하는 방법 -> 함수는 이름만 호출, 메소드는 인스턴스 이름을 통해 호출
+
+// 2. Classes
+class Person {
+    var name = "John Doe"
+    var age = 0
+    
+    func speak(){
+        print("Hello")
+    }
+}
 
 ```
 <br>
@@ -1218,6 +1244,37 @@ enum ControlChar: Character {   // rawValue Type이 Character이기 때문에 �
 *  Initializer Syntax
 
 ```
+let str = "123"
+let num = Int(str)
+
+// 생성자는 인스턴스를 만들때 사용하는 특별한 메소드
+// 생성자는 속성 초기화가 가장 중요하고 유일한 목적. 가능한 빠르게 실행될 수 있게 하는것이 중요
+
+class Position {
+    var x: Double
+    var y: Double
+    
+    init(){     // 전달해야할 파라미터가 없으므로 빈 괄호 사용
+        x = 0.0
+        y = 0.0
+    }
+    
+    init(value: Double){    // value 파라미터를 받아 x,y를 초기화
+        x = value
+        y = value
+    }
+}
+
+// 생성자를 호출하여 인스턴스를 생성하는 방법
+// 1. 파라미터가 없는 생성자를 호출
+let a = Position()  // 새로운 인스턴스가 생성됨
+a.x   // 0 <- 속성에 저장된 값은 초기값인 0 이다
+a.y   // 0
+
+// 2. 파라미터가 있는 경우
+let b = Position(value: 100)
+b.x   // 100
+b.y   // 100
 
 ```
 <br>
@@ -1225,7 +1282,43 @@ enum ControlChar: Character {   // rawValue Type이 Character이기 때문에 �
 *  Value Types vs Reference Types
 
 ```
+// Value Type : Structure, Enumeration, Tuple
+// Reference Type : Class, Closure
 
+// 속성은 선언과 동시에 기본값을 저장한다. 이렇게 하면 파라미터가 없는 생성자가 제공되는데 이를 기본 생성자 라고 한다.
+struct PositionValue {
+    var x = 0.0
+    var y = 0.0
+}
+
+class PositionObject {
+    var x = 0.0
+    var y = 0.0
+}
+
+// 기본 생성자를 이용하여 인스턴스 만들기
+var v = PositionValue()
+
+var o = PositionObject()
+
+var v2 = v  //  v 와 v2 가 저장된 공간은 서로다른 메모리 공간
+var o2 = o  //  새로운 복사본이 생성되는 것 X , o2 변수에 저장되는 것은 인스턴스가 저장되어 있는 메모리 주소. o 변수에도 값이 저장되어 있는 메모리 주소가 저장되어 있다.
+v2.x = 12
+v2.y = 34
+// 구조체 -> 값 형식 , v2에서 값을 바꿔도 v에 아무런 영향 X, v 와 v2 는 서로 다른 메모리 공간에 위치한다.
+v
+v2
+
+o2.x = 12
+o2.y = 34
+
+// 클래스 -> 참조 형식, 클래스는 새로운 복사본을 생성하지 않고 원본을 전달한다. 더 정확히는 참조를 전달한다. 원본이 전달되기 떄문에 어떤 변수를 통해 속성을 변경하더라도 항상 같은 대상을 바꾸게 된다.
+o
+o2
+
+// 값 형식을 다른 곳에 저장하거나 파라미터 또는 리턴형으로 전달하면 새로운 복사본이 생성된다.
+
+// 참조 형식은 복사본을 생성하지 않는다. 대신에 인스턴스가 저장되어 있는 메모리 주소를 전달한다. 주소와 값을 별도의 메모리 공간에 저장하고 주소를 통해 값에 접근한다.
 ```
 <br>
 
