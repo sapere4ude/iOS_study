@@ -775,3 +775,574 @@ if let _ = str.range(of: "swift", options: [.anchored, .caseInsensitive]){
 }
 
 ```
+
+# Collection
+
+* Array #1
+
+```
+// 1. 배열 생성 방법
+let nums = [1,2,3]
+nums
+
+let srtArray: Array<String>
+let strArray2: [String]     // 더 선호되는 방법
+
+
+// 2. 배열 리터럴과 배열 자료형
+
+let emptyArray: [Int] = []      // 빈 배열 리터럴을 만들어주려면 자료형을 명시해줘야 한다
+let emptyArray2 = Array<Int>()  // 정식 문법으로 만든 것
+let emptyArray3 = [Int]()
+
+let zeroArray = [Int](repeating: 0, count: 10)  // 0이 10개를 채워진 Int 배열이 생성됨
+
+
+// 3. 배열 요소의 수 확인 & 접근
+nums.count
+
+nums.count == 0     // 배열이 비어있는지 확인하기
+
+nums.isEmpty        // 이렇게 비어있는지 확인하는게 더 좋은 방법
+
+
+// 4. 서브스크립트 문법
+let fruits = ["Apple", "Banana", "Melon"]
+fruits[0]
+
+fruits[2]
+
+fruits[0...1]
+
+// 속성을 사용하여 원하는 배열에 접근하는 방법이 더 안전하다
+fruits[fruits.startIndex]
+fruits[fruits.index(before: fruits.endIndex)]   // endIndex는 마지막 요소의 다음 요소를 의미한다. 그렇기 때문에 .index(before) 메소드를 사용하여 마지막 요소의 이전 요소를 찾아야 진짜 마지막 요소에 접근할 수 있게 되는 것
+
+fruits.first       //   "Apple"
+fruits.last        //   "Melon"
+
+emptyArray.first   //   nil >> 배열이 비어있다면 nil을 리턴한다
+emptyArray.last    //   nil >> 배열이 비어있다면 nil을 리턴한다
+
+emptyArray[0]      //   이와같이 서브스크립트 문법을 사용하였을 경우 배열이 비어있다면 에러가 나고 종료될 수 있어 좋은 방법은 아니다
+
+```
+<br>
+
+* Array #2
+
+```
+// 1. 배열 마지막에 새로운 요소 추가
+
+var alphabet = ["A", "B", "C"]
+
+alphabet.append("E")    // 동일한 자료형의 요소만 들어갈 수 있다.
+//alphabet.append(2)      // error
+
+alphabet.append(contentsOf: ["F", "G"]) // 2개 이상의 배열 추가 가능
+
+// 2. 특정 위치에 새로운 요소 추가
+
+alphabet.insert("D", at: 3) // at 은 insert 하게되는 순서를 의미
+
+alphabet.insert(contentsOf: ["a", "b", "c"], at: 0)
+
+// insert 메소드를 사용하면 오버헤드가 발생하므로 되도록이면
+// append 메소드를 사용하는 것이 좋다
+
+// 3. 특정 범위 교체
+
+alphabet[0...2] = ["x", "y", "z"]   // 서브스크립트 방식을 사용하여 값 변경
+alphabet    // ["x", "y", "z", "A", "B", "C", "D", "E", "F", "G"]
+alphabet.replaceSubrange(0...2, with: ["a","b","c"])
+alphabet    // ["a", "b", "c", "A", "B", "C", "D", "E", "F", "G"]
+
+alphabet[0...2] = ["z"]
+alphabet    // ["z", "A", "B", "C", "D", "E", "F", "G"]
+
+alphabet[0..<1] = []    // 빈배열로 만들어주는 작업
+alphabet    // ["A", "B", "C", "D", "E", "F", "G"]
+
+// 4. 요소 삭제 (서브스크립트 문법을 사용한 방법 & 메소드를 사용한 방법)
+
+alphabet = ["A", "B", "C", "D", "E", "F", "G"]
+alphabet.remove(at: 2)  // "C"
+alphabet    // ["A", "B", "D", "E", "F", "G"]
+
+alphabet.removeFirst()  // "A"
+alphabet    // ["B", "D", "E", "F", "G"]
+
+alphabet.removeFirst(2) // ["E", "F", "G"] << 삭제된 값을 리턴해주지 않고 나머지 배열만 표시
+alphabet    // ["E", "F", "G"]
+
+alphabet.removeAll()
+//alphabet.removeFirst() << 배열이 비어있는 상태에서 메소드를 호출한다면 에러가 발생한다.
+// 만약 alphabet이 옵셔널 스트링으로 저장되어 있는거라면 nil 값을 반환해준다.
+
+alphabet.popLast()  // nil
+
+alphabet = ["A", "B", "C", "D", "E", "F", "G"]
+alphabet.popLast()  // "G"  << 삭제되는 요소를 반환
+alphabet    // ["A", "B", "C", "D", "E", "F"]
+
+alphabet.removeSubrange(0...2)  // ["D", "E", "F"]
+alphabet    // ["D", "E", "F"]
+
+alphabet[0...2] = []    // 서브스크립트를 사용하여 배열을 삭제하는 방법
+alphabet    // []
+
+```
+<br>
+
+* Array #3
+
+```
+// 1. 배열 비교
+
+let a = ["A", "B", "C"]
+let b = ["a", "b", "c"]
+
+a == b
+a != b
+
+// 메소드를 통한 비교
+a.elementsEqual(b)
+a.elementsEqual(b) { (lhs, rhs) -> Bool in                  // 클로저 사용
+    return lhs.caseInsensitiveCompare(rhs) == .orderedSame  // 대소문자를 무시하고 비교
+}
+
+// 2. 요소 검색 & 인덱스 검색
+
+let nums = [1, 2, 3, 1, 4, 5, 2, 6, 7, 5, 0]
+// contains는 단순히 존재여부만 확인
+nums.contains(1)    // true
+nums.contains(8)    // false
+
+nums.contains { (n) -> Bool in  // true  <<  클로저를 통한 존재여부 확인
+    return n % 2 == 0
+}
+
+// 인덱스와 요소를 직접 검색
+nums.first { (n) -> Bool in
+    return n % 2 == 0               //  2 << 짝수인 첫번째 요소를 리턴
+}
+
+nums.firstIndex { (n) -> Bool in
+    return n % 2 == 0               //  1 << 짝수인 첫번째 인덱스를 리턴
+}
+
+nums.firstIndex(of: 1)  //  0
+nums.lastIndex(of: 1)   //  3
+
+// 3. 배열 정렬과 역순 정렬
+// sort -> 배열을 직접 정렬
+// sorted -> 정렬된 새로운 배열을 리턴, 원본을 건들지 않음
+
+// 불변 배열
+nums.sorted()   //  [0, 1, 1, 2, 2, 3, 4, 5, 5, 6, 7] , 새롭게 정렬
+nums            //  [1, 2, 3, 1, 4, 5, 2, 6, 7, 5, 0] , 원본 배열은 그대로
+
+nums.sorted { (a, b) -> Bool in
+    return a > b    //  [7, 6, 5, 5, 4, 3, 2, 2, 1, 1, 0] , 내림차순 정렬
+}
+
+nums.sorted().reversed()    // reversed 메소드는 새로운 배열을 생성하지 않는다. 배열의 메모리를 공유하면서                               // 역순으로 열거할 수 있는 형식을 리턴해준다
+
+[Int](nums.sorted().reversed())     //  [7, 6, 5, 5, 4, 3, 2, 2, 1, 1, 0]
+
+
+// 가변 배열
+var mutableNums = nums  //  [1, 2, 3, 1, 4, 5, 2, 6, 7, 5, 0]
+mutableNums.sort()      //  [0, 1, 1, 2, 2, 3, 4, 5, 5, 6, 7]
+mutableNums.sorted()    //  [0, 1, 1, 2, 2, 3, 4, 5, 5, 6, 7]
+mutableNums.reverse()   //  [7, 6, 5, 5, 4, 3, 2, 2, 1, 1, 0]
+
+
+// 4. 특정 위치의 요소 교체
+mutableNums.swapAt(0, 1)    //  [6, 7, 5, 5, 4, 3, 2, 2, 1, 1, 0]
+                            //  0, 1 의 자리에는 인덱스를 적어주는 것
+
+// 5. 랜덤 섞기
+mutableNums.shuffle()       //  [3, 7, 2, 6, 1, 5, 2, 0, 1, 4, 5]
+
+
+```
+<br>
+
+* Dictionary #1
+
+```
+// 1. 딕셔너리의 특징
+// 정식 문법 : Dictionart<key,value>
+// 단축 문법 : [key:value]
+
+let dict1: Dictionary<String, Int>
+let dict2: [String: Int]
+
+// 2. 딕셔너리 리터럴
+let words = ["A": "Apple", "B": "Banana", "C": "City"]
+
+// 빈 딕셔너리 생성
+let emptyDict: [String: String] = [:]
+let emptyDict2 = [String: String]()
+let emptyDict3 = Dictionary<String, String>()
+
+// 3. 저장된 요소를 확인
+words.count     //  3
+words.isEmpty   //  false
+
+// 요소에 접근할땐 서브스크립트 문법을 사용한다
+words["A"]      //  "Apple" , Key를 전달
+words["Apple"]  //   nil    , Value를 전달
+
+let a = words["E"]                      //  a의 자료형은 옵셔널스트링
+let b = words["E", default: "Empty"]    //  b의 자료형은 스트링
+
+for k in words.keys{
+    print(k)
+}
+
+for v in words.values{
+    print(v)
+}
+
+for k in words.keys.sorted(){
+    print(k)
+}
+
+let keys = Array(words.keys)        //  ["C", "A", "B"]
+let values = Array(words.values)    //  ["City", "Apple", "Banana"]
+
+```
+<br>
+
+* Dictionary #2
+
+```
+// 1. 새로운 요소 추가
+// 키를 기준으로 추가한다. 서브스크립트 문법을 사용하는 방법이 가장 간단하다
+
+var words = [String: String]()
+
+words["A"] = "Apple"
+words["B"] = "Banana"
+
+words.count     //  2
+words           //  ["B": "Banana", "A": "Apple"]
+
+words["B"] = "Ball"     // 기존의 key가 존재하기 때문에 value만 교체된다
+words                   // ["A": "Apple", "B": "Ball"]
+
+// 메소드를 사용하여 요소 추가 (Insert + Update = Upsert)
+words.updateValue("City", forKey: "C")      //  nil, 기존에 C라는 키에 값이 없었기 때문
+words.updateValue("Circle", forKey: "C")    //  "City", 새롭게 변경된 값 이전의 값을 리턴해준다
+
+// 2. 요소 삭제
+// 서브스크립트 문법을 사용한 경우
+words               //  "A": "Apple", "C": "Circle", "B": "Ball"]
+words["B"] = nil    //  Key 와 연결된 value를 삭제해주는 방법
+
+words               //  ["A": "Apple", "C": "Circle"]
+
+words["Z"] = nil    //  존재하지 않는 키를 삭제하는 경우 아무런 에러없다
+
+// 메소드를 사용한 경우
+words.removeValue(forKey: "A")  //  "Apple", 삭제되는 key의 value 값을 리턴해준다
+words                           //  ["C": "Circle"]
+words.removeValue(forKey: "A")  //  nil, 삭제될 값이 없기때문에 nil을 반환해줌
+
+words.removeAll()   //  [:], 전체 요소를 삭제할 때 사용
+
+```
+<br>
+
+* Dictionary #3
+
+```
+// 1. 딕셔너리 비교
+// 저장된 key와 value가 같다면 ture를 반환해준다. 순서는 상관없다.
+// 대소문자 구분하므로 주의해야 한다
+let a = ["A": "Apple", "B": "Banana", "C": "City"]
+let b = ["A": "Apple", "C": "City", "B": "Banana"]
+
+a == b  // true
+a != b  // false
+
+// 딕셔너리는 항상 일정한 배열을 갖지 않는다. 그렇기 때문에 비교시에 에러가 날 수 있다.
+// 딕셔너리는 정렬된 컬렉션이 아니다
+//a.elementsEqual(b) { (lhs, rhs) -> Bool in
+//    print(lhs.key, rhs.key)
+//    return lhs.key.caseInsensitiveCompare(rhs.key) == .orderedSame
+//    && lhs.value.caseInsensitiveCompare(rhs.value) == .orderedSame
+//}
+
+let akeys = a.keys.sorted() // 오름차순 정리
+let bkeys = b.keys.sorted()
+
+akeys.elementsEqual(bkeys) { (lhs, rhs) -> Bool in
+    guard lhs.caseInsensitiveCompare(rhs) == .orderedSame else {
+        return false
+    }
+    
+    guard let lv = a[lhs], let rv = b[rhs], lv.caseInsensitiveCompare(rv) == .orderedSame else {
+        return false
+    }
+    return true
+}
+
+// 2. 딕셔너리 검색
+// 검색을 할땐 클로저가 필요하다. 여기서 하는 작업은 클로저를 만들어 별도의 상수에 저장한 뒤 호출하는 형식이다
+let words = ["A": "Apple", "B": "Banana", "C": "City"]
+let c: ((String, String)) -> Bool = {
+    $0.0 == "B" || $0.1.contains("i")   // key에 대문자 B가 포함되어 있거나 value에 소문자 i가 포함되어                                   // 있는 경우 true를 반환
+}
+
+words.contains(where: c)    //  true, 클로저에서 조건에 일치하는 것이 있기에 contains에서도 true를 리턴함
+
+let r = words.first(where: c)       //  (key "B", value "Banana") << 튜플 형식으로 리턴해준다.
+                            //  값이 저장되어 있지 않은 경우엔 nil을 리턴해준다. (옵셔널 튜플이기 때문)
+                            //  딕셔너리이기때문에 리턴되는 결과가 계속 바뀔 수 있는것을 생각
+                            //  저장되어 있는 것들의 순서가 일정하지 않기 때문
+
+r?.key
+r?.value
+
+words.filter(c) //  반환타입이 Bool인 매개변수 함수 의 결과가 true면 새로운 컨테이너에 값을 담아 반환
+```
+<br>
+
+# Enumeration
+
+* Enumeration Types
+
+```
+// 열거형 -> 연관된 상수들을 하나의 묶음으로 만든 것
+// 열거형은 독립적인 자료형. 사용하는 이유는? 1. 가독성 2. 안전성
+// 열거형을 사용하지 않으면
+// 값만으로도 어떤 역할을 하는지 알려주는 것이 좋은 코드이다
+
+let left = "left"
+let center = "center"
+let right = "right"
+
+var alignment = center
+
+// 열거형 선언 방법
+enum TypeName {
+    case caseName
+    case caseName, caseName
+}
+
+// 실제 사용법
+enum Alignment{
+    case left
+    case right
+    case center
+}
+
+Alignment.center    //  열거형 이름을 통해 정렬을 표현
+
+var textAlignment = Alignment.center
+textAlignment = .left   //  열거형은 이름을 생략할 수 있다. 단, 점은 생략하면 안된다.
+
+// 열거형 비교
+if textAlignment == .center {
+    
+}
+
+switch textAlignment {
+case .left:
+    print("left")
+case .right:
+    print("right")
+case .center:
+    print("center")
+}
+```
+<br>
+
+* Raw Values
+
+```
+// 1. Raw Value 문법
+기본형
+enum TypeName: RawValueType{    // RawValueType -> String, Character, Number Types
+case caseName = Value
+}
+
+enum Alignment: Int {
+    case left
+    case right = 100
+    case center
+}
+
+
+// 2. Raw Value Type에 따른 기본값
+Alignment.left.rawValue     //  0   <- 원시값이 저장되어 있지 않다면 자동으로 0부터 할당된다
+Alignment.right.rawValue    //  100
+Alignment.center.rawValue   //  101
+
+//Alignment.left.rawValue = 10 // Cannot assign to property: 'rawValue' is immutable
+
+Alignment(rawValue: 0)      //  left
+Alignment(rawValue: 200)    //  nil
+
+enum Weekday: String{       // 열거형은 이와 같이 한정된 값을 처리할 때 사용한다.
+    case sunday
+    case monday = "MON"
+    case tuesday
+    case wednesday
+    case friday
+    case saturday
+}
+
+Weekday.sunday.rawValue     //  "sunday"
+Weekday.monday.rawValue     //  "MON"
+
+enum ControlChar: Character {   // rawValue Type이 Character이기 때문에 자동생성 X. 그러므로 직접 지정해줘야 한다.
+    case tab = "\t"
+    case newLine = "\n"
+}
+```
+<br>
+
+# Structure and Class
+
+*  Structure and Classes
+
+```
+// 1. Structure
+struct Person {
+    var name: String    // <- property
+    var age: Int
+    
+    func speak() {      // <- method
+        print("Hello")
+    }
+}
+// 구조체를 호출하는 방법
+let p = Person(name: "Steve", age: 50)  // 생성자를 만들어주는 것
+p.name
+p.age
+p.speak()
+
+// 함수와 메소드를 구분하는 방법 -> 함수는 이름만 호출, 메소드는 인스턴스 이름을 통해 호출
+
+// 2. Classes
+class Person {
+    var name = "John Doe"
+    var age = 0
+    
+    func speak(){
+        print("Hello")
+    }
+}
+
+```
+<br>
+
+*  Initializer Syntax
+
+```
+let str = "123"
+let num = Int(str)
+
+// 생성자는 인스턴스를 만들때 사용하는 특별한 메소드
+// 생성자는 속성 초기화가 가장 중요하고 유일한 목적. 가능한 빠르게 실행될 수 있게 하는것이 중요
+
+class Position {
+    var x: Double
+    var y: Double
+    
+    init(){     // 전달해야할 파라미터가 없으므로 빈 괄호 사용
+        x = 0.0
+        y = 0.0
+    }
+    
+    init(value: Double){    // value 파라미터를 받아 x,y를 초기화
+        x = value
+        y = value
+    }
+}
+
+// 생성자를 호출하여 인스턴스를 생성하는 방법
+// 1. 파라미터가 없는 생성자를 호출
+let a = Position()  // 새로운 인스턴스가 생성됨
+a.x   // 0 <- 속성에 저장된 값은 초기값인 0 이다
+a.y   // 0
+
+// 2. 파라미터가 있는 경우
+let b = Position(value: 100)
+b.x   // 100
+b.y   // 100
+
+```
+<br>
+
+*  Value Types vs Reference Types
+
+```
+// Value Type : Structure, Enumeration, Tuple
+// Reference Type : Class, Closure
+
+// 속성은 선언과 동시에 기본값을 저장한다. 이렇게 하면 파라미터가 없는 생성자가 제공되는데 이를 기본 생성자 라고 한다.
+struct PositionValue {
+    var x = 0.0
+    var y = 0.0
+}
+
+class PositionObject {
+    var x = 0.0
+    var y = 0.0
+}
+
+// 기본 생성자를 이용하여 인스턴스 만들기
+var v = PositionValue()
+
+var o = PositionObject()
+
+var v2 = v  //  v 와 v2 가 저장된 공간은 서로다른 메모리 공간
+var o2 = o  //  새로운 복사본이 생성되는 것 X , o2 변수에 저장되는 것은 인스턴스가 저장되어 있는 메모리 주소. o 변수에도 값이 저장되어 있는 메모리 주소가 저장되어 있다.
+v2.x = 12
+v2.y = 34
+// 구조체 -> 값 형식 , v2에서 값을 바꿔도 v에 아무런 영향 X, v 와 v2 는 서로 다른 메모리 공간에 위치한다.
+v
+v2
+
+o2.x = 12
+o2.y = 34
+
+// 클래스 -> 참조 형식, 클래스는 새로운 복사본을 생성하지 않고 원본을 전달한다. 더 정확히는 참조를 전달한다. 원본이 전달되기 떄문에 어떤 변수를 통해 속성을 변경하더라도 항상 같은 대상을 바꾸게 된다.
+o
+o2
+
+// 값 형식을 다른 곳에 저장하거나 파라미터 또는 리턴형으로 전달하면 새로운 복사본이 생성된다.
+
+// 참조 형식은 복사본을 생성하지 않는다. 대신에 인스턴스가 저장되어 있는 메모리 주소를 전달한다. 주소와 값을 별도의 메모리 공간에 저장하고 주소를 통해 값에 접근한다.
+```
+<br>
+
+*  Nested Types
+
+```
+// Nested Types : 포함된 형식, 내포된 형식
+
+// 1. 선언 문법
+// 구조 : String.CompareOptions (String,CompareOptions 은 Structure를 의미한다.)
+
+class One {
+    struct  Two {
+        enum Three {
+            case a
+            
+            class Four {
+                
+            }
+        }
+    }
+    var a = Two()   // One 클래스 내부에 있는 Two 구조체를 바로 인식할 수 있다.
+}
+
+let two: One.Two = One.Two() // 생성자를 만들때 포함관계에 있는 모든 구조를 작성해줘야 한다.
+```
+<br>
