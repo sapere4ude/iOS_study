@@ -30,7 +30,7 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, GMSMapVie
             
             lat = data["coord"]["lat"].stringValue
             lon = data["coord"]["lon"].stringValue
-        
+            
             print("lat: \(lat)")
             print("lon: \(lon)")
         }
@@ -48,42 +48,48 @@ class InfoViewController: UIViewController, CLLocationManagerDelegate, GMSMapVie
         locationManager.requestWhenInUseAuthorization()
         
         locationManager.startUpdatingLocation()
-
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-  
-//        //let coor = locationManager.location?.coordinate
-//        let latitude = 2323.1111
-//        let longitude = 1323.4444
-//
-//        mapView = GMSMapView()
-//        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 13.8)
-//        mapView.camera = camera
-//
-//        mapView.settings.myLocationButton = true
-//        mapView.isMyLocationEnabled = true
-//        self.mapView.delegate = self
+        
+        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.isMyLocationEnabled = true
+        
+        self.mapView = mapView
+        
+        let cord2D = CLLocationCoordinate2D(latitude: Double(lat)!, longitude: Double(lon)!)
+        let marker = GMSMarker()
+        marker.position = cord2D
+        marker.title = "Location"
+        marker.snippet = "Australia"
+        marker.map = mapView
+        print("check")
+        
+        //        let camera = GMSCameraPosition.camera(withLatitude: 28.7041, longitude: 77.1025, zoom: 6.0)
+        //        google_map.camera = camera
+        //        self.show_marker(position: google_map.camera.target)
         
         
-        
-//        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-//        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//
-//        let cord2D = CLLocationCoordinate2D(latitude: Double(lat)!, longitude: Double(lon)!)
-//
-//        let marker = GMSMarker()
-//        marker.position = cord2D
-//        marker.title = "Location"
-//        marker.snippet = "Australia"
-//        marker.map = mapView
         
     }
-    
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         mapView.clear()
     }
+    
+    //
+    //        func show_marker(position: CLLocationCoordinate2D){
+    //        let marker = GMSMarker()
+    //        marker.position = position
+    //        marker.title = "Delhi"
+    //        marker.snippet = "Capital of India"
+    //        marker.map = google_map
+    //    }
+    
+    
+    
     
     
     func converteKelvinToCelsius(input: Float) -> Float {
