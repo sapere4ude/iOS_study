@@ -34,20 +34,80 @@
                     <view key="view" contentMode="scaleToFill" id="3K6-p1-sT6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDf-Kw-Ly2">
+                                <rect key="frame" x="0.0" y="76" width="414" height="820"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tAU-dg-Q88">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jTh-Oa-Yc7">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="f9y-w7-s2H"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOj-4p-53E">
+                                                <rect key="frame" x="0.0" y="300" width="414" height="300"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="9Jw-aA-hyv"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7u-cE-MUV">
+                                                <rect key="frame" x="0.0" y="600" width="414" height="300"/>
+                                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="NUd-eL-7rG"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="tAU-dg-Q88" firstAttribute="width" secondItem="nJj-wn-pNe" secondAttribute="width" id="0rA-tX-94l"/>
+                                    <constraint firstItem="tAU-dg-Q88" firstAttribute="bottom" secondItem="Xid-gp-2Bb" secondAttribute="bottom" id="7cr-AF-s4X"/>
+                                    <constraint firstItem="tAU-dg-Q88" firstAttribute="trailing" secondItem="Xid-gp-2Bb" secondAttribute="trailing" id="J2G-Is-tWI"/>
+                                    <constraint firstItem="tAU-dg-Q88" firstAttribute="top" secondItem="Xid-gp-2Bb" secondAttribute="top" id="WvG-iZ-XSK"/>
+                                    <constraint firstItem="tAU-dg-Q88" firstAttribute="leading" secondItem="Xid-gp-2Bb" secondAttribute="leading" id="fzn-gQ-ksu"/>
+                                    <constraint firstAttribute="height" constant="820" id="mE4-we-B8K"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Xid-gp-2Bb"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="nJj-wn-pNe"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DDf-Kw-Ly2" firstAttribute="trailing" secondItem="HOI-k0-JU9" secondAttribute="trailing" id="1Vs-We-S6S"/>
+                            <constraint firstAttribute="bottom" secondItem="DDf-Kw-Ly2" secondAttribute="bottom" id="G8N-q4-u87"/>
+                            <constraint firstItem="DDf-Kw-Ly2" firstAttribute="leading" secondItem="HOI-k0-JU9" secondAttribute="leading" id="TDG-0d-bsX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HOI-k0-JU9"/>
                     </view>
-                    <navigationItem key="navigationItem" id="VzW-Ig-thL"/>
+                    <navigationItem key="navigationItem" id="VzW-Ig-thL">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Main" image="Logo" landscapeImage="Logo" id="L0a-YP-SnU"/>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹ" textAlignment="center" minimumFontSize="17" id="Bji-IK-xz3">
+                            <rect key="frame" x="92" y="5" width="262" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="bag.fill" catalog="system" id="HoM-x5-kpy">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49f-jr-qTN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-888" y="-1110"/>
+            <point key="canvasLocation" x="-888.40579710144937" y="-1110.2678571428571"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Home-->
         <scene sceneID="px3-Na-T9n">
             <objects>
                 <navigationController id="a1T-nO-3aK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" image="line.horizontal.3" catalog="system" id="D2u-As-aAH"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Home" id="D2u-As-aAH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="Home" insetsLayoutMarginsFromSafeArea="NO" id="DPn-2X-vV3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -64,7 +124,7 @@
         <scene sceneID="CXW-Pm-r4i">
             <objects>
                 <navigationController id="eds-eq-O3N" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shopping" id="NXs-6I-4WD"/>
+                    <tabBarItem key="tabBarItem" title="Shopping" image="Shopping" id="NXs-6I-4WD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="Shopping" insetsLayoutMarginsFromSafeArea="NO" id="N5P-jX-i0R">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -81,7 +141,7 @@
         <scene sceneID="aOG-Qp-gWq">
             <objects>
                 <navigationController id="9wn-aI-Qe0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Find" id="ZbI-Ev-Htz"/>
+                    <tabBarItem key="tabBarItem" title="Find" image="Find" id="ZbI-Ev-Htz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="Find" insetsLayoutMarginsFromSafeArea="NO" id="hwJ-HL-gHb">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -98,7 +158,7 @@
         <scene sceneID="P1K-3h-YUm">
             <objects>
                 <navigationController id="r3g-RM-LFC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My" id="DjO-2I-Uid"/>
+                    <tabBarItem key="tabBarItem" title="My" image="My" id="DjO-2I-Uid"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="My" insetsLayoutMarginsFromSafeArea="NO" id="Q4e-pt-SRq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -161,6 +221,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <image name="Find" width="24.5" height="25"/>
+        <image name="Home" width="26" height="25.5"/>
+        <image name="Logo" width="55" height="35.5"/>
+        <image name="My" width="24" height="23"/>
+        <image name="Shopping" width="31" height="25.5"/>
+        <image name="bag.fill" catalog="system" width="128" height="128"/>
     </resources>
 </document>
