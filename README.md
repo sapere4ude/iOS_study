@@ -1346,3 +1346,230 @@ class One {
 let two: One.Two = One.Two() // 생성자를 만들때 포함관계에 있는 모든 구조를 작성해줘야 한다.
 ```
 <br>
+
+# Property
+
+* Stored Properties
+```
+// 1. 저장 속성
+// 클래스와 구조체에서 선언 가능. 저장 속성은 인스턴스에 속한 속성. 인스턴스가 생성될 때마다 새로운 메모리 공간이 생성된다.
+
+class PersonClass {
+    let name: String = "John Doe"
+    var age: Int = 33
+}
+
+struct PersonStruct {
+    let name: String = "John Doe"
+    var age: Int = 33
+}
+
+// 새로운 인스턴스 만들고 속성에 저장된 값 확인
+let p = PersonClass() // 인스턴스 생성
+p.name
+p.age
+
+// 속성 값 변경
+p.age = 30
+
+
+
+
+// 구조체의 가변성은 속성에 영향을 주기때문에 var 로 선언해야한다
+var ps = PersonStruct()
+ps.name
+ps.age
+ps.age = 30
+
+// 지연 저장 속성은 초기화를 지연시킨다. 속성에 처음 접근하는 시점에 초기화된다. 항상 변수로 선언해줘야하기 때문에 lazy var 로 선언해준다.
+// 생성자에서 초기화 되는 것이 아니기 때문에 선언 시점에 기본값을 저장해야 한다.
+
+struct Image {
+    init() {
+        print("new image")
+    }
+}
+
+struct BlogPost {
+    let title: String = "Title"
+    let content: String = "Content"
+    // let attachment: Image = Image() // <- let 으로 설정하는 경우엔 사용하지 않더라도 생성자가 만들어질때마다 호출하게 되어 오버헤드가 발생할 수 있다
+    lazy var attachment: Image = Image() // <- 그렇기 때문에 호출했을때만 불러올 수 있는 방법인 lazy var 를 사용하는 것이 좋다.
+    
+    let date: Date = Date()
+    lazy var formattedDate: String = {
+       let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .medium
+        return f.string(from: date)
+    }()
+}
+
+var post = BlogPost() // <- 변수로 선언해줘야 attachmenet 를 사용할 수 있다
+post.attachment
+
+```
+<br>
+
+* Computed Property
+```
+// Computed Properties : 다른 속성을 기반으로 속성 값이 정해진다는 의미
+// 계산 속성은 메모리 공간을 갖지 않는다. 속성에 접근할때마다 다른 값이 리턴될 수 있다.
+// 반드시 자료형을 명시하여 사용해야 한다. 저장 속성과 달리 선언 시점에 기본 값을 저장할 수는 없다.
+// get 키워드는 속성 값을 읽을때 사용하고 반드시 리턴형이 필요하고
+// set 키워드는 속성 값을 저장할때 사용한다.
+
+class Person {
+   var name: String
+   var yearOfBirth: Int
+
+   init(name: String, year: Int) {
+      self.name = name
+      self.yearOfBirth = year
+   }
+    
+    var age: Int {
+        get {   // 주로 읽기 전용으로 만든다
+            let calendar = Calendar.current
+            let now = Date()
+            let year = calendar.component(.year, from: now)
+            return year - yearOfBirth
+        }
+        set {   // 예시를 들기 위해 만든 것 (지정된 나이를 계속 바꾸는 것도 이상하니깐...)
+            let calendar = Calendar.current
+            let now = Date()
+            let year = calendar.component(.year, from: now)
+            yearOfBirth = year - newValue // newValue를 사용한 이유는 set 키워드 옆에 파라미터가 생략되어있기 때문이다.
+        }
+    }
+}
+
+let p = Person(name: "Jaejun", year: 1994)
+p.age   // get 블록이 실행된다
+
+p.age = 50      // 값을 저장하는 것이기 때문에 set 블록이 실행된다.
+p.yearOfBirth   // 새롭게 저장된 출생연도를 확인할 수 있다.
+
+// 읽기 전용 계산 속성 : get 블록에서 get 키워드와 { } 블록을 생략하는 것
+//var age: Int {
+//        let calendar = Calendar.current
+//        let now = Date()
+//        let year = calendar.component(.year, from: now)
+//        return year - yearOfBirth
+//    }
+
+```
+<br>
+
+* Property Observer
+```
+// 속성 감시자
+// willSet : 속성에 값이 저장되기 직전에 호출된다. 새로 저장되는 값은 파라미터로 전달된다. 파라미터 이름을 생략하면 기본 파라미터인 newValue 가 제공된다.
+// didSet : 값이 저장된 직후에 호출된다. 파라미터 이름을 생략하면 기본 파라미터인 oldValue 가 제공된다.
+// Property Observer 가 되기 위해선 반드시 두 블록중 하나를 구현해야 한다.
+
+
+class Size {
+    var width = 0.0 {
+        willSet {
+            print(width, "->", newValue)
+        }
+        didSet {
+            print(oldValue, "->", width)
+        }
+    }
+}
+
+let s = Size()
+s.width = 123
+
+```
+<br>
+
+* Type Property
+```
+// 형식 속성은 클래스, 구조체, 열거형에 사용될 수 있다. 반드시 형식의 이름을 통해 접근해야 한다.
+
+class Math {
+    static let pi = 3.14
+}
+
+let m = Math()
+// m.pi <- error, pi는 형식 속성이기 때문에 반드시 이름을 통해 접근!
+Math.pi // 3.14 , 이와 같이 속성에 처음 접근할때 초기화된다.
+
+enum Weekday: Int {
+    case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
+    
+    static var today: Weekday {
+        let cal = Calendar.current
+        let today = Date()
+        let weekday = cal.component(.weekday, from: today)
+        return Weekday(rawValue: weekday)!
+    }
+}
+
+Weekday.today   // 해당 요일이 나옴
+
+```
+<br>
+
+* self & super
+```
+/*
+ self 는 인스턴스에 자동으로 추가되는 것
+ self -> 인스턴스 자체에 접근할때 사용
+ self.propertyName -> 인스턴스 속성에 접근할때 사용
+ self.method() -> 인스턴스 메소드를 호출할때 사용
+ self[index] -> 서브스크립트를 호출할때 사용
+ self.init(parameters) -> 동일한 형식에 있는 다른 생성자를 호출할 때 사용
+*/
+
+class Size {
+   var width = 0.0
+   var height = 0.0
+    
+    func calcArea() -> Double {
+        return width * height // self.width * self.height , self 없이 속성에 접근 가능하다.
+    }
+    // 계산 속성을 추가하고 메소드가 리턴하는 값을 그대로 리턴
+    
+    var area: Double {
+        return calcArea() // self.calcArea() , 주로 self 를 생략하고 호출한다.
+    }
+    
+    func update(width: Double, height: Double) {
+        self.width = width
+        self.height = height
+    }
+    
+    func doSomething() {
+        let c = { self.width * self.height } // 클로저에서 인스턴스 내부에 접근하려면 self를 캡쳐해야한다.
+    }
+    
+    static let unit = ""
+    
+    static func doSomething() {     // 형식 메소드
+        //self.width <- 형식 메소드에서 인스턴스 속성에 직접 접근하는것은 불가능
+        self.unit   // 둘다 type 맴버이기 때문에 접근 가능하다
+    }
+}
+
+// 정리
+// 1. self는 현재 인스턴스에 접근하기 위해 사용하는 특별한 속성이다.
+// 2. self를 type 맴버에서 사용하면 인스턴스가 아닌 형식 자체를 나타낸다.
+
+
+// 값 형식에서 self를 활용하는 패턴
+struct Size2 {
+    var width = 0.0
+    var height = 0.0
+
+    mutating func reset(value: Double) {
+//        width = value
+//        height = value
+        self = Size2(width: value, height: value)   // 생성자를 통해 초기화가 가능, 클래스에선 사용 할 수 없다.
+    }
+}
+```
+<br>
