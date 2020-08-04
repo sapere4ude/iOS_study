@@ -1573,3 +1573,256 @@ struct Size2 {
 }
 ```
 <br>
+
+# Extension
+
+* Extension - Syntax
+```
+/*
+ 형식을 확장하는데 사용. 속성, 메소드, 생성자와 같은 맴버들을 형식에 추가하는 것
+ 사용 범위 -> Class, Structure, Enumeration, Protocol
+ 형식 선언을 수정할 수 없는 코드여도 문제없이 확장 가능하다.
+ extension 을 통해 기존 자료형에 새로운 맴버를 추가하는 것이 가능해진다. 맴버 추가는 가능하지만 기존의 맴버를
+ 오버라이딩 하는 방법은 불가능. (오버라이딩이 필요하다면 상속을 통해 구현)
+ 
+ extension Type {
+    computedProperty
+    computedTypeProperty
+    instanceMethod
+    typeMethod
+    initializer
+    subscript
+    NestedType
+ }
+ 
+ */
+
+struct Size {
+    var width = 0.0
+    var height = 0.0
+}
+
+extension Size {    //  <- 확장할 형식의 이름을 작성한다.
+    var area: Double {
+        return width * height // <- 기존 형식에 접근하는 것이 가능하다.
+    }
+}
+
+let s = Size()
+s.width     // 0
+s.height    // 0
+s.area      // 0
+
+extension Size: Equatable {     // Size 구조체가 Equatable 을 채용한다는 의미.
+    public static func == (lhs: Size, rhs: Size) -> Bool{
+        return lhs.width == rhs.width && lhs.height == rhs.height // Size 인스턴스를 비교연산자로 비교할 수 있게 된다.
+    }
+}
+
+```
+<br>
+
+* Adding Properties
+```
+/*
+ extension 으로 추가할 수 있는 속성은? -> 계산 속성으로 제한된다.
+ 저장 속성, property observer 를 추가하는 것은 불가능 & 형식에 존재하는 속성을 오버라이딩 하는 것 불가능
+ */
+
+extension Date {
+    var year: Int {
+        let cal = Calendar.current
+        return cal.component(.year, from: self)
+    }
+}
+
+let today = Date()  //  "Aug 4, 2020 at 9:19 AM"
+today.year  //  2020
+// today.month <- month 맴버가 없기때문에 에러가 난다
+
+extension Double {
+    var radianValue: Double {
+        return (Double.pi * self) / 180.0
+    }
+    
+    var degreeValue: Double {
+        return self * 180.0 / Double.pi
+    }
+}
+
+let dv = 45.0
+dv.radianValue  //  0.7853981633974483
+
+```
+<br>
+
+* Adding Methods
+```
+extension Double {
+    func toFahrenheit() -> Double {     // 인스턴스 메소드
+        return self * 9 / 5 + 32
+    }
+    
+    func toCelsius() -> Double {        // 인스턴스 메소드
+        return (self - 32) * 5 / 9
+    }
+    
+    static func convertToFahrenheit(from celsius: Double) -> Double {   // 타입 메소드
+        return celsius.toFahrenheit()
+    }
+    
+    static func convertToCelsius(from fahrenheit: Double) -> Double {
+        return fahrenheit.toCelsius()
+    }
+}
+
+let c = 30.0
+c.toFahrenheit()    //  86, 화씨 온도로 변환한 값
+Double.convertToFahrenheit(from: 30.0)  // 86, 타입 메소드를 사용한 방법
+
+extension Date {
+    func toString(format: String = "yyyyMMdd") -> String {
+        let privateFormatter = DateFormatter()
+        privateFormatter.dateFormat = format
+        return privateFormatter.string(from: self)
+    }
+}
+
+let today = Date()  // "Aug 4, 2020 at 9:33 AM"
+today.toString()    // "20200804"
+
+// 날짜 포멧을 직접 argument 로 전달
+today.toString(format: "MM/dd/yyyy")    // "08/04/2020"
+
+
+extension String {
+    static func random(length: Int, charactersIn chars: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
+        var randomString = String()
+        randomString.reserveCapacity(length)
+        
+        for _ in 0 ..< length {
+            guard let char = chars.randomElement() else {
+                continue
+            }
+            randomString.append(char)
+        }
+        return randomString
+    }
+}
+
+String.random(length: 5)    //  "gvLmM"
+```
+<br>
+
+* Adding Initializers
+```
+/*
+ extension 으로 생성자 추가
+ */
+
+extension Date {
+    init?(year: Int, month: Int, day: Int) {
+        let cal = Calendar.current
+        var comp = DateComponents()
+        comp.year = year
+        comp.month = month
+        comp.day = day
+        
+        guard let date = cal.date(from: comp) else {
+            return nil
+        }
+        
+        self = date // 날짜가 정상적으로 저장되었다면 self에 저장. date 는 구조체로 구현되었기 때문에 self 에 새로운 인스턴스를 할당하는 방식으로 초기화 할 수 있다.
+    }
+}
+
+Date(year: 2014, month: 4, day: 16)
+
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        self.init(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: 1.0)
+    }
+}
+
+UIColor(red: 0, green: 0, blue: 255)
+
+
+struct Size {
+    var width = 0.0
+    var height = 0.0
+
+}
+
+extension Size {
+    init(value: Double) {
+        width = value
+        height = value
+    }
+}
+
+Size()  // <- 기본으로 제공되는 생성자를 사용
+Size(width: 12, height: 34) // <- extension을 통해 생성된 생성자도 사용 가능
+```
+<br>
+
+* Adding Subscripts
+```
+extension String {
+    subscript(idx: Int) -> String? {
+        guard(0..<count).contains(idx) else {
+            return nil
+        }
+        let target = index(startIndex, offsetBy: idx)
+        return String(self[target])
+    }
+}
+
+let str = "Swift"
+str[1]      //  "w"
+str[100]    //  nil
+
+
+extension Date {
+    subscript(component: Calendar.Component) -> Int? {
+        let cal = Calendar.current
+        return cal.component(component, from: self)
+    }
+}
+
+let today = Date()
+today[.year]    // 2020
+today[.month]   // 8
+today[.day]     // 4
+
+```
+<br>
+
+
+# Protocol
+
+* Protocol Syntax
+```
+```
+<br>
+
+* Property Requirements
+```
+```
+<br>
+
+* Method Requirements
+```
+```
+<br>
+
+* Initializer Requirements
+```
+```
+<br>
+
+* Subscript Requirements
+```
+```
+<br>
+
