@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		43A22D19F2E5D8E474E64C44 /* Pods_Hwahae.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F30726DF737E8565DB5C554 /* Pods_Hwahae.framework */; };
 		FA51181224DA79B000C07D66 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA51181124DA79B000C07D66 /* GoogleService-Info.plist */; };
+		FA51181424DACEDD00C07D66 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA51181324DACEDD00C07D66 /* SignupViewController.swift */; };
 		FA82466424D6CEEB004AAA98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82466324D6CEEB004AAA98 /* AppDelegate.swift */; };
 		FA82466624D6CEEB004AAA98 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82466524D6CEEB004AAA98 /* SceneDelegate.swift */; };
 		FA82466B24D6CEEB004AAA98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA82466924D6CEEB004AAA98 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		6F30726DF737E8565DB5C554 /* Pods_Hwahae.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hwahae.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E50B5FCA16213D8943E0A370 /* Pods-Hwahae.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hwahae.release.xcconfig"; path = "Target Support Files/Pods-Hwahae/Pods-Hwahae.release.xcconfig"; sourceTree = "<group>"; };
 		FA51181124DA79B000C07D66 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA51181324DACEDD00C07D66 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		FA82466024D6CEEB004AAA98 /* Hwahae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hwahae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA82466324D6CEEB004AAA98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA82466524D6CEEB004AAA98 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +60,6 @@
 				0A0235AB5D036035C9357AB2 /* Pods-Hwahae.debug.xcconfig */,
 				E50B5FCA16213D8943E0A370 /* Pods-Hwahae.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -99,6 +100,7 @@
 		FAC986D224D7D5F600F88417 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FA51181324DACEDD00C07D66 /* SignupViewController.swift */,
 				FAC986D324D7D73F00F88417 /* HomeViewController.swift */,
 				FAC986D524D7D74D00F88417 /* FindViewController.swift */,
 				FAC986D724D7D75900F88417 /* ShoppingViewController.swift */,
@@ -233,6 +235,7 @@
 			files = (
 				FAC986D624D7D74D00F88417 /* FindViewController.swift in Sources */,
 				FA82466424D6CEEB004AAA98 /* AppDelegate.swift in Sources */,
+				FA51181424DACEDD00C07D66 /* SignupViewController.swift in Sources */,
 				FA82467824D6E738004AAA98 /* RootPageControllerViewController.swift in Sources */,
 				FAC986DA24D7D76200F88417 /* MyViewController.swift in Sources */,
 				FA82466624D6CEEB004AAA98 /* SceneDelegate.swift in Sources */,

@@ -12,6 +12,8 @@ target 'Hwahae' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'FSPagerView'
 
   # Pods for Hwahae
 

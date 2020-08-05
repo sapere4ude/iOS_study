@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mzf-pa-YaI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JLG-jZ-UqK">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -11,6 +11,7 @@
         <scene sceneID="GPE-1m-WH3">
             <objects>
                 <tabBarController id="Mzf-pa-YaI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WKf-3C-cdV"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y5U-vP-HO9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -45,7 +46,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7m0-Gv-zb7">
-                                                        <rect key="frame" x="4" y="36" width="85" height="75"/>
+                                                        <rect key="frame" x="4" y="37" width="85" height="75"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal" title="Button" image="lanking"/>
                                                     </button>
@@ -246,7 +247,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Main" image="Logo" id="L0a-YP-SnU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
-                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹㅇㄹ" textAlignment="center" minimumFontSize="17" id="Bji-IK-xz3">
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제품을 검색하세요" textAlignment="center" minimumFontSize="17" id="Bji-IK-xz3">
                             <rect key="frame" x="88.666666666666671" y="5" width="197.66666666666663" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -256,6 +257,29 @@
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="brandName1" destination="Ygr-1t-Rro" id="oHl-JV-nrf"/>
+                        <outlet property="brandName2" destination="Vx8-BQ-8wS" id="OVv-Zu-TXk"/>
+                        <outlet property="brandName3" destination="9y6-WZ-3Xu" id="ec8-Oy-7hr"/>
+                        <outlet property="btnSearchCategory" destination="bX5-DZ-k87" id="Cqg-kP-ALZ"/>
+                        <outlet property="btnSearchIngredients" destination="lLz-h8-Vp7" id="X5e-Md-zO1"/>
+                        <outlet property="btnShopping" destination="wRx-Mg-jXD" id="kSc-32-x2j"/>
+                        <outlet property="btnShowLanking" destination="7m0-Gv-zb7" id="aWK-1l-MMo"/>
+                        <outlet property="newProduct1" destination="7C9-nw-AWd" id="5wb-b7-CoG"/>
+                        <outlet property="newProduct2" destination="2r4-Qk-hvm" id="TvK-It-i23"/>
+                        <outlet property="newProduct3" destination="umN-g0-bpN" id="lZh-vy-Waf"/>
+                        <outlet property="newProduct4" destination="CkF-bd-f8D" id="Xb0-7S-fpb"/>
+                        <outlet property="newProduct5" destination="c1v-r4-eAg" id="Woc-Q5-rRu"/>
+                        <outlet property="newProduct6" destination="RaH-Ux-BXk" id="AkU-WX-qv6"/>
+                        <outlet property="productBrand1" destination="bb9-3m-6Hk" id="O9Z-DB-Ncn"/>
+                        <outlet property="productBrand2" destination="CZc-o8-nog" id="Gmr-SD-d5b"/>
+                        <outlet property="productBrand3" destination="7nr-Io-LiN" id="vac-iK-FEd"/>
+                        <outlet property="productName1" destination="gTY-dt-iCC" id="TfN-ex-Si2"/>
+                        <outlet property="productName2" destination="nQN-97-9Qd" id="Uok-Qx-bYQ"/>
+                        <outlet property="productName3" destination="SXn-Zi-3DQ" id="Ngq-NE-Z7l"/>
+                        <outlet property="returnMainView" destination="L0a-YP-SnU" id="gqA-CB-x5Y"/>
+                        <outlet property="serchProduct" destination="Bji-IK-xz3" id="mir-xl-8zA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49f-jr-qTN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -277,6 +301,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wML-50-rr1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="13" y="-1110"/>
+        </scene>
+        <!--Signup-->
+        <scene sceneID="sOl-vW-6ra">
+            <objects>
+                <viewController restorationIdentifier="SignupVC" storyboardIdentifier="SignupVC" title="Signup" id="JLG-jZ-UqK" customClass="SignupViewController" customModule="Hwahae" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VvM-YF-mrz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6oJ-XC-0Ea">
+                                <rect key="frame" x="60" y="364" width="255" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dQ-ns-WBz">
+                                <rect key="frame" x="60" y="406" width="255" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Singup" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvV-M8-xHV">
+                                <rect key="frame" x="60" y="461" width="255" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.4356868753" green="1" blue="0.90233488399999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Signup">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="화해" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htH-H5-DYH">
+                                <rect key="frame" x="162" y="275" width="51" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.4356868753" green="1" blue="0.90233488399999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="HI5-0O-7aK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Isr-Au-VSp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="-1897"/>
         </scene>
         <!--Shopping-->
         <scene sceneID="CXW-Pm-r4i">
