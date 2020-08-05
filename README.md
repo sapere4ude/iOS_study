@@ -1803,16 +1803,147 @@ today[.day]     // 4
 
 * Protocol Syntax
 ```
+/*
+ Protocol : 형식에서 공통으로 제공하는 맴버 목록
+ 
+ protocol ProtocolName {
+    propertyRequirement
+    methodRequirement
+    initializerRequirement
+    subscriptRequirements
+ }
+ 
+ protocol ProtocolName: Protocol, ... {
+ 
+ }
+ 
+ - Adopting Protocols
+ 
+ enum TypeName: ProtocolName, ... {
+ 
+ }
+ 
+ struct TypeName: ProtocolName, ... {
+ 
+ }
+ 
+ class TypeName: SuperClass, ProtocolName, ... {
+ 
+ }
+ 
+ */
+
+ protocol Something {
+    func doSomething()
+}
+
+struct Size: Something {    // 컴파일러는 Size 구조체가 Something 프로토콜에 선언되어 있는 요구사항을 만족시킨다고 생각
+    func doSomething() {
+    }
+}
+
+/*
+ Class-only Protocols
+ 
+ protocol ProtocolName: AnyObject {
+ 
+ }
+ */
+
+protocol SomethingObject: AnyObject, Something {   // <- 클래스 전용 프로토콜
+    
+}
+
+//struct Value: SomethingObject {   <- 클래스 타입이 아니기에 채용할 수 없다.
+//
+//}
+
+class Object: SomethingObject {
+    func doSomething() {
+        
+    }
+}
+
 ```
 <br>
 
 * Property Requirements
 ```
+/*
+ -선언문법-
+ 
+ protocol ProtocolName {
+    var name: Type {get set} <- protocol 내부에선 항상 var 키워드 사용
+    static var name: Type {get set} <- get : 읽기전용 / set : 쓰기전용
+ }
+ 
+ */
+
+protocol Figure {
+    static var name: String { get set }
+}
+
+struct Rectangle: Figure {
+    static var name = "Rect"
+}
+
+struct Triangle: Figure {
+    static var name = "Triangle"
+}
+
+class Circle: Figure {
+    class var name: String {
+        get {
+            return "Circle"
+        }
+        set {
+            
+        }
+    }
+}
 ```
 <br>
 
 * Method Requirements
 ```
+/*
+ -선언문법-
+ protocol ProtocolName {
+    func name(param) -> ReturnType
+    static func name(param) -> ReturnType
+    mutating func name(param) -> ReturnType
+ }
+ */
+
+//protocol Resettable {
+//    func reset()
+//}
+
+// class 구현
+//class Size: Resettable {
+//    var width = 0.0
+//    var height = 0.0
+//
+//    func reset() {      // <- 프로토콜에 선언되어 있는 메소드 이름, 파라미터 형식, 리턴형이 모두 동일하면 메소드 바디안에 어떤 것이 들어가던 상관없다.
+//        width = 0.0
+//        height = 0.0
+//    }
+//}
+
+protocol Resettable {
+    mutating func reset()   // <- mutating 은 값 형식에서만 사용하는 키워드
+}
+
+// struct 구현
+struct Size: Resettable {
+    var width = 0.0
+    var height = 0.0
+    
+    mutating func reset() {      // <- 프로토콜에 선언되어 있는 메소드 이름, 파라미터 형식, 리턴형이 모두 동일하면 메소드 바디안에 어떤 것이 들어가던 상관없다.
+        width = 0.0
+        height = 0.0
+    }
+}
 ```
 <br>
 
