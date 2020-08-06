@@ -1572,6 +1572,7 @@ struct Size2 {
     }
 }
 ```
+
 # Method and Subscript
 
 * Instance Method
@@ -1683,6 +1684,7 @@ class StrokeCircle: Circle {
 }
 
 ```
+
 <br>
 
 * Subcript
