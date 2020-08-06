@@ -1572,6 +1572,211 @@ struct Size2 {
     }
 }
 ```
+# Method and Subscript
+
+* Instance Method
+```
+/*
+ -문법선언-
+ func name(parameters) -> ReturnType {
+     Code
+ }
+
+ 메소드 : 특정 함수에 속한 형식.
+ Instance Method 는 클래스, 구조체, 열거형에서 사용할 수 있다.
+ 특정 인스턴스와 연관된 동작을 구현한다. 인스턴스 이름을 통해 호출한다.
+ 
+ **/
+
+class Sample {
+    var data = 0
+    static var sharedData = 123
+    
+    func doSomething(){
+        print(data)
+        Sample.sharedData   // 타입맴버에 접근할땐 클래스 이름을 통해 접근
+    }
+    
+    func call() {
+        doSomething()
+    }
+}
+
+// 인스턴스를 만들고 메소드 호출, 메소드는 반드시 인스턴스 이름으로 호출해야 한다!
+let a = Sample()    // a 라는 인스턴스가 생성된 것
+a.data              // 데이터 속성에 접근
+a.doSomething()
+a.call()
+
+
+// 1. class로 구현한 경우
+/*class Size {
+    var width = 0.0
+    var height = 0.0
+    
+    func enlarge() {
+        width += 0.0
+        height += 0.0
+    }
+}
+
+let s = Size()
+s.enlarge()
+*/
+
+// 2. 구조체로 구현한 경우
+struct Size {
+    var width = 0.0
+    var height = 0.0
+
+    mutating func enlarge() {   // 값 형식에서 속성을 바꾸는 메소드를 구현할 경우엔 mutating 이 필요
+        width += 0.0
+        height += 0.0
+    }
+}
+
+var s = Size()  // 변할 수 있기 때문에 var 에 저장해야 한다.
+s.enlarge()
+
+```
+<br>
+
+* Type Method
+
+```
+/*
+ -문법선언-
+ static func name(parameters) -> ReturnType {   // 오버라이딩 불가
+     statements
+ }
+
+ class func name(parameters) -> ReturnType {    // 오버라이딩 가능
+     statements
+ }
+
+ Type.method(parameters)
+ 
+ 타입 메소드는 인스턴스 메소드와 마찬가지로 클래스, 구조체, 열거형애서 구현할 수 있다.
+ 
+ **/
+
+class Circle {
+    
+    static let pi = 3.14    // 타입 속성 생성
+    var radius = 0.0        // 인스턴스 속성 생성
+    
+    func getArea() -> Double {
+        return radius * radius * Circle.pi  // 접근 방법의 차이 확인
+    }
+    
+    class func printPi() { // 타입 속성을 생성했기에 타입 속성에 직접 접근이 가능함, 오버라이딩 가능
+        print(pi)
+    }
+}
+
+Circle.printPi()
+
+class StrokeCircle: Circle {
+    override static func printPi() {
+        print(pi)
+    }
+}
+
+```
+<br>
+
+* Subcript
+```
+/*
+ - 구현된 subscripts
+ instance[index]
+ instance[key]
+ instance[range]
+ 
+ - 직접 정의하는 subscripts
+ subscript(parameters) -> ReturnType {
+    get {
+        return expression
+    }
+    set(name) {
+        statements
+    }
+ }
+ 
+ **/
+
+
+
+// 기존의 구현된 서브스크립트
+let list = ["A", "B", "C"]
+list[0] // <- 이런게 subscript
+
+class List {
+    var data = [1, 2, 3]
+    
+    subscript(index: Int) -> Int {
+        get {
+            return data[index]
+        }
+        set {
+           data[index] = newValue
+        }
+    }
+}
+
+var l = List()
+l[0]            //  1, get 블록 사용
+l[1] = 123      //  123, set 블록 사용
+
+// 구조체에서 subscript 를 구현하는 경우
+
+struct Matrix {
+    var data = [[1,2,3],
+                [4,5,6],
+                [7,8,9]]
+    
+    subscript(row: Int, col: Int) -> Int {  //  읽기 전용, get & set 블록 생략
+        return data[row][col]
+    }
+}
+
+let m = Matrix()
+m[0,2]  //  2개 이상의 값을 넣어 서브스크립트에서 값을 얻고 싶으면 [ ]안에 ',' 를 통해 접근한다
+
+```
+
+<br>
+
+# Inheritance and Polymorphism
+
+* Inheritance
+```
+```
+<br>
+
+* Overriding
+```
+```
+<br>
+
+* Upcasting and Downcasting
+```
+```
+<br>
+
+* Type Casting
+```
+```
+<br>
+
+* Any and AnyObject
+```
+```
+<br>
+
+* Overloading
+```
+```
 <br>
 
 # Extension
