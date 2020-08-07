@@ -1753,16 +1753,140 @@ m[0,2]  //  2개 이상의 값을 넣어 서브스크립트에서 값을 얻고 
 
 * Inheritance
 ```
+/*
+ -문법구조-
+ class ClassName: SuperClassName {
+ 
+ }
+ 
+ 스위프트는 다중 상속을 지원하지 않는다. 다중상속을 피하기 위해 프로토콜을 사용한다.
+ **/
+
+
+class Figure {
+    var name = "Unknown"
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func draw() {
+        print("draw \(name)")
+    }
+}
+
+class Circle: Figure {
+    var radius = 0.0
+}
+
+let c = Circle(name: "Circle")  // Figure 클래스로부터 생성자를 상속받은 것
+c.radius
+c.name
+c.draw()
+
+// sub class 는 super class 로 부터 맴버를 상속받는다 !
+
+// final class 예제
+final class Rectangle: Figure {
+    var width = 0.0
+    var height = 0.0
+}
+
+/* Rectangle 클래스가 final로 선언되어 있다는 것의 의미는 다른 클래스는 Rectangle 클래스를 상속할 수 없다는 걸 의미함
+class Square: Rectangle {   // Square < Rectangle < Figure
+     
+}
+*/
+
 ```
 <br>
 
 * Overriding
 ```
+// 1. methods overriding
+class Figure {
+   var name = "Unknown"
+
+   init(name: String) {
+      self.name = name
+   }
+
+   func draw() {
+      print("draw \(name)")
+   }
+}
+
+class Circle: Figure {
+    var radius = 0.0 // var 로 선언되었기 때문에 읽기, 쓰기 둘다 가능하다.
+    var diameter: Double {
+        return radius * 2
+    }
+    override func draw() {   // Figure 에 있는 draw()를 완전히 무시하고 새롭게 정의된 것
+    super.draw()    // Figure에 존재하는 draw()를 실행시킴
+    print("🏄🏻‍♂️")
+    }
+}
+
+let c = Circle(name: "Circle")
+c.draw()
+
+
+// 2. Properties overriding
+
+class Oval: Circle {
+    override var radius: Double {   // Circle 클래스의 radius를 Override 하여 사용하려면 get, set 블록을 만들어줘야 한다. radius는 var 로 선언되어 있기 때문에!
+        get {
+            return super.radius
+        }
+        set {
+            super.radius = newValue
+        }
+    }
+    
+    override var diameter: Double {
+        get {
+            return super.diameter
+        }
+        set {
+            super.radius = newValue / 2
+        }
+    }
+}
+
+// 읽기 전용 속성을 읽기 & 쓰기가 가능한 속성으로 overriding 하는 것은 가능
+// 읽기 & 쓰기가 가능한 속성을 읽기 전용 속성으로 overriding 하는 것은 불가능
+
+
+// 3. Properties Observer
+class Oval2: Circle {
+    override var radius: Double {
+        willSet {
+            print(newValue)
+        }
+        didSet {
+            print(oldValue)
+        }
+    }
+    
+// 불가능한 방법
+//    override var diameter: Double {
+//        willSet {
+//            print(newValue)
+//        }
+//        didSet {
+//            print(oldValue)
+//        }
+//    }
+}
+
+// 4. Overriding 을 금지하는 방법
+// 여기 파트 나중에 추가하기
 ```
 <br>
 
 * Upcasting and Downcasting
 ```
+
 ```
 <br>
 
