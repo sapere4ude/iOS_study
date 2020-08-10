@@ -1886,22 +1886,214 @@ class Oval2: Circle {
 
 * Upcasting and Downcasting
 ```
+class Figure {
+    let name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func draw() {
+        print("draw \(name)")
+    }
+}
 
+class Rectangle: Figure {
+    var width = 0.0
+    var height = 0.0
+    
+    override func draw() {
+        super.draw()
+        print("⬛️ \(width) x \(height)")
+    }
+}
+
+class Square: Rectangle {
+   
+}
+
+let f = Figure(name: "Unknown") // 새로운 Figure 인스턴스를 생성
+f.name
+
+let r = Rectangle(name: "Rect")
+r.width
+r.height
+r.name  // 상속받았으니깐 사용가능
+
+// Upcasting : 서브클래스 인스턴스를 슈퍼클래스 형식으로 저장
+let s: Figure = Square(name: "Square")  // 세 가지 속성에 모두 접근 가능하다
+//s.width
+//s.height
+//s.name
+
+// Downcasting :
+let downcastedS = s as! Square
+downcastedS.name
+downcastedS.width
+downcastedS.height
+
+
+class Rhombus: Square {
+    var angle = 45.0
+}
+
+let dr = s as! Rhombus  // 원본 클래스보다 아래쪽에 있는 서브클래스로 다운캐스팅 하는 것은 허용하지 않는다
 ```
 <br>
 
 * Type Casting
 ```
+/* 1. Type Check Operator
+    -표현방법-
+    expression is Type
+ 
+*/
+let num = 123
+
+num is Int
+num is Double
+num is String
+
+let t = Triangle(name: "Triangle")
+let r = Rectangle(name: "Rect")
+let s = Square(name: "Square")
+let c = Circle(name: "Circle")
+
+r is Rectangle  // true
+r is Figure     // true
+r is Square     // false
+
+// type check는 run time에 실행된다!
+
+/* 2. Type Casting Operator
+ 
+ Compile Time Cast >> expression as Type
+ Runtime Cast >> expression as? Type (conditional cast) - 옵셔널하고 비슷한
+                 expression as! Type (Forced cast) - 강제 추출
+ 
+ */
+
+let nsstr = "str" as NSString
+
+t as? Triangle
+t as! Triangle
+
+var upcasted: Figure = s
+upcasted = s as Figure  // upcasting은 안전하고 항상 성공한다
+
+upcasted as? Square
+upcasted as! Square
+upcasted as? Rectangle
+upcasted as! Rectangle
+
+upcasted as? Circle
+//upcasted as! Circle
+
+let list = [t, r, s, c]     // 서로다른 형식이 들어가 있음 >> Figure 클래스로 upcasting 된 것을 확인할 수 있음
+
+for item in list {
+    item.draw()
+    
+    if let c = item as? Circle {    // downcasting 해서 속성에 접근하는 방식
+        c.radius
+    }
+}
 ```
 <br>
 
 * Any and AnyObject
 ```
+/*
+ 1. Any, AnyObject - 범용 자료형
+ Any : 모든 형식을 저장할 수 있다
+ AnyObject : 모든 클래스 형식을 저장할 수 있다
+ */
+
+var data: Any = 1  // 형식에 관계없이 모든 데이터를 저장할 수 있다
+data = 2.3
+data = "str"
+data = [1,2,3]
+data = NSString()   // NSString 과 String은 서로 호환이 가능하다
+
+var obj: AnyObject = NSString()
+//obj = 1
+
+if let str = data as? String {  // String으로 type casting을 해준 것
+    print(str.count)
+} else if let list = data as? [Int] {   // <- 이런 방법은 타입캐스팅 패턴에서 자세하게 다시
+    
+}
+
+// 2. Type Casting Pattern : 범용 형식으로 저장되었거나 upcasting된 메소드를 매칭시킬때 사용
+
+switch data {
+case let str as String:
+    print(str.count)
+case let list as [Int]:
+    print(list.count)
+case is Double:
+    print("Double Value")
+default:
+    break
+}
 ```
 <br>
 
 * Overloading
 ```
+/*
+ Overloading : 하나의 형식에서 동일한 이름을 가진 다수의 맴버를 구현할 때 사용
+ Overloading Rule
+ #1. 함수 이름이 동일하면 파라미터 수로 식별
+ #2. 함수 이름, 파라미터 수가 동일하면 파라미터 자료형으로 식별
+ #3. 함수 이름, 파라미터가 동일하면 Argument Label로 식별
+ #4. 함수 이름, 파라미터, Argument Label이 동일하면 리턴형으로 식별
+ */
+
+func process(value: Int) {
+    print("process Int")
+}
+
+func process(value: String) {
+    print("process String")
+}
+
+func process(value: String, anotherValue: String) {
+    
+}
+
+func process(_ value: String) { // Argument Label이 생략되어 있음
+    
+}
+
+process(value: 0)
+process(value: "str")
+process("str")
+
+func process(value: Double) -> Int {
+    return Int(value)
+}
+
+func process(value: Double) -> String? {
+    return String(value)
+}
+
+let result: Int = process(value: 12.34)     // 웬만하면 #4 를 사용하진 말자
+
+// 메소드에서 사용
+struct Rectangle {
+    func area() -> Double {
+        return 0.0
+    }
+    
+    static func area() -> Double {
+        return 0.0
+    }
+}
+
+let r = Rectangle()
+r.area()
+Rectangle.area()
 ```
 <br>
 
