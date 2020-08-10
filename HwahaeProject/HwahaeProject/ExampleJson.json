@@ -1,0 +1,92 @@
+[
+  {
+    "title" : "화장품 리스트를 보여드립니다!",
+    "value" : [
+      {
+        "image_url" : "https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png",
+        "title" : "화장품1",
+        "shipping_price" : 2500,
+        "price" : 30000
+      },
+      {
+        "title" : "화장품2",
+        "price" : 33000,
+        "image_url" : "https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png",
+        "shipping_price" : 2500
+      },
+      {
+        "price" : 4000,
+        "image_url" : "https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png",
+        "title" : "화장품3",
+        "shipping_price" : 0
+      },
+      {
+        "image_url" : "https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png",
+        "price" : 500000,
+        "title" : "화장품4",
+        "shipping_price" : 2500
+      },
+      {
+        "image_url" : "https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png",
+        "price" : 302000,
+        "title" : "화장품5",
+        "shipping_price" : 5000
+      }
+    ],
+    "type" : 1
+  },
+  {
+    "title" : "여름에 잘 어울리는 화장품",
+    "value" : [
+      {
+        "is_brand_new" : 1,
+        "price" : 30200,
+        "title" : "아이템1",
+        "shipping_price" : 2500,
+        "brand_name" : "회사1",
+        "image_url" : "https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png"
+      },
+      {
+        "price" : 33700,
+        "title" : "아이템2",
+        "shipping_price" : 2500,
+        "image_url" : "https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png",
+        "brand_name" : "회사1",
+        "is_brand_new" : 1
+      },
+      {
+        "is_brand_new" : 0,
+        "title" : "아이템3",
+        "image_url" : "https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png",
+        "brand_name" : "회사3",
+        "shipping_price" : 0,
+        "price" : 554000
+      },
+      {
+        "price" : 530000,
+        "image_url" : "https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png",
+        "brand_name" : "회사2",
+        "shipping_price" : 2500,
+        "is_brand_new" : 1,
+        "title" : "아이템4"
+      },
+      {
+        "image_url" : "https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png",
+        "brand_name" : "회사4",
+        "is_brand_new" : 0,
+        "price" : 312000,
+        "title" : "아이템5",
+        "shipping_price" : 3000
+      }
+    ],
+    "type" : 2
+  },
+  {
+    "type" : 3,
+    "value" : [
+      "https://daum.net",
+      "https://daum.net",
+      "https://daum.net"
+    ]
+  }
+]

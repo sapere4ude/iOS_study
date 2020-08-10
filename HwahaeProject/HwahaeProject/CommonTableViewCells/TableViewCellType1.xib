@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="CellType1" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCellType1" rowHeight="270" id="YKm-AF-T0c" customClass="TableViewCellType1" customModule="ExampleViewController" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="353" height="270"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YKm-AF-T0c" id="b1m-jJ-UCb">
+                <rect key="frame" x="0.0" y="0.0" width="353" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ex-hV-uml">
+                        <rect key="frame" x="0.0" y="0.0" width="353" height="270"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Pt-zG-tix">
+                                <rect key="frame" x="0.0" y="0.0" width="353" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GB7-1X-0QO">
+                                        <rect key="frame" x="0.0" y="4.5" width="303" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2BH-8J-mel">
+                                        <rect key="frame" x="303" y="0.0" width="50" height="30"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sOx-ln-ihD">
+                                                <rect key="frame" x="10" y="1" width="30" height="27.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="R9E-Uf-b4R"/>
+                                                    <constraint firstAttribute="height" constant="30" id="rUc-6I-cy5"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="6jP-Ob-B6U"/>
+                                            <constraint firstItem="sOx-ln-ihD" firstAttribute="centerY" secondItem="2BH-8J-mel" secondAttribute="centerY" id="GTE-aI-V3T"/>
+                                            <constraint firstAttribute="trailing" secondItem="sOx-ln-ihD" secondAttribute="trailing" constant="10" id="PWD-Yq-cKw"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="2BH-8J-mel" secondAttribute="bottom" id="31o-n5-vbp"/>
+                                    <constraint firstItem="2BH-8J-mel" firstAttribute="leading" secondItem="GB7-1X-0QO" secondAttribute="trailing" id="EOL-sW-xMu"/>
+                                    <constraint firstAttribute="trailing" secondItem="2BH-8J-mel" secondAttribute="trailing" id="Sdl-ue-Jf5"/>
+                                    <constraint firstAttribute="height" constant="30" id="TAF-4u-vMH"/>
+                                    <constraint firstItem="GB7-1X-0QO" firstAttribute="leading" secondItem="5Pt-zG-tix" secondAttribute="leading" id="Uhn-bY-QPD"/>
+                                    <constraint firstItem="2BH-8J-mel" firstAttribute="top" secondItem="5Pt-zG-tix" secondAttribute="top" id="cqq-Ni-eBg"/>
+                                    <constraint firstItem="GB7-1X-0QO" firstAttribute="centerY" secondItem="5Pt-zG-tix" secondAttribute="centerY" id="rhi-8z-ObX"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="DZk-Mb-Wl7">
+                                <rect key="frame" x="0.0" y="30" width="353" height="240"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vTl-fK-FEz">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DZk-Mb-Wl7" firstAttribute="top" secondItem="5Pt-zG-tix" secondAttribute="bottom" id="HnF-ST-neY"/>
+                            <constraint firstItem="5Pt-zG-tix" firstAttribute="top" secondItem="9ex-hV-uml" secondAttribute="top" id="RZE-xL-VTW"/>
+                            <constraint firstAttribute="bottom" secondItem="DZk-Mb-Wl7" secondAttribute="bottom" id="isG-Oa-9Gp"/>
+                            <constraint firstAttribute="trailing" secondItem="DZk-Mb-Wl7" secondAttribute="trailing" id="jM4-Dq-Sj1"/>
+                            <constraint firstItem="DZk-Mb-Wl7" firstAttribute="leading" secondItem="9ex-hV-uml" secondAttribute="leading" id="jlN-0L-D3k"/>
+                            <constraint firstAttribute="trailing" secondItem="5Pt-zG-tix" secondAttribute="trailing" id="wfN-wI-1lC"/>
+                            <constraint firstItem="5Pt-zG-tix" firstAttribute="leading" secondItem="9ex-hV-uml" secondAttribute="leading" id="zqs-nS-XQq"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="9ex-hV-uml" secondAttribute="trailing" id="Bdh-Mt-Q4K"/>
+                    <constraint firstAttribute="bottom" secondItem="9ex-hV-uml" secondAttribute="bottom" id="FEl-Yq-hnA"/>
+                    <constraint firstItem="9ex-hV-uml" firstAttribute="leading" secondItem="b1m-jJ-UCb" secondAttribute="leading" id="Lkl-Fc-eeT"/>
+                    <constraint firstItem="9ex-hV-uml" firstAttribute="top" secondItem="b1m-jJ-UCb" secondAttribute="top" id="Nzz-Rx-nmx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="blZ-yb-sC3"/>
+            <connections>
+                <outlet property="collectionView" destination="DZk-Mb-Wl7" id="kWO-cv-vNl"/>
+                <outlet property="mainContainerView" destination="9ex-hV-uml" id="B4F-Yr-KcG"/>
+                <outlet property="moreBtnImgView" destination="sOx-ln-ihD" id="LAZ-EK-t5n"/>
+                <outlet property="moreBtnView" destination="2BH-8J-mel" id="lr2-b2-dqe"/>
+                <outlet property="titleLabel" destination="GB7-1X-0QO" id="Mk5-Cc-Vx5"/>
+                <outlet property="topContainerView" destination="5Pt-zG-tix" id="glB-sw-vvS"/>
+            </connections>
+            <point key="canvasLocation" x="161.59420289855075" y="217.63392857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
+    </resources>
+</document>
