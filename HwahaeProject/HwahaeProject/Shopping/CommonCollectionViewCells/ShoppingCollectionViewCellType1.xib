@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCellType1" id="iSc-V7-nga" userLabel="ShoppingCollectionViewCellType1" customClass="CollectionViewCellType1" customModule="HwahaeProject" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoppingCollectionViewCellType1" id="iSc-V7-nga" userLabel="ShoppingCollectionViewCellType1" customClass="ShoppingCollectionViewCellType1" customModule="HwahaeProject" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="197" height="353"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -105,14 +105,14 @@
             <viewLayoutGuide key="safeArea" id="fe0-ax-ENC"/>
             <size key="customSize" width="197" height="353"/>
             <connections>
-                <outlet property="imgContainerView" destination="HXh-yY-gHa" id="nqO-JB-EbU"/>
-                <outlet property="imgView" destination="aeg-k7-e8O" id="aEu-Dc-dC4"/>
-                <outlet property="mainContainerView" destination="5Sd-HC-tAT" id="m2i-Kh-egE"/>
-                <outlet property="priceLabel" destination="Pfi-NO-Rbq" id="fmA-rp-0mD"/>
+                <outlet property="imgContainerView" destination="HXh-yY-gHa" id="roz-AG-Zkw"/>
+                <outlet property="imgView" destination="aeg-k7-e8O" id="Q37-4z-MPL"/>
+                <outlet property="mainContainerView" destination="5Sd-HC-tAT" id="Dts-e8-3aA"/>
+                <outlet property="priceLabel" destination="Pfi-NO-Rbq" id="yvf-8f-m7o"/>
                 <outlet property="shippingPriceContainerView" destination="CNi-Bg-HgO" id="TQn-7R-kvT"/>
-                <outlet property="shippingPriceLabel" destination="tVr-p7-1H0" id="fDa-I8-x2G"/>
-                <outlet property="textContainerView" destination="n0R-06-1J5" id="jRV-D2-Dc4"/>
-                <outlet property="titleLabel" destination="aeo-od-kcO" id="bbC-GZ-9Y4"/>
+                <outlet property="shippingPriceLabel" destination="tVr-p7-1H0" id="5jB-T9-zBi"/>
+                <outlet property="textContainerView" destination="n0R-06-1J5" id="4yx-gF-L4U"/>
+                <outlet property="titleLabel" destination="aeo-od-kcO" id="D9W-KU-MjP"/>
             </connections>
             <point key="canvasLocation" x="267.39130434782612" y="199.88839285714286"/>
         </collectionViewCell>

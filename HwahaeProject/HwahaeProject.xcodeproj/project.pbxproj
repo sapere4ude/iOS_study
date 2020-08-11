@@ -30,6 +30,12 @@
 		FA00A4FD24E1985200A3781D /* ShoppingCollectionViewCellType1.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA00A4FB24E1985200A3781D /* ShoppingCollectionViewCellType1.xib */; };
 		FA5DFB3624E2C0EA00BF17A9 /* ShoppingTableViewCellType1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DFB3424E2C0EA00BF17A9 /* ShoppingTableViewCellType1.swift */; };
 		FA5DFB3724E2C0EA00BF17A9 /* ShoppingTableViewCellType1.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5DFB3524E2C0EA00BF17A9 /* ShoppingTableViewCellType1.xib */; };
+		FA5DFB3A24E2DA0A00BF17A9 /* ShoppingTableViewCellType2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DFB3824E2DA0A00BF17A9 /* ShoppingTableViewCellType2.swift */; };
+		FA5DFB3B24E2DA0A00BF17A9 /* ShoppingTableViewCellType2.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5DFB3924E2DA0A00BF17A9 /* ShoppingTableViewCellType2.xib */; };
+		FA5DFB3E24E2DA2100BF17A9 /* ShoppingTableViewCellType3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DFB3C24E2DA2100BF17A9 /* ShoppingTableViewCellType3.swift */; };
+		FA5DFB3F24E2DA2100BF17A9 /* ShoppingTableViewCellType3.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5DFB3D24E2DA2100BF17A9 /* ShoppingTableViewCellType3.xib */; };
+		FA5DFB4224E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DFB4024E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.swift */; };
+		FA5DFB4324E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5DFB4124E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +66,12 @@
 		FA00A4FB24E1985200A3781D /* ShoppingCollectionViewCellType1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCollectionViewCellType1.xib; sourceTree = "<group>"; };
 		FA5DFB3424E2C0EA00BF17A9 /* ShoppingTableViewCellType1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCellType1.swift; sourceTree = "<group>"; };
 		FA5DFB3524E2C0EA00BF17A9 /* ShoppingTableViewCellType1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingTableViewCellType1.xib; sourceTree = "<group>"; };
+		FA5DFB3824E2DA0A00BF17A9 /* ShoppingTableViewCellType2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCellType2.swift; sourceTree = "<group>"; };
+		FA5DFB3924E2DA0A00BF17A9 /* ShoppingTableViewCellType2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingTableViewCellType2.xib; sourceTree = "<group>"; };
+		FA5DFB3C24E2DA2100BF17A9 /* ShoppingTableViewCellType3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCellType3.swift; sourceTree = "<group>"; };
+		FA5DFB3D24E2DA2100BF17A9 /* ShoppingTableViewCellType3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingTableViewCellType3.xib; sourceTree = "<group>"; };
+		FA5DFB4024E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCollectionViewCellType2.swift; sourceTree = "<group>"; };
+		FA5DFB4124E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCollectionViewCellType2.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +178,8 @@
 			children = (
 				FA00A4FA24E1985200A3781D /* ShoppingCollectionViewCellType1.swift */,
 				FA00A4FB24E1985200A3781D /* ShoppingCollectionViewCellType1.xib */,
+				FA5DFB4024E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.swift */,
+				FA5DFB4124E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.xib */,
 			);
 			path = CommonCollectionViewCells;
 			sourceTree = "<group>";
@@ -175,6 +189,10 @@
 			children = (
 				FA5DFB3424E2C0EA00BF17A9 /* ShoppingTableViewCellType1.swift */,
 				FA5DFB3524E2C0EA00BF17A9 /* ShoppingTableViewCellType1.xib */,
+				FA5DFB3824E2DA0A00BF17A9 /* ShoppingTableViewCellType2.swift */,
+				FA5DFB3924E2DA0A00BF17A9 /* ShoppingTableViewCellType2.xib */,
+				FA5DFB3C24E2DA2100BF17A9 /* ShoppingTableViewCellType3.swift */,
+				FA5DFB3D24E2DA2100BF17A9 /* ShoppingTableViewCellType3.xib */,
 			);
 			path = CommonTableViewCells;
 			sourceTree = "<group>";
@@ -257,7 +275,10 @@
 				FA00A4F024E1887D00A3781D /* ExampleJson.json in Resources */,
 				FA00A4C724E179E600A3781D /* Main.storyboard in Resources */,
 				FA00A4EA24E183E500A3781D /* CollectionViewCellType2.xib in Resources */,
+				FA5DFB3B24E2DA0A00BF17A9 /* ShoppingTableViewCellType2.xib in Resources */,
 				FA00A4EE24E184DE00A3781D /* TableViewCellType3.xib in Resources */,
+				FA5DFB3F24E2DA2100BF17A9 /* ShoppingTableViewCellType3.xib in Resources */,
+				FA5DFB4324E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,15 +331,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5DFB3A24E2DA0A00BF17A9 /* ShoppingTableViewCellType2.swift in Sources */,
 				FA00A4FC24E1985200A3781D /* ShoppingCollectionViewCellType1.swift in Sources */,
 				FA00A4C424E179E600A3781D /* ViewController.swift in Sources */,
 				FA00A4C024E179E600A3781D /* AppDelegate.swift in Sources */,
+				FA5DFB3E24E2DA2100BF17A9 /* ShoppingTableViewCellType3.swift in Sources */,
 				FA00A4D424E181CD00A3781D /* ShoppingViewController.swift in Sources */,
 				FA00A4E924E183E500A3781D /* CollectionViewCellType2.swift in Sources */,
 				FA5DFB3624E2C0EA00BF17A9 /* ShoppingTableViewCellType1.swift in Sources */,
 				FA00A4DD24E1838400A3781D /* TableViewCellType1.swift in Sources */,
 				FA00A4E124E1839500A3781D /* TableViewCellType2.swift in Sources */,
 				FA00A4ED24E184DE00A3781D /* TableViewCellType3.swift in Sources */,
+				FA5DFB4224E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.swift in Sources */,
 				FA00A4C224E179E600A3781D /* SceneDelegate.swift in Sources */,
 				FA00A4E524E183D500A3781D /* CollectionViewCellType1.swift in Sources */,
 			);

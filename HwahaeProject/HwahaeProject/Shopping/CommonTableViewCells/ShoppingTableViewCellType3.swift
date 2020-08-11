@@ -1,5 +1,5 @@
 //
-//  ShoppingTableViewCellType1.swift
+//  ShoppingTableViewCellType3.swift
 //  HwahaeProject
 //
 //  Created by sapere4ude on 2020/08/11.
@@ -9,13 +9,15 @@
 import UIKit
 import SwiftyJSON
 
-class ShoppingTableViewCellType1: UITableViewCell {
+class ShoppingTableViewCellType3: UITableViewCell {
+
     @IBOutlet weak var mainContainerView: UIView!
     @IBOutlet weak var topContainerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var moreBtnView: UIView!
-    @IBOutlet weak var moreBtnImgView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    //MARK: property
     
     var infoData:JSON = JSON.null {
         didSet {
@@ -23,32 +25,35 @@ class ShoppingTableViewCellType1: UITableViewCell {
         }
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         initUI()
     }
-
+    
     func initUI() {
         self.mainContainerView.backgroundColor = .white
         self.topContainerView.backgroundColor = .clear
-        self.moreBtnView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(moreViewAction(_:)))
-        self.moreBtnImgView.addGestureRecognizer(tapGesture)
+        self.moreBtnView.backgroundColor = .clear
+        let moreViewGesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(moreViewAction))
+        self.moreBtnView.addGestureRecognizer(moreViewGesture)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.register(UINib(nibName: "ShoppingCollectionViewCellType1", bundle: nil), forCellWithReuseIdentifier: "ShoppingCollectionViewCellType1")
+        self.collectionView.register(UINib(nibName: "ShoppingCollectionViewCellType2", bundle: nil), forCellWithReuseIdentifier: "ShoppingCollectionViewCellType2")
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
         self.collectionView.collectionViewLayout = layout
         self.collectionView.showsHorizontalScrollIndicator = false
     }
     
+    //MARK: action
+
     @objc func moreViewAction(_ sender: UITapGestureRecognizer) {
-        print("버튼 클릭")
+        
     }
+    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -58,14 +63,15 @@ class ShoppingTableViewCellType1: UITableViewCell {
     
 }
 
-extension ShoppingTableViewCellType1: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ShoppingTableViewCellType3:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.infoData.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let data:JSON = self.infoData[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingCollectionViewCellType1", for: indexPath) as! ShoppingCollectionViewCellType1
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoppingCollectionViewCellType2", for: indexPath) as! ShoppingCollectionViewCellType2
         cell.infoData = data
         return cell
     }
@@ -75,15 +81,15 @@ extension ShoppingTableViewCellType1: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize:CGSize = CGSize(width: 150, height: 150)
+        let cellSize:CGSize = CGSize(width: UIScreen.main.bounds.width/2 - 15, height: UIScreen.main.bounds.width/2 - 15)
         
         return cellSize
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let edgeInsets:UIEdgeInsets = .init(top: 5,
+        let edgeInsets:UIEdgeInsets = .init(top: 10,
                                             left: 10,
-                                            bottom: 5,
+                                            bottom: 10,
                                             right: 10)
         return edgeInsets
     }
