@@ -31,6 +31,7 @@ class ShoppingViewController: UIViewController {
         self.shoppingTableView.register(UINib(nibName: "ShoppingTableViewCellType1", bundle: nil), forCellReuseIdentifier: "ShoppingTableViewCellType1")
         self.shoppingTableView.register(UINib(nibName: "ShoppingTableViewCellType2", bundle: nil), forCellReuseIdentifier: "ShoppingTableViewCellType2")
         self.shoppingTableView.register(UINib(nibName: "ShoppingTableViewCellType3", bundle: nil), forCellReuseIdentifier: "ShoppingTableViewCellType3")
+        self.shoppingTableView.separatorStyle = .none
 //        let layout = UICollectionViewFlowLayout()
 //        layout.scrollDirection = .vertical
 //        layout.minimumLineSpacing = 10
