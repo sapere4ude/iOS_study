@@ -6,16 +6,16 @@
 //  Copyright © 2020 sapere4ude. All rights reserved.
 //
 
-import UIKit
-import Firebase
-
-class MyViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+//import UIKit
+//import Firebase
+//
+//class MyViewController: UIViewController {
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        // Do any additional setup after loading the view.
+//    }
     
 
     /*
@@ -28,4 +28,4 @@ class MyViewController: UIViewController {
     }
     */
 
-}
+//}

@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HwahaeProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -29,7 +29,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="Icon-App-29x29" id="Xzq-vS-IUC"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="folder.fill" catalog="system" id="Xzq-vS-IUC"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="b6P-Ub-6c8" id="q4S-jy-YtK"/>
@@ -39,7 +39,7 @@
             </objects>
             <point key="canvasLocation" x="-320.28985507246381" y="851.78571428571422"/>
         </scene>
-        <!--Item-->
+        <!--Shopping-->
         <scene sceneID="gZg-Ig-h0Y">
             <objects>
                 <viewController id="2Y3-Kc-7x3" customClass="ShoppingViewController" customModule="HwahaeProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -56,7 +56,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="t4B-HE-PvV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="kwg-bX-5JM"/>
+                    <tabBarItem key="tabBarItem" title="Shopping" image="folder.fill" catalog="system" id="kwg-bX-5JM"/>
+                    <connections>
+                        <outlet property="shoppingTableView" destination="Cz7-ZH-PJE" id="s3N-In-KO5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QLS-3t-8qt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,6 +86,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-App-29x29" width="29" height="29"/>
+        <image name="folder.fill" catalog="system" width="128" height="95"/>
     </resources>
 </document>

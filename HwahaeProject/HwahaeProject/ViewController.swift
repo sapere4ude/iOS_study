@@ -12,7 +12,7 @@ import SwiftyJSON
 class ViewController: UIViewController {
 
     //MARK: IBOutlet
-        
+    
         
     @IBOutlet weak var tableView: UITableView!
     
@@ -130,7 +130,10 @@ class ViewController: UIViewController {
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             
         }
+        
 
 }
+
+
 
 
