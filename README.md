@@ -2097,6 +2097,307 @@ Rectangle.area()
 ```
 <br>
 
+# Initializer and Deinitializer
+
+* Initializers
+```
+// 선언과 동시에 기본 값을 저장
+class Position {
+    var x = 0.0    // 선언과 동시에 초기화하는 방법
+    var y = 0.0
+    var z: Double? = nil // 속성을 옵셔널로 저장. 옵셔널 속성은 기본값을 저장하고 있지 않으면 자동으로 nil로 초기화됨
+    
+//    init() {    // 파라미터를 통해 속성을 초기화 하는 경우 사용하는 방법
+//        y = 0.0
+//    }
+}
+
+let p = Position()  // 자동으로 default initializer가 생성된다
+
+/*
+ Initializer Syntax
+ 
+ init(parameters) {
+    initialization
+ }
+ 
+ TypeName(parameters)
+ */
+
+class SizeObj {
+    var width = 0.0
+    var height = 0.0
+    
+    init(width: Double, height: Double){
+        self.width = width
+        self.height = height
+    }
+    
+    convenience init(value: Double) {
+        //width = value
+        //height = value
+        self.init(width: value, height: value)  // Initializer Delegation, 이미 구현된 initializer를 불러와 사용하는 방법, Initializer는 overroading을 지원한다
+    }
+}
+
+```
+<br>
+
+* class Initializers
+```
+// Designated Initializer : 지정 생성자
+
+// Convenience Initializer : 간편 생성자
+
+class Position {
+    var x: Double
+    var y: Double
+    
+    init(x: Double, y: Double) {    // Designated Initializer 의 핵심은 모든 속성을 초기화해야한다는 것
+        self.x = x
+        self.y = y
+    }
+    
+    convenience init(x: Double) {   // 기존에 구현된 init 을 가져와서 사용하는 방식
+        self.init(x: x, y: 0.0)
+    }
+}
+
+class Figure {
+   var name: String
+
+   init(name: String) {
+      self.name = name
+   }
+
+   func draw() {
+      print("draw \(name)")
+   }
+    
+    convenience init() {
+        self.init(name:"Unknown")
+    }
+}
+
+class Rectangle: Figure {
+    var width: Double = 0.0
+    var height: Double = 0.0
+    
+    init(name: String, width: Double, height: Double) {
+        // 현재 클래스에 있는 것부터 작성
+        self.width = width
+        self.height = height
+        // 이후에 상위 클래스에 있는 것 작성
+        super.init(name: name)
+    }
+    
+    override init(name: String) {
+        width = 0
+        height = 0
+        super.init(name: name)
+    }
+    
+    convenience init() {
+        self.init(name:"Unknown")
+    }
+}
+
+```
+<br>
+
+* Required Initializers
+```
+/*
+Required Initializer : 필수 생성자
+-문법구조-
+ required init(parameters) {
+    initialization
+ }
+ 
+*/
+class Figure {
+   var name: String
+
+   required init(name: String) {  // 이렇게 required 키워드가 붙으면 서브클래스에서 반드시 동일하게 구현해줘야 한다
+      self.name = name
+   }
+
+   func draw() {
+      print("draw \(name)")
+   }
+}
+
+class Rectangle: Figure {
+   var width = 0.0
+   var height = 0.0
+    
+    init() {
+        width = 0.0
+        height = 0.0
+        super.init(name: "unknown")
+    }
+    required init(name: String) {
+        width = 0.0
+        height = 0.0
+        super.init(name: name)
+    }
+}
+
+```
+<br>
+
+* Initializer Delegation (어려움)
+```
+/*
+Initializer Delegation: 초기화 코드에서 중복을 최대한 제거하고, 모든 속성을 효율적으로 초기화하기 위해 사용한다.
+*/
+
+// 값 형식: 상속 불가능, 이니셜라이저 종류가 하나기 때문에 상대적으로 단순
+ struct Size {
+   var width: Double
+   var height: Double
+
+   init(w: Double, h: Double) {
+      width = w
+      height = h
+   }
+
+   init(value: Double) {
+        self.init(w: value, h: value)   // Initializer Delegation, 자신의 역할을 첫번째 이니셜라이저에게 위임하는 것
+   }
+}
+
+/*
+참조 형식 : 조금 복잡함
+Rule1. A designated initializer must call a designated initializer from its immediate superclass. (Delegate Up)
+Rule2. A convenience initializer must call another initializer from the same class. (Delegate Across)
+Rule3. A convenience initializer must ultimately call a designated initializer.
+*/
+
+class Figure {
+    let name: String
+    
+    init(name: String) {
+        self.name = name // designated initializer
+    }
+    
+    convenience init() {
+        self.init(name: "unknown") // convenience initializer : 앞에서 정의한 designated initializer를 호출(Delegate Across)
+    }
+}
+
+class Rectangle: Figure {
+    var width = 0.0
+    var height = 0.0
+    
+    init(n: String, w: Double, h: Double) { // designated initializer 호출한 뒤 마지막에 상위 구현을 호출 (Delegate Up)
+        width = w
+        height = h
+        super.init(name: n)
+    }
+    
+    convenience init(value: Double) {
+        self.init(n: "rect", w: value, h: value)
+    }
+}
+
+class Square: Rectangle {   // desiganted initializer 가 없는 클래스
+    convenience init(value: Double) {   // convenience 로 만들면 절대로 delegate up 을 할 수 없다
+        self.init(n: "Square", w: value, h: value)
+    }
+    convenience init() {    // convenience intializer 는 최종적으로 designated initializer 를 반드시 호출해야 한다
+        self.init(value: 0.0)
+    }
+}
+
+```
+<br>
+
+* Failable Initializer (어려움)
+```
+/* Failable Initializer : fail -> nil 을 반환해주는 것
+-문법구조-
+ init?(parameters) {
+    initialization
+ }
+ init!(parameters) {
+    initialization
+ }
+*/
+
+
+struct Position {
+   let x: Double
+   let y: Double
+    
+    init?(x: Double, y: Double) {
+        guard x >= 0.0, y >= 0.0 else { return nil }
+    
+        self.x = x
+        self.y = y
+    }
+    
+    init!(value: Double) {
+        guard value >= 0.0 else { return nil }
+        
+        self.x = value
+        self.y = value
+
+    }
+    
+//    init(value: Int) {
+//        self.x = value
+//        self.y = value
+//    }
+}
+
+var a = Position(x: 12, y: 34)  // Position
+
+a = Position(x: -12, y: 0)      // nil <- 음수이기때문에 nil 반환
+
+var b = Position(value: 12)     // Position
+
+b = Position(value: -12)        // nil
+
+```
+<br>
+
+* Deinitializer
+```
+/* Deinitializer : 소멸자. 인스턴스가 메모리에서 제거되기 전에 부가적인 정리 작업을 위해 사용한다.
+ 클래스에서만 사용가능하다. 한개만 생성 가능하고 자동 호출된다.
+ -문법구조-
+ deinit {
+    Deinitialization
+ }
+ */
+
+class Size {
+   var width = 0.0
+   var height = 0.0
+}
+
+class Position {
+   var x = 0.0
+   var y = 0.0
+}
+
+class Rect {
+   var origin = Position()
+   var size = Size()
+    
+    deinit {
+        print("deinit \(self)")
+    }
+}
+
+var r: Rect? = Rect()
+r = nil
+
+```
+<br>
+
+
 # Extension
 
 * Extension - Syntax
@@ -2472,11 +2773,108 @@ struct Size: Resettable {
 
 * Initializer Requirements
 ```
+/*
+ -선언문법-
+ protocol ProtocolName {
+    init(param)
+    init?(param)
+    init!(param)
+ }
+ */
+
+/* case1.
+protocol Figure {
+    var name: String {get}
+    init(name: String)
+}
+
+struct Rectangle: Figure {
+    var name: String    // <- 맴버와이즈 이니셜라이즈 자동으로 생성된다
+}
+*/
+
+/* case2.
+protocol Figure {
+    var name: String {get}
+    init(n: String)
+}
+
+struct Rectangle: Figure {
+    var name: String
+    init(n: Stirng){    // <- 맴버와이즈 이니셜라이즈가 자동으로 생성되지않기 때문에 이런식으로 만들어준다.
+        name = n
+    }
+ }
+*/
+
+protocol Figure {
+    var name: String { get }
+    init(n: String)
+}
+
+class Circle: Figure {
+    var name: String
+    required init(n: String){
+        name = n
+    }
+ }
+
+final class Triangle: Figure {  // <- final 클래스는 더 이상 상속되지않기 때문에 상속을 고려할 필요가 없다. 그래서 required 키워드가 없어도 괜찮다.
+    var name: String
+    init(n: String){
+           name = n
+    }
+}
+
+class Oval: Circle {    //  <- Oval 클래스는 Circle 클래스의 맴버와 프로토콜 요구사항을 모두 상속한다.
+    var prop: Int
+    init() {
+        prop = 0
+        super.init(n: "Oval")
+    }
+    
+    required convenience init(n: String) {
+        self.init()
+    }
+    
+}
+
+protocol Grayscale {
+    init?(white: Double)
+    
+}
+
+struct Color: Grayscale {
+    init!(white: Double){
+        
+    }
+}
 ```
 <br>
 
 * Subscript Requirements
 ```
+/*
+ -문법구현-
+ protocol ProtocolName {
+    subscript(param) -> ReturnType { get set }
+ }
+ */
+
+protocol List {
+    subscript(idx: Int) -> Int { get }  // get 키워드만 필수, set 키워드는 상황에 따라 생략 가능하다
+}
+
+struct DataStore: List {
+    subscript(idx: Int) -> Int {
+        get {
+            return 0
+        }
+        set {
+        
+        }
+    }
+}
 ```
 <br>
 
