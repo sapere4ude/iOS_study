@@ -2878,3 +2878,240 @@ struct DataStore: List {
 ```
 <br>
 
+# Memory, Value Type and Reference Type
+
+* Memory Basics
+```
+```
+<br>
+
+* Value Type vs Reference Type
+```
+// 1. 값 형식 -> 항상 스택에 저장됨, 값을 전달할 때 마다 새로운 복사본이 생성된다.
+struct SizeValue {
+   var width = 0.0
+   var height = 0.0
+}
+
+var value = SizeValue()
+
+
+var value2 = value
+value2.width = 1.0
+value2.height = 2.0
+
+value   // width 0 height 0
+value2  // width 1 height 2
+
+
+// 2. 참조형식 -> 힙에는 인스턴스가 저장됨, 스택에는 힙 메모리 주소가 저장. 항상 스택을 거쳐 접근해야한다. 항상 스택에 있는 주소를 통해 접근
+class SizeObject {
+   var width = 0.0
+   var height = 0.0
+}
+
+var object = SizeObject()
+
+var object2 = object    // 스택에 새로운 메모리 공간이 생성됨. 힙에서는 새로운 메모리 공간이 생성. 인스턴스가 복사되진 않는다.
+
+object2.width = 1.0
+object2.height = 2.0
+
+// 모든 인스턴스에 동일한 값이 저장된다 (힙에 인스턴스를 저장하고 스택에 메모리 주소를 저장)
+object  // width 1 height 2
+object2 // width 1 height 2
+
+
+// 값
+let v = SizeValue()     // 값 자체를 변경하는 것은 불가능하다
+
+
+// 참조
+let o = SizeObject()    // 인스턴스가 저장되어 있는 힙은 변경 가능하다. let 을 통해 스택에 저장되어 있는 주소만 바꿀 수 없도록 고정시켜 놓은 것
+o.width = 1.0
+o.height = 2.0
+```
+<br>
+
+* ARC(Automatic Reference Counting)
+```
+/*
+스택에 저장된 것들은 자동으로 제거가 되기때문에 관리할 필요가 없다. 하지만 힙에 저장된 것들은 필요없는 시점에 직접 제거해야한다.
+메모리 관리 모델은 힙에 저장되는 데이터를 관리한다. -> 클래스 인스턴스의 메모리를 관리한다.
+Reference Count -> 1이상 : 메모리에 유지 / 0: 메모리에서 제거
+*/
+
+class Person {
+   var name = "John Doe"
+   
+   deinit {
+      print("person deinit")
+   }
+}
+
+var person1: Person?
+var person2: Person?
+var person3: Person?
+
+person1 = Person()
+person2 = person1
+person3 = person1
+
+// nil을 저장하는건 소유권을 포기하는 것. 즉시 참조 count 에서 -2 를 하게 된다.
+person1 = nil
+person2 = nil
+```
+<br>
+
+* Strong Reference Cycle
+```
+// Strong Reference Cycle : nil을 통해 메모리에서 해제했지만 여전히 메모리에서 제거되지 않는 문제
+class Person {
+   var name = "John Doe"
+   var car: Car?
+   
+   deinit {
+      print("person deinit")
+   }
+}
+
+class Car {
+   var model: String
+   var lessee: Person?
+   
+   init(model: String) {
+      self.model = model
+   }
+   
+   deinit {
+      print("car deinit")
+   }
+}
+
+var person: Person? = Person()
+var rentedCar: Car? = Car(model: "Porsche")
+
+person?.car = rentedCar
+rentedCar?.lessee = person
+
+person = nil
+rentedCar = nil
+
+// Weak Reference -> weak var name: Type?
+
+class Person {
+   var name = "John Doe"
+   var car: Car?
+   
+   deinit {
+      print("person deinit")
+   }
+}
+
+class Car {
+   var model: String
+   weak var lessee: Person? // 참조는 하지만 소유하진 않는다
+   
+   init(model: String) {
+      self.model = model
+   }
+   
+   deinit {
+      print("car deinit")
+   }
+}
+
+var person: Person? = Person()
+var rentedCar: Car? = Car(model: "Porsche")
+
+person?.car = rentedCar
+rentedCar?.lessee = person
+
+person = nil
+rentedCar = nil
+
+// Unowned Reference
+class Person {
+   var name = "John Doe"
+   var car: Car?
+
+   deinit {
+      print("person deinit")
+   }
+}
+
+class Car {
+   var model: String
+   unowned var lessee: Person
+
+   init(model: String, lessee: Person) {
+      self.model = model
+      self.lessee = lessee
+   }
+
+   deinit {
+      print("car deinit")
+   }
+}
+
+var person: Person? = Person()
+var rentedCar: Car? = Car(model: "Porsche", lessee: person!)
+
+person?.car = rentedCar
+
+person = nil
+rentedCar = nil
+
+```
+<br>
+
+* Closure Capture List
+```
+class Car {
+   var totalDrivingDistance = 0.0
+   var totalUsedGas = 0.0
+   
+   lazy var gasMileage: () -> Double = { [weak self] in
+    guard let strongSelf = self else { return 0.0 }
+      return strongSelf.totalDrivingDistance / strongSelf.totalUsedGas
+   }
+   
+   func drive() {
+      self.totalDrivingDistance = 1200.0
+      self.totalUsedGas = 73.0
+   }
+   
+   deinit {
+      print("car deinit")
+   }
+}
+
+var myCar: Car? = Car()
+myCar?.drive()
+
+myCar?.gasMileage()
+
+myCar = nil
+
+/*
+ Value Type 문법 구조
+ { [valueName] in
+   Code
+ }
+ */
+var a = 0
+var b = 0
+let c = { [a] in print(a,b) }
+
+a = 1
+b = 2
+c() // 0 2 <- a의 값은 캡쳐 시점에 저장된 값을 출력. 참조대신 복사본을 캡쳐
+
+/*
+Reference Type 문법 구조
+{ [weak instanceName, unowned instanceName] in
+  statements
+}
+*/
+```
+<br>
