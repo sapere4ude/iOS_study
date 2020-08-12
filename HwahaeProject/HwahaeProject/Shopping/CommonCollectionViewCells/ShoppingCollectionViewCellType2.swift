@@ -25,7 +25,7 @@ class ShoppingCollectionViewCellType2: UICollectionViewCell {
             if infoData["is_brand_new"].intValue == 1 {
                 isNewImgView.isHidden = true
             }
-            self.mainImgView.contentMode = .scaleToFill
+            self.mainImgView.contentMode = .scaleAspectFill
             self.mainImgView.sd_setImage(with:  URL(string: infoData["image_url"].stringValue), placeholderImage: nil, options: .lowPriority, completed: nil)
         }
     }

@@ -50,6 +50,7 @@ class ShoppingCollectionViewCellType1: UICollectionViewCell {
         self.imgContainerView.layer.borderWidth = 1
         self.imgContainerView.layer.borderColor = UIColor.lightGray.cgColor
         self.imgContainerView.layer.cornerRadius = 3
+        self.imgContainerView.contentMode = .scaleAspectFill
         self.textContainerView.backgroundColor = .clear
         
         

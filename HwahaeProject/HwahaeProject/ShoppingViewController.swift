@@ -32,12 +32,7 @@ class ShoppingViewController: UIViewController {
         self.shoppingTableView.register(UINib(nibName: "ShoppingTableViewCellType2", bundle: nil), forCellReuseIdentifier: "ShoppingTableViewCellType2")
         self.shoppingTableView.register(UINib(nibName: "ShoppingTableViewCellType3", bundle: nil), forCellReuseIdentifier: "ShoppingTableViewCellType3")
         self.shoppingTableView.separatorStyle = .none
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        layout.minimumLineSpacing = 10
-//        layout.minimumInteritemSpacing = 10
-//        self.shoppingTableView.showsHorizontalScrollIndicator = false
-//        self.shoppingTableView.showsVerticalScrollIndicator = false
+        //self.shoppingTableView.contentMode = .scaleAspectFill
     
         requestData(param: Dictionary(), completeHandler: { responseJson in
             self.infoData = responseJson
@@ -73,7 +68,8 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
             returnValue = 200
         }
         else if type == 2 { // "여름에 잘 어울리는 화장품"
-            var lineCnt:Int = self.infoData[indexPath.row]["value"].count/2     // indexPath.row에 JSON파일에서 넣은 값들이 존재
+            var lineCnt:Int = self.infoData[indexPath.row]["value"].count/3     // indexPath.row에 JSON파일에서 넣은 값들이 존재
+            print("\(lineCnt)")
             if self.infoData[indexPath.row].count%2 == 1 {
                 lineCnt += 1
             }

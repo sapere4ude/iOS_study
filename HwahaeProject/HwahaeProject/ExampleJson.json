@@ -77,7 +77,15 @@
         "price" : 312000,
         "title" : "아이템5",
         "shipping_price" : 3000
-      }
+      },
+      {
+        "price" : 530000,
+        "image_url" : "https://nr-platform.s3.amazonaws.com/uploads/platform/published_extension/branding_icon/275/AmazonS3.png",
+        "brand_name" : "회사5",
+        "shipping_price" : 2500,
+        "is_brand_new" : 1,
+        "title" : "아이템5"
+      },
     ],
     "type" : 2
   },

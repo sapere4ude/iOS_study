@@ -80,8 +80,9 @@ extension ShoppingTableViewCellType3:UICollectionViewDelegate,UICollectionViewDa
         
     }
     
+    // sizeForItemAt -> table의 가로에 몇개의 cell을 넣을지 수정하는 곳
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize:CGSize = CGSize(width: UIScreen.main.bounds.width/2 - 15, height: UIScreen.main.bounds.width/2 - 15)
+        let cellSize:CGSize = CGSize(width: UIScreen.main.bounds.width/3 - 20, height: UIScreen.main.bounds.width/2 - 20)
         
         return cellSize
     }
