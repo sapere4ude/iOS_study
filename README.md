@@ -3115,3 +3115,59 @@ Reference Type 문법 구조
 */
 ```
 <br>
+
+# Generic Function
+
+* Closure Capture List
+```
+```
+<br>
+
+* Generic Types
+```
+```
+<br>
+
+* Associated Types
+```
+```
+<br>
+
+# Error Handling
+
+* Error Handling
+```
+```
+<br>
+
+* do-catch Statements
+```
+```
+<br>
+
+* Optional Try
+```
+```
+<br>
+
+* defer Statements
+```
+```
+<br>
+
+* Result Type #1
+```
+```
+<br>
+
+* Result Type #2
+```
+```
+<br>
+
+# Advanced Topics
+
+* Advanced Condition
+```
+```
+<br>
