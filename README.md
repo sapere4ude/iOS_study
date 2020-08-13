@@ -3116,20 +3116,202 @@ Reference Type 문법 구조
 ```
 <br>
 
-# Generic Function
+# Generics
 
-* Closure Capture List
+* Generic Function
 ```
+/* Generics : 형식에 의존하지 않는 범용코드를 작성할 수 있음. 코드의 재사용과 유지보수의 편의성이 높아진다는 장점이 있음
+ 
+ */
+
+func swapInteger(lhs: inout Int, rhs: inout Int) {
+   let tmp = lhs
+   lhs = rhs
+   rhs = tmp
+}
+
+var a = 10
+var b = 20
+
+swapInteger(lhs: &a, rhs: &b)
+a
+b
+
+
+func swapInteger16(lhs: inout Int16, rhs: inout Int16) {
+   // ...
+}
+
+func swapInteger64(lhs: inout Int64, rhs: inout Int64) {
+   // ...
+}
+
+func swapDouble(lhs: inout Double, rhs: inout Double) {
+   // ...
+}
+
+/*
+ -문법구조-
+ func name<T>(parameters) -> Type {
+    code
+ }
+ 
+ <T> 가 의미하는 것은 Type parameter. 함수 내부에서 파라미터 형식이나 리턴형으로 사용된다.
+ */
+
+// 형식에 관계없이 모든 값을 파라미터로 전달할 수 있다는 장점이 있다.
+func swapValue<T>(lhs: inout T, rhs: inout T) {
+   let tmp = lhs
+   lhs = rhs
+   rhs = tmp
+}
+
+a = 1
+b = 2
+swapValue(lhs: &a, rhs: &b)
+a   // 2
+b   // 1
+
+var c = 1.2
+var d = 3.4
+swapValue(lhs: &c, rhs: &d)
+c   // 3.4
+d   // 1.2
+
+/*
+ 
+ Type Constraints : 형식 제약
+ -문법구조-
+ <TypeParameter: ClassName>
+ <TypeParameter: ProtocolName>
+ 
+ */
+
+func swapValue<T: Equatable>(lhs: inout T, rhs: inout T) {
+    if lhs == rhs { return }
+    
+    let tmp = lhs
+    lhs = rhs
+    rhs = tmp
+}
+
+func swapValue<T: Equatable>(lhs: inout T, rhs: inout T) {
+   print("generic version")
+   
+   if lhs == rhs {
+      return
+   }
+   
+   let tmp = lhs
+   lhs = rhs
+   rhs = tmp
+}
+
+func swapValue(lhs: inout String, rhs: inout String) {
+    print("specialized version")
+    
+    if lhs.caseInsensitiveCompare(rhs) == .orderedSame {
+        return
+    }
+    
+    let tmp = lhs
+    lhs = rhs
+    rhs = tmp
+}
+
+var a = 1
+var b = 2
+swapValue(lhs: &a, rhs: &b)     // generic version
+
+var c = "Swift"
+var d = "Programming"
+swapValue(lhs: &c, rhs: &d)     // specialized version
+
 ```
 <br>
 
 * Generic Types
 ```
+/*
+ Generic Types -문법구조-
+ 
+ class Name<T> {
+    code
+ }
+ struct Name<T> {
+    code
+ }
+ enum Name<T>{
+    code
+ }
+ 
+ */
+
+struct Color<T> {
+    var red: T
+    var green: T
+    var blue: T
+}
+
+var c = Color(red: 128, green: 80, blue: 200) // // Type Parameter 를 추론함
+
+let d: Color = Color(red: 128.0, green: 80.0, blue: 200.0) // Type Parameter 를 추론함
+
+/*
+Type Parameter를 보고 예전에 배운 것들을 생각해보면 이런 것들이 있다.
+ 
+let arr: Array<Int>
+let dict: Dictionary<String, Double>
+ */
+
+extension Color {   // Color<T> <- 이렇게 사용하는 것 불가능
+    func getComponents() -> [T] {
+        return [red, green, blue]
+    }
+}
+
+let intColor = Color(red: 1, green: 2, blue: 3)
+intColor.getComponents() // <- Type Parameter 가 Int 형식이라는 것을 추론함
+// 만약 Int 형식인 것만 허용하려면 extension 구현 부분에서
+// extension Color where T == Int 로 고쳐주면 된다
+
+let dblColor = Color(red: 1.0, green: 2.0, blue: 3.0)
+dblColor.getComponents() // Double 형식이라는 것을 추론함
 ```
 <br>
 
 * Associated Types
 ```
+/*
+ Associated Types 문법구조
+ associatedtype Name <- 기존에 함수 이름 뒤에 <T> 를 붙이는 방법 대신에 사용하는 것
+ */
+
+protocol QueueCompatible {
+    associatedtype Element
+    func enqueue(value: Element)
+    func dequeue() -> Element?
+}
+
+class IntegerQueue: QueueCompatible {
+    typealias Element = Int
+    
+    func enqueue(value: Int) {
+        
+    }
+    func dequeue() -> Int? {
+        return 0
+    }
+}
+
+class DoubleQueue: QueueCompatible {
+    func enqueue(value: Double) {
+        
+    }
+    func dequeue() -> Double? {
+        return 0
+    }
+}
 ```
 <br>
 
@@ -3137,11 +3319,105 @@ Reference Type 문법 구조
 
 * Error Handling
 ```
+/*
+ Error Handling
+ 1. 함수 (Throwing Function / Method)
+ func name(parameters) throws -> ReturnType {
+    statesments
+ }
+ 
+ 2. 생성자 ( Throwing Initializer)
+ init(parameters) throws {
+    statesments
+ }
+ 
+ 3. 클로저 (Throwing Closure)
+ { (parameters) throws -> ReturnType in
+    statesments
+ }
+*/
+
+
+
+enum DataParsingError: Error {
+    case invalidType
+    case invailidField
+    case missingRequiredField(String)
+}
+
+// throw문은 에러가 발생된 경우에만 호출된다
+func parsing(data: [String: Any]) throws {
+    guard let _ = data["name"] else {
+        throw
+            DataParsingError.missingRequiredField("name")
+    }
+    
+    guard let _ = data["age"] as? Int else {
+        throw DataParsingError.invalidType
+    }
+}
+
+/*
+ try Statements
+ 
+ try expression
+ try? expression
+ try! expression
+ 
+ 에러를 처리하는 방법
+ 1. do-catch Statements
+ 2. try Expression + Optional Binding
+ 3. hand over
+ */
+
+try? parsing(data: [:])
 ```
 <br>
 
 * do-catch Statements
 ```
+/*
+ do-catch 문법구조
+ do {
+    try expression
+    statesments
+ } catch pattern {
+    statements
+ } catch pattern where condition {
+    statements
+ }
+ */
+enum DataParsingError: Error {
+   case invalidType
+   case invalidField
+   case missingRequiredField(String)
+}
+
+func parsing(data: [String: Any]) throws {
+   guard let _ = data["name"] else {
+      throw DataParsingError.missingRequiredField("name")
+   }
+   
+   guard let _ = data["age"] as? Int else {
+      throw DataParsingError.invalidType
+   }
+   
+   // Parsing
+}
+func handleError() throws {
+    do {
+        try parsing(data: ["name":""])
+    } catch {
+        if let error = error as? DataParsingError {
+            switch error {
+            case .invalidType:
+                print("invalid type")
+            default:
+                print("handle error")
+            }
+        }
+    }
+}
 ```
 <br>
 
