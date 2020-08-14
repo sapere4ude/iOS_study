@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class ShoppingViewController: UIViewController {
     
+    
     @IBOutlet weak var shoppingTableView: UITableView!
     
     var infoData:JSON = JSON.null {
@@ -31,6 +32,7 @@ class ShoppingViewController: UIViewController {
         self.shoppingTableView.register(UINib(nibName: "ShoppingTableViewCellType1", bundle: nil), forCellReuseIdentifier: "ShoppingTableViewCellType1")
         self.shoppingTableView.register(UINib(nibName: "ShoppingTableViewCellType2", bundle: nil), forCellReuseIdentifier: "ShoppingTableViewCellType2")
         self.shoppingTableView.register(UINib(nibName: "ShoppingTableViewCellType3", bundle: nil), forCellReuseIdentifier: "ShoppingTableViewCellType3")
+        self.shoppingTableView.register(UINib(nibName: "ShoppingTableViewCellType4", bundle: nil), forCellReuseIdentifier: "ShoppingTableViewCellType4")
         self.shoppingTableView.separatorStyle = .none
         //self.shoppingTableView.contentMode = .scaleAspectFill
     
@@ -100,11 +102,12 @@ extension ShoppingViewController: UITableViewDelegate, UITableViewDataSource {
             cell.titleLabel.text = self.infoData[indexPath.row]["title"].stringValue
             return cell
         }
-//        else if type == 3 {
-//            let cell:ShoppingTableViewCellType2 = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCellType2", for: indexPath) as! ShoppingTableViewCellType2
+        else if type == 3 {
+            let cell:ShoppingTableViewCellType4 = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCellType4", for: indexPath) as! ShoppingTableViewCellType4
 //            cell.infoData = value
-//            return cell
-//        }
+//            cell.titleLabel.text = self.infoData[indexPath.row]["title"].stringValue
+            return cell
+        }
         else {
             return UITableViewCell()
         }

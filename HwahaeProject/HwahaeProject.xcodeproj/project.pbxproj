@@ -36,6 +36,10 @@
 		FA5DFB3F24E2DA2100BF17A9 /* ShoppingTableViewCellType3.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5DFB3D24E2DA2100BF17A9 /* ShoppingTableViewCellType3.xib */; };
 		FA5DFB4224E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DFB4024E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.swift */; };
 		FA5DFB4324E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5DFB4124E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.xib */; };
+		FA9E18CB24E3F82900FF4A3C /* ShoppingCollectionViewCellType3.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E18C924E3F82900FF4A3C /* ShoppingCollectionViewCellType3.swift */; };
+		FA9E18CC24E3F82900FF4A3C /* ShoppingCollectionViewCellType3.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9E18CA24E3F82900FF4A3C /* ShoppingCollectionViewCellType3.xib */; };
+		FA9E18CF24E42CBC00FF4A3C /* ShoppingTableViewCellType4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E18CD24E42CBC00FF4A3C /* ShoppingTableViewCellType4.swift */; };
+		FA9E18D024E42CBC00FF4A3C /* ShoppingTableViewCellType4.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9E18CE24E42CBC00FF4A3C /* ShoppingTableViewCellType4.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +76,10 @@
 		FA5DFB3D24E2DA2100BF17A9 /* ShoppingTableViewCellType3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingTableViewCellType3.xib; sourceTree = "<group>"; };
 		FA5DFB4024E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCollectionViewCellType2.swift; sourceTree = "<group>"; };
 		FA5DFB4124E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCollectionViewCellType2.xib; sourceTree = "<group>"; };
+		FA9E18C924E3F82900FF4A3C /* ShoppingCollectionViewCellType3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCollectionViewCellType3.swift; sourceTree = "<group>"; };
+		FA9E18CA24E3F82900FF4A3C /* ShoppingCollectionViewCellType3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCollectionViewCellType3.xib; sourceTree = "<group>"; };
+		FA9E18CD24E42CBC00FF4A3C /* ShoppingTableViewCellType4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCellType4.swift; sourceTree = "<group>"; };
+		FA9E18CE24E42CBC00FF4A3C /* ShoppingTableViewCellType4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingTableViewCellType4.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +188,8 @@
 				FA00A4FB24E1985200A3781D /* ShoppingCollectionViewCellType1.xib */,
 				FA5DFB4024E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.swift */,
 				FA5DFB4124E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.xib */,
+				FA9E18C924E3F82900FF4A3C /* ShoppingCollectionViewCellType3.swift */,
+				FA9E18CA24E3F82900FF4A3C /* ShoppingCollectionViewCellType3.xib */,
 			);
 			path = CommonCollectionViewCells;
 			sourceTree = "<group>";
@@ -193,6 +203,8 @@
 				FA5DFB3924E2DA0A00BF17A9 /* ShoppingTableViewCellType2.xib */,
 				FA5DFB3C24E2DA2100BF17A9 /* ShoppingTableViewCellType3.swift */,
 				FA5DFB3D24E2DA2100BF17A9 /* ShoppingTableViewCellType3.xib */,
+				FA9E18CD24E42CBC00FF4A3C /* ShoppingTableViewCellType4.swift */,
+				FA9E18CE24E42CBC00FF4A3C /* ShoppingTableViewCellType4.xib */,
 			);
 			path = CommonTableViewCells;
 			sourceTree = "<group>";
@@ -265,11 +277,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9E18D024E42CBC00FF4A3C /* ShoppingTableViewCellType4.xib in Resources */,
 				FA00A4E624E183D500A3781D /* CollectionViewCellType1.xib in Resources */,
 				FA00A4CC24E179E800A3781D /* LaunchScreen.storyboard in Resources */,
 				FA00A4E224E1839500A3781D /* TableViewCellType2.xib in Resources */,
 				FA5DFB3724E2C0EA00BF17A9 /* ShoppingTableViewCellType1.xib in Resources */,
 				FA00A4DE24E1838400A3781D /* TableViewCellType1.xib in Resources */,
+				FA9E18CC24E3F82900FF4A3C /* ShoppingCollectionViewCellType3.xib in Resources */,
 				FA00A4FD24E1985200A3781D /* ShoppingCollectionViewCellType1.xib in Resources */,
 				FA00A4C924E179E800A3781D /* Assets.xcassets in Resources */,
 				FA00A4F024E1887D00A3781D /* ExampleJson.json in Resources */,
@@ -339,7 +353,9 @@
 				FA00A4D424E181CD00A3781D /* ShoppingViewController.swift in Sources */,
 				FA00A4E924E183E500A3781D /* CollectionViewCellType2.swift in Sources */,
 				FA5DFB3624E2C0EA00BF17A9 /* ShoppingTableViewCellType1.swift in Sources */,
+				FA9E18CF24E42CBC00FF4A3C /* ShoppingTableViewCellType4.swift in Sources */,
 				FA00A4DD24E1838400A3781D /* TableViewCellType1.swift in Sources */,
+				FA9E18CB24E3F82900FF4A3C /* ShoppingCollectionViewCellType3.swift in Sources */,
 				FA00A4E124E1839500A3781D /* TableViewCellType2.swift in Sources */,
 				FA00A4ED24E184DE00A3781D /* TableViewCellType3.swift in Sources */,
 				FA5DFB4224E2DA4D00BF17A9 /* ShoppingCollectionViewCellType2.swift in Sources */,
