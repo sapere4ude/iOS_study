@@ -33,6 +33,9 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
    <br>모듈 전체에서 전역적으로 사용할 수 있는 것 : 함수  
      
 
+<br>
+<br>
+
 # Optional
 
 * Optional이 필요한 이유는?  
@@ -43,7 +46,10 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
 * Optional Binding -> 이게 nil인지, 값이 있는지를 체크하는 것. 경우에 따라 결과를 달리하고싶을때 사용
 <br>
 * Optional Chaining -> 하위 프로퍼티에 옵셔널 값이 있는지 연속적으로 체크하면서 중간에 nil이 하나라도 발견된다면 nil이 반환되는 형식
-* 
+
+<br>
+<br>
+
 # Closures
 
  * self-contained code blocks 이라고 부른다
