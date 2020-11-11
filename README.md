@@ -1,25 +1,25 @@
 swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정리해두는 공간입니다
 <br>
 <br>
-ㅇㅗㅂㅅㅕㄴㅓㄹㅊㅜㄱㅏㅎㅏㄱㅣ
 
 ## 목차
 1. [Function](#function)
-2. [Closures](#closures)
-3. [Tuples](#tuples)
-4. [String and Characters](#String-and-Characters)
-5. [Collection](#Collection)
-6. [Enumeration](#Enumeration)
-7. [Property](#Property)
-8. [Method and Subscript](#Method-and-Subscript)
-9. [Inheritance and Polymorphism](#Inheritance-and-Polymorphism)
-10. [Initializer and Deinitializer](#Initializer-and-Deinitializer)
-11. [Extension](#Extension)
-12. [Protocol](#Protocol)
-13. [Memory,Value Type and Reference Type](#memory-value-type-and-reference-type)
-14. [Generics](#Generics)
-15. [Error Handling](#Error-Handling)
-16. [Advanced Topics](#Advanced-Topics)
+2. [Optional](#Optional)
+3. [Closures](#closures)
+4. [Tuples](#tuples)
+5. [String and Characters](#String-and-Characters)
+6. [Collection](#Collection)
+7. [Enumeration](#Enumeration)
+8. [Property](#Property)
+9. [Method and Subscript](#Method-and-Subscript)
+10. [Inheritance and Polymorphism](#Inheritance-and-Polymorphism)
+11. [Initializer and Deinitializer](#Initializer-and-Deinitializer)
+12. [Extension](#Extension)
+13. [Protocol](#Protocol)
+14. [Memory,Value Type and Reference Type](#memory-value-type-and-reference-type)
+15. [Generics](#Generics)
+16. [Error Handling](#Error-Handling)
+17. [Advanced Topics](#Advanced-Topics)
     
 <br>
 <br>
@@ -33,6 +33,17 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
    <br>모듈 전체에서 전역적으로 사용할 수 있는 것 : 함수  
      
 
+# Optional
+
+* Optional이 필요한 이유는?  
+  어떠한 변수에 값이 있을 수도 없을 수도 있는 경우를 대비하기 위함
+<br>
+* 옵셔널을 사용할땐 강제 추출, 암시적 추출 옵셔녈을 사용하기보단 옵셔널 바인딩 & 옵셔널 체이닝을 사용하는 것이 훨씬 안전하다.
+<br>
+* Optional Binding -> 이게 nil인지, 값이 있는지를 체크하는 것. 경우에 따라 결과를 달리하고싶을때 사용
+<br>
+* Optional Chaining -> 하위 프로퍼티에 옵셔널 값이 있는지 연속적으로 체크하면서 중간에 nil이 하나라도 발견된다면 nil이 반환되는 형식
+* 
 # Closures
 
  * self-contained code blocks 이라고 부른다
