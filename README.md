@@ -4,10 +4,10 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
 
 ## 면접준비
 1. Struct, Class -> 공통점과 차이점  
-   ![IMG_F7E192D74756-1](/Users/macbook/Downloads/IMG_F7E192D74756-1.jpg)
+   ![IMG_F7E192D74756-1](https://user-images.githubusercontent.com/48309864/104093246-9619a080-52cc-11eb-8802-04238f998f79.jpg)
 
 2. Delegate 이해하기  
-   ![IMG_29A88864AEC5-1](/Users/macbook/Downloads/IMG_29A88864AEC5-1.jpg)
+   ![IMG_29A88864AEC5-1](https://user-images.githubusercontent.com/48309864/104093307-222bc800-52cd-11eb-9b71-5b1098d14b12.jpg)
 
 ## 목차
 1. [Function](#function)
