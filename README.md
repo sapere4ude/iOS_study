@@ -2,6 +2,13 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
 <br>
 <br>
 
+## 면접준비
+1. Struct, Class -> 공통점과 차이점  
+   ![공통점과 차이점](/Users/macbook/Downloads/IMG_F7E192D74756-1.jpeg)
+
+2. Delegate 이해하기  
+   ![Delegate](/Users/macbook/Downloads/IMG_29A88864AEC5-1.jpeg)
+
 ## 목차
 1. [Function](#function)
 2. [Optional](#Optional)
@@ -1261,7 +1268,7 @@ struct Person {
     var name: String    // <- property
     var age: Int
     
-    func speak() {      // <- method
+    func speak() {      // <- method (구조체 안에서 함수를 만들수 있다)
         print("Hello")
     }
 }
