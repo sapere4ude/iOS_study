@@ -8,7 +8,11 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
 
 2. Delegate 이해하기  
    ![IMG_29A88864AEC5-1](https://user-images.githubusercontent.com/48309864/104093307-222bc800-52cd-11eb-9b71-5b1098d14b12.jpg)
-
+   
+3. 프로퍼티 & 인스턴스 개념 / 프로퍼티의 종류 설명
+   ![IMG_589D98A1549E-1](https://user-images.githubusercontent.com/48309864/104322616-80081c00-5528-11eb-95b4-68c83d50ade3.jpeg)  
+   
+   
 ## 목차
 1. [Function](#function)
 2. [Optional](#Optional)
