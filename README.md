@@ -13,7 +13,10 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
    ![IMG_589D98A1549E-1](https://user-images.githubusercontent.com/48309864/104322616-80081c00-5528-11eb-95b4-68c83d50ade3.jpeg)  
 
 4. 타입캐스팅 / 고차함수 / GCD / ARC
-   ![IMG_2C747E6994F4-1](https://user-images.githubusercontent.com/48309864/104462147-8911ef80-55f3-11eb-8180-b764e296382f.jpeg)
+   ![IMG_2C747E6994F4-1](https://user-images.githubusercontent.com/48309864/104462147-8911ef80-55f3-11eb-8180-b764e296382f.jpeg)  
+
+5. MVC / MVVM 패턴 
+   ![IMG_29234CC06774-1](https://user-images.githubusercontent.com/48309864/104597884-3bf85100-56b9-11eb-993c-770b745c8ef1.jpeg)
    
 ## 목차
 1. [Function](#function)
