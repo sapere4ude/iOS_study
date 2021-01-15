@@ -16,7 +16,10 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
    ![IMG_2C747E6994F4-1](https://user-images.githubusercontent.com/48309864/104462147-8911ef80-55f3-11eb-8180-b764e296382f.jpeg)  
 
 5. MVC / MVVM 패턴 
-   ![IMG_29234CC06774-1](https://user-images.githubusercontent.com/48309864/104597884-3bf85100-56b9-11eb-993c-770b745c8ef1.jpeg)
+   ![IMG_29234CC06774-1](https://user-images.githubusercontent.com/48309864/104597884-3bf85100-56b9-11eb-993c-770b745c8ef1.jpeg)  
+
+6. 탐섹 알고리즘
+   ![image](https://user-images.githubusercontent.com/48309864/104738683-2eaa9780-5789-11eb-96e4-601f88a1d4ae.png)
    
 ## 목차
 1. [Function](#function)
