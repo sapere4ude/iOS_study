@@ -22,8 +22,11 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
    ![image](https://user-images.githubusercontent.com/48309864/104738683-2eaa9780-5789-11eb-96e4-601f88a1d4ae.png)
    
 7. REST란?
-   ![IMG_F4DE4928C39E-1](https://user-images.githubusercontent.com/48309864/104813702-33854f00-584e-11eb-88ee-4a67cc4a4835.jpeg)
+   ![IMG_F4DE4928C39E-1](https://user-images.githubusercontent.com/48309864/104813702-33854f00-584e-11eb-88ee-4a67cc4a4835.jpeg)  
    
+8. 동기 / 비동기 + GCD
+   ![IMG_6F90D8E96DC5-1](https://user-images.githubusercontent.com/48309864/104843650-106ea400-590f-11eb-985a-a6b7900d0a59.jpeg)
+
 ## 목차
 1. [Function](#function)
 2. [Optional](#Optional)
