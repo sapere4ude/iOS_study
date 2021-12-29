@@ -1,4 +1,5 @@
-swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정리해두는 공간입니다
+swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정리해두는 공간입니다  
+노션 정리 : https://fog-sumac-a18.notion.site/iOS-Study-34746b138d7440899433b213ed62f174  
 <br>
 <br>
 
