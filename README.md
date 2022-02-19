@@ -1,4 +1,5 @@
-swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정리해두는 공간입니다
+swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정리해두는 공간입니다  
+노션 정리 : https://fog-sumac-a18.notion.site/iOS-Study-34746b138d7440899433b213ed62f174  
 <br>
 <br>
 
@@ -27,7 +28,7 @@ swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정�
 8. 동기 / 비동기 + GCD
    ![IMG_6F90D8E96DC5-1](https://user-images.githubusercontent.com/48309864/104843650-106ea400-590f-11eb-985a-a6b7900d0a59.jpeg)
 
-## 목차
+## 목차h
 1. [Function](#function)
 2. [Optional](#Optional)
 3. [Closures](#closures)
