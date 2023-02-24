@@ -1,32 +1,4 @@
 swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정리해두는 공간입니다  
-노션 정리 : https://fog-sumac-a18.notion.site/iOS-Study-34746b138d7440899433b213ed62f174  
-<br>
-<br>
-
-## 면접준비
-1. Struct, Class -> 공통점과 차이점  
-   ![IMG_F7E192D74756-1](https://user-images.githubusercontent.com/48309864/104093246-9619a080-52cc-11eb-8802-04238f998f79.jpg)
-
-2. Delegate 이해하기  
-   ![IMG_29A88864AEC5-1](https://user-images.githubusercontent.com/48309864/104093307-222bc800-52cd-11eb-9b71-5b1098d14b12.jpg)
-   
-3. 프로퍼티 & 인스턴스 개념 / 프로퍼티의 종류 설명
-   ![IMG_589D98A1549E-1](https://user-images.githubusercontent.com/48309864/104322616-80081c00-5528-11eb-95b4-68c83d50ade3.jpeg)  
-
-4. 타입캐스팅 / 고차함수 / GCD / ARC
-   ![IMG_2C747E6994F4-1](https://user-images.githubusercontent.com/48309864/104462147-8911ef80-55f3-11eb-8180-b764e296382f.jpeg)  
-
-5. MVC / MVVM 패턴 
-   ![IMG_29234CC06774-1](https://user-images.githubusercontent.com/48309864/104597884-3bf85100-56b9-11eb-993c-770b745c8ef1.jpeg)  
-
-6. 탐색 알고리즘
-   ![image](https://user-images.githubusercontent.com/48309864/104738683-2eaa9780-5789-11eb-96e4-601f88a1d4ae.png)
-   
-7. REST란?
-   ![IMG_F4DE4928C39E-1](https://user-images.githubusercontent.com/48309864/104813702-33854f00-584e-11eb-88ee-4a67cc4a4835.jpeg)  
-   
-8. 동기 / 비동기 + GCD
-   ![IMG_6F90D8E96DC5-1](https://user-images.githubusercontent.com/48309864/104843650-106ea400-590f-11eb-985a-a6b7900d0a59.jpeg)
 
 ## 목차h
 1. [Function](#function)
