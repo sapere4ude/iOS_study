@@ -1,6 +1,6 @@
-swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정리해두는 공간입니다  
+#swift를 이용한 iOS 앱 만들기에 필요한 과정들을 공부하고 정리해두는 공간입니다  
 
-## 목차h
+## 목차
 1. [Function](#function)
 2. [Optional](#Optional)
 3. [Closures](#closures)
