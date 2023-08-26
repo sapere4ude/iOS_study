@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="API_Call" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4w-gA-qvh">
+                                <rect key="frame" x="0.0" y="105" width="393" height="36"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="eu0-3V-Tch"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijg-CK-NTK">
+                                <rect key="frame" x="0.0" y="146" width="393" height="250"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="1Xi-07-61c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RtX-SK-uin">
+                                <rect key="frame" x="50" y="492" width="293" height="51"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="t8W-na-jV0"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Default로 호출"/>
+                                <connections>
+                                    <action selector="tapDefaultButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ddj-f1-eBU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGe-Wh-jXG">
+                                <rect key="frame" x="50" y="587" width="293" height="51"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="fvw-Kf-aLX"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="RxSwift로 호출"/>
+                                <connections>
+                                    <action selector="tapRxSwiftButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UND-8K-jqn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vv3-gH-Dmx">
+                                <rect key="frame" x="50" y="682" width="293" height="51"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="8sr-GS-Bpf"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Combine으로 호출"/>
+                                <connections>
+                                    <action selector="tapCombineButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6c8-lq-lIL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="H4w-gA-qvh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AlH-km-eYo"/>
+                            <constraint firstItem="H4w-gA-qvh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="46" id="DaG-iS-3lz"/>
+                            <constraint firstItem="ijg-CK-NTK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Gsg-f6-4gN"/>
+                            <constraint firstItem="kGe-Wh-jXG" firstAttribute="top" secondItem="RtX-SK-uin" secondAttribute="bottom" constant="44" id="QWv-TD-I3a"/>
+                            <constraint firstItem="H4w-gA-qvh" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="WF2-Fa-QIm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RtX-SK-uin" secondAttribute="trailing" constant="50" id="WxR-Wr-2Gt"/>
+                            <constraint firstItem="RtX-SK-uin" firstAttribute="top" secondItem="ijg-CK-NTK" secondAttribute="bottom" constant="96" id="Xc5-nk-hJ6"/>
+                            <constraint firstItem="vv3-gH-Dmx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="YKj-si-XvY"/>
+                            <constraint firstItem="vv3-gH-Dmx" firstAttribute="top" secondItem="kGe-Wh-jXG" secondAttribute="bottom" constant="44" id="jjm-6J-QNY"/>
+                            <constraint firstItem="kGe-Wh-jXG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="lnh-Ub-Szs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vv3-gH-Dmx" secondAttribute="trailing" constant="50" id="n8h-Ps-y8O"/>
+                            <constraint firstItem="ijg-CK-NTK" firstAttribute="top" secondItem="H4w-gA-qvh" secondAttribute="bottom" constant="5" id="vWS-Aa-m3s"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kGe-Wh-jXG" secondAttribute="trailing" constant="50" id="vbi-aI-Ihb"/>
+                            <constraint firstItem="RtX-SK-uin" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="weK-dQ-dMD"/>
+                            <constraint firstItem="ijg-CK-NTK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yrJ-TV-Dpd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="apiCallTitle" destination="H4w-gA-qvh" id="bca-RI-MIl"/>
+                        <outlet property="apiResultLabel" destination="ijg-CK-NTK" id="emg-zh-Y5A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="4.9295774647887329"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
