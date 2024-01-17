@@ -24,6 +24,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemYellow
+        
+        let action = UIAction { [weak self] _ in self?.didTapPlusBuuton() }
+        let button = UIBarButtonItem(systemItem: .add, primaryAction: action)
+        self.navigationItem.rightBarButtonItem = button
+    }
+    
+    private func didTapPlusBuuton() {
+        self.coordinator?.startDetailViewController()
     }
 }
 

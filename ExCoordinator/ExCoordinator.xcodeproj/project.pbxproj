@@ -15,6 +15,8 @@
 		BEF6301E2B569EFD0079E6C2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6301D2B569EFD0079E6C2 /* Coordinator.swift */; };
 		BEF630202B569F3B0079E6C2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF6301F2B569F3B0079E6C2 /* AppCoordinator.swift */; };
 		BEF630222B56A6550079E6C2 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF630212B56A6550079E6C2 /* HomeCoordinator.swift */; };
+		BEF630272B58063C0079E6C2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF630262B58063C0079E6C2 /* DetailViewController.swift */; };
+		BEF630292B58068E0079E6C2 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF630282B58068E0079E6C2 /* DetailCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		BEF6301D2B569EFD0079E6C2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		BEF6301F2B569F3B0079E6C2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		BEF630212B56A6550079E6C2 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		BEF630262B58063C0079E6C2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ExCoordinator/Presentation/DetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		BEF630282B58068E0079E6C2 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				BEF6301D2B569EFD0079E6C2 /* Coordinator.swift */,
 				BEF6301F2B569F3B0079E6C2 /* AppCoordinator.swift */,
 				BEF630212B56A6550079E6C2 /* HomeCoordinator.swift */,
+				BEF630282B58068E0079E6C2 /* DetailCoordinator.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -93,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF6300D2B569EF00079E6C2 /* HomeViewController.swift */,
+				BEF630262B58063C0079E6C2 /* DetailViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -172,7 +178,9 @@
 				BEF6300E2B569EF00079E6C2 /* HomeViewController.swift in Sources */,
 				BEF630202B569F3B0079E6C2 /* AppCoordinator.swift in Sources */,
 				BEF6300A2B569EF00079E6C2 /* AppDelegate.swift in Sources */,
+				BEF630292B58068E0079E6C2 /* DetailCoordinator.swift in Sources */,
 				BEF6300C2B569EF00079E6C2 /* SceneDelegate.swift in Sources */,
+				BEF630272B58063C0079E6C2 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +326,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4Y2567YJY8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ExCoordinator/Info.plist;
+				INFOPLIST_FILE = ExCoordinator/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -345,7 +353,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4Y2567YJY8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ExCoordinator/Info.plist;
+				INFOPLIST_FILE = ExCoordinator/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
