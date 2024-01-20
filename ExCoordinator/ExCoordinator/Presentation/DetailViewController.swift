@@ -9,15 +9,15 @@ import UIKit
 
 final class DetailViewController: UIViewController {
 
-    weak var coordinator: DetailCoordinatorDelegate?
+    weak var coordinator: DetailViewControllerDelegate?
     
-    init(coordinator: DetailCoordinatorDelegate) {
+    init(coordinator: DetailViewControllerDelegate) {
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
     deinit {
-        
+        coordinator?.endDetail()
     }
     
     @available(*, unavailable)
@@ -32,7 +32,5 @@ final class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: ModalViewControllerDismissingHandlable {
-    func viewControllerWillAppear() {
-        print("view 사라졌음")
-    }
+    func viewControllerWillAppear() { }
 }

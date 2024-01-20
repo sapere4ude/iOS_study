@@ -7,7 +7,6 @@
 
 import UIKit
 
-// TODO: DetailCoordinator 마저 만들고, DetailViewController 만들기
 final class DetailCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
@@ -23,15 +22,10 @@ final class DetailCoordinator: Coordinator {
         let detailViewController = DetailViewController(coordinator: self)
         let destinationController = UINavigationController(rootViewController: detailViewController)
         self.navigationController.present(destinationController, animated: true)
-        
-        print("Detail navigationController: \(navigationController)")
     }
 }
 
 protocol DetailCoordinatorDelegate: AnyObject {
-    //func endDetailViewController(_ coordinator: DetailCoordinator)
-    
-    // 이렇게 바꿔야함
     func didEndDetailViewController(_ coordinator: DetailCoordinator)
 }
 
@@ -40,5 +34,17 @@ extension DetailCoordinator: DetailCoordinatorDelegate {
         self.navigationController.dismiss(animated: true)
         self.parentCoordinator?.didEndDetailViewController(self)
         
+    }
+}
+
+// MARK: - DetailViewControllerDelegate Implementation
+protocol DetailViewControllerDelegate: AnyObject {
+    func endDetail()
+}
+
+extension DetailCoordinator: DetailViewControllerDelegate {
+    func endDetail() {
+        self.navigationController.dismiss(animated: true)
+        self.parentCoordinator?.didEndDetailViewController(self)
     }
 }

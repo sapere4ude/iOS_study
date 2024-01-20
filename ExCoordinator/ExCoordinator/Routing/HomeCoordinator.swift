@@ -20,8 +20,6 @@ final class HomeCoordinator: Coordinator {
     func start() {
         let viewController = HomeViewController(coordinator: self)
         self.navigationController.viewControllers = [viewController]
-        
-        print("Home navigationController: \(navigationController)")
     }
 }
 
@@ -36,8 +34,8 @@ extension HomeCoordinator: HomeViewControllerDelegate {
         coordinator.parentCoordinator = self
         coordinator.start()
         self.childCoordinators.append(coordinator)
-     
-        print("Home childCoordinators: \(coordinator)")
+        
+        print(#function, "🐧 childCoordinator: \(self.childCoordinators)")
     }
 }
 
@@ -45,6 +43,7 @@ extension HomeCoordinator: HomeViewControllerDelegate {
 extension HomeCoordinator: DetailCoordinatorDelegate {
     func didEndDetailViewController(_ coordinator: DetailCoordinator) {
         self.childCoordinators = self.childCoordinators.filter { $0 !== coordinator }
+        print(#function, "🐧 childCoordinator: \(self.childCoordinators)")
         handleListContactViewControllerVisibility()
     }
     
