@@ -6,17 +6,24 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BE4DE3CA2E2904D900A87B23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4DE3C52E2904D900A87B23 /* ContentView.swift */; };
+		BE4DE3CB2E2904D900A87B23 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4DE3C62E2904D900A87B23 /* DI.swift */; };
+		BE4DE3CC2E2904D900A87B23 /* ExDependableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4DE3C72E2904D900A87B23 /* ExDependableApp.swift */; };
+		BE4DE3CD2E2904D900A87B23 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4DE3C82E2904D900A87B23 /* ServiceLocator.swift */; };
+		BE4DE3CE2E2904D900A87B23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE4DE3C42E2904D900A87B23 /* Assets.xcassets */; };
+		BE4DE3D02E290B6600A87B23 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4DE3CF2E290B6600A87B23 /* Common.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		BE4DE3B22E27E6F500A87B23 /* ExDependable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExDependable.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE4DE3C42E2904D900A87B23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE4DE3C52E2904D900A87B23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BE4DE3C62E2904D900A87B23 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
+		BE4DE3C72E2904D900A87B23 /* ExDependableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExDependableApp.swift; sourceTree = "<group>"; };
+		BE4DE3C82E2904D900A87B23 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
+		BE4DE3CF2E290B6600A87B23 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		BE4DE3B42E27E6F500A87B23 /* ExDependable */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ExDependable;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BE4DE3AF2E27E6F500A87B23 /* Frameworks */ = {
@@ -32,7 +39,7 @@
 		BE4DE3A92E27E6F500A87B23 = {
 			isa = PBXGroup;
 			children = (
-				BE4DE3B42E27E6F500A87B23 /* ExDependable */,
+				BE4DE3C92E2904D900A87B23 /* ExDependable */,
 				BE4DE3B32E27E6F500A87B23 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +50,19 @@
 				BE4DE3B22E27E6F500A87B23 /* ExDependable.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BE4DE3C92E2904D900A87B23 /* ExDependable */ = {
+			isa = PBXGroup;
+			children = (
+				BE4DE3CF2E290B6600A87B23 /* Common.swift */,
+				BE4DE3C62E2904D900A87B23 /* DI.swift */,
+				BE4DE3C82E2904D900A87B23 /* ServiceLocator.swift */,
+				BE4DE3C72E2904D900A87B23 /* ExDependableApp.swift */,
+				BE4DE3C52E2904D900A87B23 /* ContentView.swift */,
+				BE4DE3C42E2904D900A87B23 /* Assets.xcassets */,
+			);
+			path = ExDependable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +79,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				BE4DE3B42E27E6F500A87B23 /* ExDependable */,
 			);
 			name = ExDependable;
 			packageProductDependencies = (
@@ -109,6 +126,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE4DE3CE2E2904D900A87B23 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +137,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE4DE3CA2E2904D900A87B23 /* ContentView.swift in Sources */,
+				BE4DE3CB2E2904D900A87B23 /* DI.swift in Sources */,
+				BE4DE3CC2E2904D900A87B23 /* ExDependableApp.swift in Sources */,
+				BE4DE3D02E290B6600A87B23 /* Common.swift in Sources */,
+				BE4DE3CD2E2904D900A87B23 /* ServiceLocator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
